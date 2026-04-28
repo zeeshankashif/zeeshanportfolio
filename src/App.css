@@ -407,6 +407,7 @@
   z-index: 10;
   opacity: 0.6;
 }
+
 .grading-card::after {
   content: '';
   position: absolute;
@@ -442,7 +443,7 @@
   background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
-  line-height: normal; /* Resets text spacing */
+ line-height: normal; /* Resets text spacing */
 }
 
 .grading-card:hover .photo-overlay {

@@ -44,7 +44,6 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
     },
   ];
-  
    const COLOR_GRADING = [
     { 
       id: 1, 
@@ -78,6 +77,7 @@ const PROJECTS = [
       after: 'catscg.jpg' 
      }
 ];
+
 
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -316,6 +316,8 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
 
+  
+
   return (
     <div className="page" data-theme={theme}>
       <LiquidBackdrop />
@@ -344,7 +346,7 @@ function App() {
                 Zeeshan Kashif
               </h1>
               <p className="hero-sub">
-                  Liked by Cats 
+                  "THE" Web Developer you were looking for ... 
               
               </p>
               <div className="hero-ctas">
