@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zeeshanportfolio/static/css/main.5d2fc5dd.css",
+    "main.js": "/zeeshanportfolio/static/js/main.a1dc4f61.js",
+    "static/js/453.c0599b1b.chunk.js": "/zeeshanportfolio/static/js/453.c0599b1b.chunk.js",
+    "index.html": "/zeeshanportfolio/index.html",
+    "main.5d2fc5dd.css.map": "/zeeshanportfolio/static/css/main.5d2fc5dd.css.map",
+    "main.a1dc4f61.js.map": "/zeeshanportfolio/static/js/main.a1dc4f61.js.map",
+    "453.c0599b1b.chunk.js.map": "/zeeshanportfolio/static/js/453.c0599b1b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d2fc5dd.css",
+    "static/js/main.a1dc4f61.js"
+  ]
+}
