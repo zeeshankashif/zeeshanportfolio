@@ -44,6 +44,7 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
     },
   ];
+  
    const COLOR_GRADING = [
     { 
       id: 1, 
@@ -76,10 +77,6 @@ const PROJECTS = [
      before: 'cats.jpg', 
       after: 'catscg.jpg' 
      }
-  
-  
-  
-
 ];
 
 function scrollToId(id) {
@@ -280,7 +277,8 @@ function GradingSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Side Skills</p>
         <h2 className="section-title">Color Grading</h2>
-        <p className="section-lead">Hover and Tap on photos to toggle between RAW and GRADED shots.</p>
+        <p className="section-lead">Hover and Tap on photos to toggle between RAW and GRADED shots. ( wait for the graded photos to load )</p>
+       
         
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
