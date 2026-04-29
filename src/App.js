@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
-
 const NAV = [
   { id: 'home', label: 'Home' },
   { id: 'experience', label: 'Experience' },
@@ -85,8 +84,8 @@ const PROJECTS = [
      { 
       id: 7, 
       title: 'Nature', 
-     before: 'if.jpg', 
-      after: 'ifcg.jpg' 
+     before: 'fiz.jpg', 
+      after: 'fizcg.jpg' 
      },
       { 
       id: 8, 
@@ -276,8 +275,13 @@ function ProjectsSection() {
     </section>
   );
 }
-function ColorGradeCard({ item, index, active }) {
+function ColorGradeCard({ item, index, active, forceShowAfter }) {
   const [showAfter, setShowAfter] = useState(false);
+
+  // Sync with the "Grade All" button
+  useEffect(() => {
+    setShowAfter(forceShowAfter);
+  }, [forceShowAfter]);
 
   return (
     <article 
@@ -289,7 +293,6 @@ function ColorGradeCard({ item, index, active }) {
         <img 
           src={showAfter ? item.after : item.before} 
           alt={item.title} 
-          // No height="200px" here!
         />
         <div className="button-container">
           <button className="pill pill--solid" style={{ fontSize: '0.8rem', padding: '6px 27px' }}>
@@ -300,30 +303,53 @@ function ColorGradeCard({ item, index, active }) {
         <div className="photo-overlay">
           <div className="overlay-content">
              <h3>{item.title}</h3>
-             <span className="status-tag">
-               {showAfter ? 'Graded' : 'Raw'}
-             </span>
+             <span className="status-tag">{showAfter ? 'Graded' : 'Raw'}</span>
           </div>
         </div>
       </div>
     </article>
   );
 }
+
+// --- MAIN SECTION ---
 function GradingSection() {
+  // Assuming useRepeatableIntersect is defined elsewhere in your project
   const [ref, active] = useRepeatableIntersect(0.15, '0px 0px -8% 0px', true);
+  const [globalShowAfter, setGlobalShowAfter] = useState(false);
+
+  const toggleAll = () => setGlobalShowAfter(!globalShowAfter);
 
   return (
     <section id="grading" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Side Skills</p>
         <h2 className="section-title">Color Grading</h2>
-        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots. Wait for the graded photos to load on " AFTER MODE " ( View in Dark Mode )</p>
-       
+          <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots. Wait for the graded photos to load on " AFTER MODE " ( View in Dark Mode )</p>
+        
+        {/* TOP BUTTON */}
+        <div style={{ display: 'flex', justifyContent: 'left', marginBottom: '25px', marginTop: '-15px' }}>
+          <button className="pill pill--solid" onClick={toggleAll}>
+            {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
+          </button>
+        </div>
         
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
-            <ColorGradeCard key={item.id} item={item} index={i} active={active} />
+            <ColorGradeCard 
+              key={item.id} 
+              item={item} 
+              index={i} 
+              active={active} 
+              forceShowAfter={globalShowAfter} 
+            />
           ))}
+        </div>
+
+        {/* BOTTOM BUTTON */}
+        <div style={{ display: 'flex', justifyContent: 'left', marginTop: '20px' , marginBottom: '-50px'}}>
+          <button className="pill pill--solid" onClick={toggleAll}>
+            {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
+          </button>
         </div>
       </div>
     </section>
