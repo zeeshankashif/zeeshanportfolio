@@ -323,13 +323,7 @@ function GradingSection() {
         <h2 className="section-title">Color Grading</h2>
           <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently. Wait for the graded photos to load on " AFTER MODE " ( View in Dark Mode )</p>
         
-        {/* TOP BUTTON */}
-        <div style={{ display: 'flex', justifyContent: 'left', marginBottom: '25px', marginTop: '-9px' }}>
-          <button className="pill pill--solid" onClick={toggleAll}>
-            {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
-          </button>
-        </div>
-        
+       
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
             <ColorGradeCard 
