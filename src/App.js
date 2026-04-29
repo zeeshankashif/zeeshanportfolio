@@ -317,7 +317,7 @@ function GradingSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Side Skills</p>
         <h2 className="section-title">Color Grading</h2>
-        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots. Wait for the graded photos to load on " AFTER MODE "</p>
+        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots. Wait for the graded photos to load on " AFTER MODE " ( View in Dark Mode )</p>
        
         
         <div className="card-grid">
@@ -328,7 +328,8 @@ function GradingSection() {
       </div>
     </section>
   );
-}function AboutSection() {
+}
+function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
   return (
     <section id="about" className="section section--footer" ref={ref}>
@@ -336,11 +337,20 @@ function GradingSection() {
         <p className="eyebrow">About</p>
         <h2 className="section-title">Zeeshan Kashif</h2>
         <p className="about-text">
-        I love everything that goes FAST & BOOM 
+          I love everything that goes FAST & BOOM 
         </p>
         <div className="about-actions">
-          <a className="pill pill--solid" href="mailto:hello@zeeshankashif.dev">zeeshankashif.100m@gmail.com</a>
-          <a className="pill pill--ghost" href="mailto:hello@zeeshankashif.dev">Email me</a>
+          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">zeeshankashif.100m@gmail.com</a>
+          
+          {/* NEW CV BUTTON */}
+          <a 
+            className="pill pill--ghost" 
+            href="cv.jpg" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            View CV
+          </a>
 
           <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
         </div>
@@ -351,7 +361,6 @@ function GradingSection() {
     </section>
   );
 }
-
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
@@ -396,6 +405,15 @@ function App() {
                 <button type="button" className="pill pill--ghost" onClick={() => scrollToId('projects')}>
                   Browse projects
                 </button>
+                <a 
+    className="pill pill--ghost" 
+    href="cv.jpg" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+  >
+    View CV
+  </a>
                 
               </div>
             </div>
