@@ -452,9 +452,9 @@
 
 .photo-overlay h3 {
   margin: 0;
-  font-size: 1.4rem;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-size: 1.23rem;
+  color: #ececec;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.866);
 }
 
 /* 4. The UI Controls inside the overlay */
@@ -1299,7 +1299,7 @@
   /* 4. Fix Overlay (Mobile doesn't have hover) */
   .photo-overlay {
     opacity: 1 !important; /* Always visible on mobile */
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%) !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, transparent 100%) !important;
     padding: 15px !important;
     pointer-events: auto !important;
   }
@@ -1376,6 +1376,9 @@
     box-shadow: 0px -50px 70px rgb(0, 0, 0);                         /* Keeps content inside the roundness */
   }
 }
+
+
+
 @media (max-width: 768px) {
   /* 1. Remove the background and shadow from the outer wrapper */
   .nav-shell {
@@ -1414,4 +1417,37 @@
 
 
 
+
+/* 3. Desktop-Only Activation */
+/* This ONLY triggers if a mouse is detected */
+@media (hover: hover) and (pointer: fine) {
+  
+  .grading-card:hover::after {
+    opacity: 1 !important;
+    visibility: visible;
+  }
+
+  .grading-card:hover .photo-overlay {
+    opacity: 1 !important;
+    visibility: visible;
+  }
+
+  .grading-card:hover img {
+    transform: scale(1.08) !important;
+  }
+}
+
+/* 4. Explicit Mobile Reset */
+/* This kills the hover effect for touchscreens specifically */
+@media (hover: none) {
+  .grading-card:hover img {
+    transform: none !important;
+  }
+   .grading-card::after {
+    display: none !important; /* Total removal for touch */
+  }
+
+
+
+}
 }
