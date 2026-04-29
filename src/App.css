@@ -164,7 +164,17 @@
     align-items: center;
     gap: 1rem;
     padding: 0.65rem 1rem 0.65rem 1.25rem;
+      /* Make background transparent/translucent */
+  background: rgba(var(--surface-rgb), 0.5); 
+  
+  /* The "Mobile Style" Blur */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  
+  /* Optional: add a subtle bottom border to define the edge */
+  border-bottom: 1px solid var(--card-border);
   }
+  
 
   .nav-brand {
     font-weight: 800;
