@@ -396,6 +396,7 @@ function App() {
                 <button type="button" className="pill pill--ghost" onClick={() => scrollToId('projects')}>
                   Browse projects
                 </button>
+                
               </div>
             </div>
           </div>

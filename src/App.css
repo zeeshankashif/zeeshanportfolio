@@ -1209,15 +1209,56 @@
     padding-top: 135px !important;
   }
 }
+/* —— FINAL REPAIR: Mobile Photo Grid —— */
 @media (max-width: 768px) {
-  .grading-card {
-    flex: 1 1 100%;
-    max-width: 100%;
+  /* 1. Ensure the container allows the cards to wrap */
+  .grading-grid, .photo-section-wrapper { 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
   }
-}
 
-.photo-card-body img {
-  width: 100%;
-  height: auto; /* This ensures the image keeps its original aspect ratio */
-  display: block;
+  /* 2. Force the card to be visible and full width */
+  .grading-card {
+    flex: 0 0 auto !important; /* Prevents shrinking to 0 */
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 250px !important; /* Ensures the card has a physical footprint */
+    display: block !important;
+    margin-bottom: 20px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* 3. Ensure the image inside actually expands */
+  .photo-card-body img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important; /* Force visibility */
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* 4. Fix Overlay (Mobile doesn't have hover) */
+  .photo-overlay {
+    opacity: 1 !important; /* Always visible on mobile */
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%) !important;
+    padding: 15px !important;
+    pointer-events: auto !important;
+  }
+
+  .button-container {
+    opacity: 1 !important;
+    display: block !important;
+    bottom: 15px !important;
+    right: 15px !important;
+  }
+
+  /* 5. Fix for potential 'reveal' animation issues */
+  .reveal, .lift {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
 }
