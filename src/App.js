@@ -47,7 +47,7 @@ const PROJECTS = [
    const COLOR_GRADING = [
     { 
       id: 1, 
-      title: 'Flying Cat', 
+      title: 'Orange Cat', 
       before: 'flying.jpg', 
       after: 'flyingcg.jpg' 
     },
@@ -66,7 +66,7 @@ const PROJECTS = [
    },
     { 
       id: 4, 
-      title: 'BMW', 
+      title: 'BMW M4 Competition', 
       before: 'm4.jpg', 
       after: 'm4cg.jpg' 
     },
@@ -96,7 +96,7 @@ const PROJECTS = [
      },
      { 
      id: 11, 
-     title: 'M4 GT3', 
+     title: 'BMW M4 GT3 EVO', 
     before: 'm4gt.jpg', 
      after: 'm4gt3.jpg' 
    },
