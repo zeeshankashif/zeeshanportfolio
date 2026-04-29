@@ -66,7 +66,7 @@ const PROJECTS = [
    },
     { 
       id: 4, 
-      title: 'BMW M4 Competition', 
+      title: 'BMW M4 G82', 
       before: 'm4.jpg', 
       after: 'm4cg.jpg' 
     },
