@@ -118,6 +118,37 @@ const PROJECTS = [
 ];
 
 
+
+const ColorGradingCard = ({ item }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="image-container">
+      {/* Show loader only while isLoading is true */}
+      {isLoading && (
+        <div className="loader-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <img
+        src={`/path/to/images/${item.after}`}
+        alt={item.title}
+        onLoad={() => setIsLoading(false)} // Hides loader once image is ready
+        style={{ 
+          display: isLoading ? 'none' : 'block',
+          width: '100%',
+          height: 'auto'
+        }}
+      />
+    </div>
+  );
+};
+
+
+   
+                            
+
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
