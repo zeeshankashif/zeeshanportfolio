@@ -172,10 +172,7 @@ function ExperienceSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Experience</p>
         <h2 className="section-title">Skills in Motion</h2>
-        {/* <p className="section-lead">
-         Here I've showcased my skills in the form of Graphical Bars
-        </p> */}
-
+       
         <div className="chart-card glass-panel">
           <div className="bar-chart" role="list">
             {EXPERIENCE.map((row) => (
