@@ -149,12 +149,12 @@
     z-index: 50;
     padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
     /* padding-bottom: 2px; */
-    background: linear-gradient(
+     background: linear-gradient(
       to bottom,
       rgba(var(--surface-rgb), 0.92),
       rgba(var(--surface-rgb), 0.65),
       rgba(var(--surface-rgb), 0)
-    );
+    ); 
   }
 
   .nav {
@@ -674,6 +674,30 @@
       grid-template-columns: 1fr;
     }
   }
+
+
+
+
+  /* Update your existing .work-card / .lift */
+.work-card {
+  flex: 1 1 100px; /* Grow and shrink equally, with a base of 300px */
+  display: flex;
+  flex-direction: column; /* Allows content inside to stack */
+  padding: 1rem;
+  min-height: 132px; /* Optional: ensures a nice baseline height */
+  box-sizing: border-box;
+}
+
+/* Ensure the description text fills the space so the card stays rigid */
+.work-card p {
+  flex-grow: 1;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
+
 
   .work-card {
     padding: 1.5rem;
@@ -1325,4 +1349,69 @@
     white-space: nowrap !important;
     box-sizing: border-box !important;
   }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  /* 1. Kill the background and shadow on the outermost wrapper */
+  [data-theme="dark"] .nav-shell {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 10px !important; /* Adjust this to control spacing from screen edges */
+  }
+
+  /* 2. Apply the glass effect/background ONLY to the inner nav (inside the border) */
+  [data-theme="dark"] .nav {
+    background: rgba(24, 24, 24, 0.867) !important; /* Dark tint inside the border */
+    backdrop-filter: blur(12px) !important;       /* The frosted glass look */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important; /* Your visible border */
+    border-radius: 18px !important;               /* Matches your rounded corners */
+    overflow: hidden;    
+    box-shadow: 0px -50px 70px rgb(0, 0, 0);                         /* Keeps content inside the roundness */
+  }
+}
+@media (max-width: 768px) {
+  /* 1. Remove the background and shadow from the outer wrapper */
+  .nav-shell {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 12px 10px !important; /* Space from top/sides of the screen */
+  }
+
+  /* 2. Style the inner pill-shaped container */
+  .nav {
+    background: rgba(255, 255, 255, 0.778) !important; /* Light translucent tint */
+    backdrop-filter: blur(12px) !important;          /* Glass effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 0px solid rgba(0, 0, 0, 0.08) !important; /* Subtle light border */
+    border-radius: 15px !important;                 /* Rounded corners */
+    padding: 0px 9px !important;                   /* Internal breathing room */
+    overflow: hidden;
+     box-shadow: 0px -50px 70px rgb(146, 146, 146);   
+  }
+
+  
+
+@media (max-width: 900px) {
+  .card-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .work-card {
+    width: 100%; /* Cards take full width but maintain equal padding/look */
+    flex: 0 0 auto;
+  }
+}
+
+
+
+
 }
