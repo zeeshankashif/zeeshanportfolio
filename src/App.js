@@ -59,23 +59,63 @@ const PROJECTS = [
       after: 'catscg.jpg' 
     },
     { 
+    id: 9, 
+    title: 'Alcedo Atthis', 
+    before: 'bard.jpg', 
+    after: 'bardcg.jpg' 
+   },
+    { 
+      id: 4, 
+      title: 'BMW', 
+      before: 'm4.jpg', 
+      after: 'm4cg.jpg' 
+    },
+     { 
+      id: 5, 
+      title: 'Porsche GT3 RS', 
+     before: 'gt3rs.jpg', 
+      after: 'gt3rscg.jpg' 
+     },
+     { 
+      id: 6, 
+      title: '911 vs 296', 
+      before: 'ferr.jpg', 
+      after: 'ferrcg.jpg' 
+     },
+     { 
+      id: 7, 
+      title: 'Nature', 
+     before: 'if.jpg', 
+      after: 'ifcg.jpg' 
+     },
+      { 
+      id: 8, 
+      title: 'Yellow Warbler', 
+      before: 'bird.jpg', 
+      after: 'birdcg.jpg' 
+     },
+     { 
+     id: 11, 
+     title: 'M4 GT3', 
+    before: 'm4gt.jpg', 
+     after: 'm4gt3.jpg' 
+   },
+      { 
+      id: 10, 
+      title: 'Roxy Dino', 
+      before: 'rexy.jpg', 
+      after: 'rexycg.jpg' 
+     },
+
+    { 
       id: 3, 
       title: 'Home', 
       before: 'home.jpg', 
       after: 'hoomcg.jpg' 
     },
-     { 
-      id: 4, 
-      title: 'Home', 
-      before: 'home.jpg', 
-      after: 'hoomcg.jpg' 
-    },
-     { 
-      id: 5, 
-      title: 'Home', 
-     before: 'cats.jpg', 
-      after: 'catscg.jpg' 
-     }
+    
+     
+     
 ];
 
 
@@ -277,7 +317,7 @@ function GradingSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Side Skills</p>
         <h2 className="section-title">Color Grading</h2>
-        <p className="section-lead">Hover and Tap on photos to toggle between RAW and GRADED shots. ( wait for the graded photos to load )</p>
+        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots. Wait for the graded photos to load on " AFTER MODE "</p>
        
         
         <div className="card-grid">
