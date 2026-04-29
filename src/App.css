@@ -380,7 +380,7 @@
     gap: 0.75rem;
   }
   .grading-display img {
-  filter: saturate(1.1) contrast(1.05); /* Slight pop */
+  /* filter: saturate(1.1) contrast(1.05); Slight pop */
   animation: fadeIn 0.4s ease;
 }
 
@@ -440,7 +440,7 @@
   flex-direction: column;
   justify-content: flex-end; /* Keeps content at the bottom */
   padding: 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.646) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
  line-height: normal; /* Resets text spacing */
@@ -958,6 +958,38 @@
 /* —— Mobile Optimization Block —— */
 
 @media (max-width: 768px) {
+  /* —— Single Row Button Optimization —— */
+  /* Targets both Hero and About action areas */
+  .hero-ctas, 
+  .about-actions {
+    display: flex !important;
+    flex-direction: row !important; /* Force horizontal */
+    flex-wrap: nowrap !important;   /* Prevent jumping to next line */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;            /* Tight gap to save space */
+    width: 100% !important;
+    padding: 0 5px !important;
+  }
+
+  /* Make the buttons smaller to ensure they fit side-by-side */
+  .hero-ctas .pill, 
+  .about-actions .pill {
+    flex: 1 1 auto !important;     /* Allow buttons to grow/shrink equally */
+    padding: 8px 4px !important;   /* Narrow padding */
+    font-size: 0.65rem !important; /* Small text for mobile fit */
+    white-space: nowrap !important; /* Prevent text from wrapping inside button */
+    min-width: 0 !important;       /* Allows flex shrinking */
+    text-align: center !important;
+    height: auto !important;
+  }
+
+  /* Force the "ghost" buttons to be visible since they were hidden in previous code */
+  .hero-ctas .pill--ghost,
+  .about-actions .pill--ghost {
+    display: flex !important; 
+  }
+
   /* Fix Hero Photo Overflow */
   .photo-wrap {
     width: clamp(280px, 80vw, 400px); /* Responsive width */
@@ -1260,5 +1292,37 @@
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  /* 1. Setup the container to allow wrapping into rows */
+  .hero-ctas, 
+  .about-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important; /* Allows buttons to move to line 2 */
+    justify-content: space-between !important; /* Pushes buttons to edges */
+    gap: 10px 4% !important; /* 10px vertical gap | 4% horizontal gap */
+    width: 100% !important;
+    padding: 0 10px !important;
+  }
+
+  /* 2. Style all buttons to fit 2-per-row */
+  .hero-ctas .pill, 
+  .about-actions .pill,
+  .hero-ctas .pill--ghost,
+  .about-actions .pill--ghost {
+    display: flex !important;    /* Ensure hidden buttons are shown */
+    flex: 0 0 48% !important;    /* Take up exactly 48% width */
+    min-width: 0 !important;
+    padding: 12px 4px !important;
+    font-size: 0.7rem !important; /* Slightly larger text now that there is room */
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
   }
 }

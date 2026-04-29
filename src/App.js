@@ -17,7 +17,7 @@ const EXPERIENCE = [
   { label: 'UI/UX Design', value: 70, years: 'Intermediate level' },
   { label: 'Error Handling', value: 88, years: 'Advanced level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
-
+  { label: 'Lightroom', value: 93, years: 'Expert level' },
 ];
 
 const WORK_ITEMS = [
@@ -72,7 +72,7 @@ const PROJECTS = [
     },
      { 
       id: 5, 
-      title: 'Porsche GT3 RS', 
+      title: 'Porsche 911 GT3 RS', 
      before: 'gt3rs.jpg', 
       after: 'gt3rscg.jpg' 
      },
@@ -206,7 +206,7 @@ function ExperienceSection() {
               <span className="mini-stat__cap">of Age</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '160ms' }}>
-              <span className="mini-stat__num">72.20%</span>
+              <span className="mini-stat__num">75.66%</span>
               <span className="mini-stat__cap">Overall Skills</span>
             </div>
           </div>
@@ -340,7 +340,8 @@ function AboutSection() {
           I love everything that goes FAST & BOOM 
         </p>
         <div className="about-actions">
-          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">zeeshankashif.100m@gmail.com</a>
+          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
+           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
           
           {/* NEW CV BUTTON */}
           <a 
@@ -402,19 +403,27 @@ function App() {
                 <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
                   See experience
                 </button>
-                <button type="button" className="pill pill--ghost" onClick={() => scrollToId('projects')}>
+                <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
                   Browse projects
                 </button>
                 <a 
-    className="pill pill--ghost" 
-    href="cv.jpg" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-  >
-    View CV
-  </a>
-                
+                 className="pill pill--ghost" 
+                 href="cv.jpg" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                 View CV
+                </a>
+                <a 
+                 className="pill pill--ghost" 
+                 href="https://github.com/zeeshankashif" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                 Github
+                </a>
               </div>
             </div>
           </div>
