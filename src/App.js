@@ -329,7 +329,7 @@ function GradingSection() {
         {/* TOP BUTTON */}
         <div style={{ display: 'flex', justifyContent: 'left', marginBottom: '25px', marginTop: '-15px' }}>
           <button className="pill pill--solid" onClick={toggleAll}>
-            {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
+            {globalShowAfter ? 'RAWTHEM ALL' : 'GRADE THEM ALL'}
           </button>
         </div>
         
