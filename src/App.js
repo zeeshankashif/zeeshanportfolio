@@ -292,8 +292,8 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
           alt={item.title} 
         />
         <div className="button-container">
-          <button className="pill pill--solid" style={{ fontSize: '0.8rem', padding: '6px 27px' }}>
-            {showAfter ? 'After' : 'Before'}
+          <button className="button-before" style={{ fontSize: '0.75rem', padding: '6px 20px' }}>
+            {showAfter ? 'AFTER' : 'BEFORE'}
           </button>
         </div>
 
