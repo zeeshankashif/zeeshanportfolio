@@ -17,7 +17,7 @@ const EXPERIENCE = [
   { label: 'UI/UX Design', value: 70, years: 'Intermediate level' },
   { label: 'Error Handling', value: 88, years: 'Advanced level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
-  { label: 'Lightroom', value: 91, years: 'Expert level' },
+  { label: 'Lightroom', value: 92, years: 'Expert level' },
 ];
 
 const WORK_ITEMS = [
