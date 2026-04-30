@@ -464,10 +464,10 @@ function App() {
               </p>
               <div className="hero-ctas">
                 <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
-                  See experience
+                  Experience
                 </button>
                 <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
-                  Browse projects
+                  Projects
                 </button>
                 <a 
                  className="pill pill--ghost" 

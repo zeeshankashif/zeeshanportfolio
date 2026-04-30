@@ -420,7 +420,7 @@
   .hero-ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.60rem;
   }
   .grading-display img {
   /* filter: saturate(1.1) contrast(1.05); Slight pop */
@@ -554,7 +554,7 @@
     padding: 0.75rem 1.35rem;
     border-radius: var(--radius-pill);
     font-weight: 800;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     letter-spacing: 0.02em;
     border: none;
     cursor: pointer;
@@ -585,11 +585,13 @@
     border: 1px solid var(--line);
   }
 
-  .pill--ghost:hover {
+  
+  .pill--ghosts:hover {
     background-color: #000000;
     /* border-color: rgba(102, 255, 0, 0.993); */
     color: rgb(213, 213, 213); 
   }
+
 
   /* —— Sections —— */
   .section {
@@ -1546,3 +1548,8 @@
  
   }
 }
+
+
+
+
+
