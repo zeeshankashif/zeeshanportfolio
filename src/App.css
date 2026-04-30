@@ -1540,4 +1540,12 @@
 
 
 
-
+@media (max-width: 768px) {
+  .video-element {
+    width: 60%; /* Made it slightly larger for mobile readability */
+    margin-bottom: 15px;
+    /* Optional: Slightly softer shadow for mobile to keep it clean */
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.518);
+ 
+  }
+}
