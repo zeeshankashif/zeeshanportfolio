@@ -76,70 +76,70 @@ const PROJECTS = [
     { 
       id: 1, 
       title: 'Orange Cat', 
-      before: 'flying.jpg', 
-      after: 'flyingcg.jpg' 
+      before: 'flying.webp', 
+      after: 'flyingcg.webp' 
     },
    
     { 
       id: 2, 
       title: 'Cats', 
-      before: 'cats.jpg', 
-      after: 'catscg.jpg' 
+      before: 'cats.webp', 
+      after: 'catscg.webp' 
     },
     { 
     id: 3, 
     title: 'Alcedo Atthis', 
-    before: 'bard.jpg', 
-    after: 'bardcg.jpg' 
+    before: 'bard.webp', 
+    after: 'bardcg.webp' 
    },
     { 
       id: 4, 
       title: 'BMW M4 G82', 
-      before: 'm4.jpg', 
-      after: 'm4cg.jpg' 
+      before: 'm4.webp', 
+      after: 'm4cg.webp' 
     },
      { 
       id: 5, 
       title: 'Porsche 911 GT3 RS', 
-     before: 'gt3rs.jpg', 
+     before: 'gt3rs.webp', 
       after: 'gt3rscg.jpg' 
      },
      { 
       id: 6, 
       title: '911 vs 296', 
-      before: 'ferr.jpg', 
-      after: 'ferrcg.jpg' 
+      before: 'ferr.webp', 
+      after: 'ferrcg.webp' 
      },
      { 
       id: 7, 
       title: 'Nature', 
-     before: 'fiz.jpg', 
-      after: 'fizcg.jpg' 
+     before: 'fiz.webp', 
+      after: 'fizcg.webp' 
      },
       { 
       id: 8, 
       title: 'Yellow Warbler', 
-      before: 'bird.jpg', 
-      after: 'birdcg.jpg' 
+      before: 'bird.webp', 
+      after: 'birdcg.webp' 
      },
      { 
      id: 11, 
      title: 'BMW M4 GT3 EVO', 
-    before: 'm4gt.jpg', 
-     after: 'm4gt3.jpg' 
+    before: 'm4gt.webp', 
+     after: 'm4gt3.webp' 
    },
       { 
       id: 10, 
       title: 'Roxy Dino', 
-      before: 'rexy.jpg', 
-      after: 'rexycg.jpg' 
+      before: 'rexy.webp', 
+      after: 'rexycg.webp' 
      },
 
     { 
       id: 3, 
       title: 'Home', 
-      before: 'home.jpg', 
-      after: 'hoomcg.jpg' 
+      before: 'home.webp', 
+      after: 'hoomcg.webp' 
     },
   ];
 
