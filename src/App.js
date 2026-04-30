@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 const NAV = [
@@ -12,17 +13,17 @@ const NAV = [
 
 const EXPERIENCE = [
   { label: 'Web Development ( newbie )', value: 20, years: '2+ months' },
-  { label: 'AI Integration', value: 98, years: 'Advanced level' },
+  { label: 'AI Integration', value: 90, years: 'Advanced level' },
   { label: 'UI/UX Design', value: 70, years: 'Intermediate level' },
   { label: 'Error Handling', value: 88, years: 'Advanced level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
-  { label: 'Lightroom', value: 93, years: 'Expert level' },
+  { label: 'Lightroom', value: 91, years: 'Expert level' },
 ];
 
 const WORK_ITEMS = [
-  { title: 'Project engineering', detail: 'I prefer to use AI for time efficiency' },
-  { title: 'Design systems', detail: 'I can easily translate my thoughts into a "prompt".' },
-  { title: 'Collaboration', detail: 'Sure !'},
+  { title: 'Project Engineering', detail: 'I utilize AI to optimize production timelines and enhance output quality. A standard approach for high-level professional work in 2026.' },
+  { title: 'Design Systems', detail: 'By leveraging advanced prompting techniques, I can rapidly iterate on complex designs, ensuring a more efficient workflow without compromising on quality.' },
+  { title: 'Collaboration', detail: 'Sure ! Let me give you the chance to unlock your full potential by collaborating with me. I promise you wont regret it.'},
 ];
 
 const PROJECTS = [
@@ -58,7 +59,7 @@ const PROJECTS = [
       after: 'catscg.jpg' 
     },
     { 
-    id: 9, 
+    id: 3, 
     title: 'Alcedo Atthis', 
     before: 'bard.jpg', 
     after: 'bardcg.jpg' 
@@ -112,38 +113,7 @@ const PROJECTS = [
       before: 'home.jpg', 
       after: 'hoomcg.jpg' 
     },
-    
-     
-     
-];
-
-
-
-const ColorGradingCard = ({ item }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  return (
-    <div className="image-container">
-      {/* Show loader only while isLoading is true */}
-      {isLoading && (
-        <div className="loader-overlay">
-          <div className="spinner"></div>
-        </div>
-      )}
-
-      <img
-        src={`/path/to/images/${item.after}`}
-        alt={item.title}
-        onLoad={() => setIsLoading(false)} // Hides loader once image is ready
-        style={{ 
-          display: isLoading ? 'none' : 'block',
-          width: '100%',
-          height: 'auto'
-        }}
-      />
-    </div>
-  );
-};
+  ];
 
 
    
@@ -233,8 +203,8 @@ function ExperienceSection() {
               <span className="mini-stat__cap">of Age</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '160ms' }}>
-              <span className="mini-stat__num">75.66%</span>
-              <span className="mini-stat__cap">Overall Skills</span>
+              <span className="mini-stat__num">90%</span>
+              <span className="mini-stat__cap">Effectiveness</span>
             </div>
           </div>
         </div>
@@ -350,11 +320,38 @@ function GradingSection() {
   return (
     <section id="grading" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
-        <p className="eyebrow">Side Skills</p>
-        <h2 className="section-title">Color Grading</h2>
-          <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently. Wait for the graded photos to load on " AFTER MODE " ( View in Dark Mode )</p>
-        
+        <p className="eyebrow">here i've showcased my side skill</p>
+        {/* <h2 className="section-title">Color Grading</h2> */}
+
+
+
+
+
+        <div className="flex items-center gap-3">
+  {/* Your Heading */}
+  <h2 className="section-title">Color Grading</h2>
+
+  {/* Your Video */}
+  <video 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  className="video-element"
+>
+  <source src="video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+</div>
+
+
+
+
+
+          <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
+        <p className="section-note">Note : The Color-Graded previews may take a moment to load on "AFTER MODE".  All the color grading was performed exclusively within Adobe Lightroom.</p>
        
+        <p className="section-notes">Tip : View in Dark Mode for a better comparison of the graded images.</p>
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
             <ColorGradeCard 
@@ -377,6 +374,7 @@ function GradingSection() {
     </section>
   );
 }
+
 function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
   return (
