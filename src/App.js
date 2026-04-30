@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
+
+
+
+// --- Place this helper outside the App component ---
+const preloadImages = (imageArray) => {
+  imageArray.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+  });
+};
+
 const NAV = [
   { id: 'home', label: 'Home' },
   { id: 'experience', label: 'Experience' },
@@ -135,10 +146,13 @@ const PROJECTS = [
 
    
                             
-
 function scrollToId(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
+
 
 function LiquidBackdrop() {
   return (
@@ -392,51 +406,35 @@ function GradingSection() {
   );
 }
 
-function AboutSection() {
-  const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
-  return (
-    <section id="about" className="section section--footer" ref={ref}>
-      <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
-        <p className="eyebrow">About</p>
-        <h2 className="section-title">Zeeshan Kashif</h2>
-        <p className="about-text">
-          I love everything that goes FAST & BOOM 
-        </p>
-        <div className="about-actions">
-          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
-           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
-          
-          {/* NEW CV BUTTON */}
-          <a 
-            className="pill pill--ghost" 
-            href="cv.jpg" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            View CV
-          </a>
 
-          <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
-        </div>
-      </div>
-      <footer className="site-footer">
-        <span>©{new Date().getFullYear()} Zeeshan Kashif | Verified ✔</span>
-      </footer>
-    </section>
-  );
-}
+
+
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
 
-  
+  // Corrected Preloading Logic
+  useEffect(() => {
+    // Wait 3 seconds to ensure the main UI is snappy and loaded first
+    const timer = setTimeout(() => {
+      const imagesToPreload = [
+        // We focus on "after" images so the toggle is instant
+        ...COLOR_GRADING.map(item => item.after),
+        ...PROJECTS.map(p => p.image),
+      ];
+
+      preloadImages(imagesToPreload);
+    }, 3000);
+
+    return () => clearTimeout(timer); // Cleanup if user leaves quickly
+  }, []);
 
   return (
     <div className="page" data-theme={theme}>
       <LiquidBackdrop />
       <Navbar
         theme={theme}
-        onToggleTheme={() => setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))}
+        onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
       />
 
       <main>
@@ -455,13 +453,9 @@ function App() {
             </div>
             <div className="hero-copy">
               <p className="eyebrow hero-eyebrow">Portfolio</p>
-              <h1 className="hero-title">
-                Zeeshan Kashif
-              </h1>
-              <p className="hero-sub">
-                  "THE" Web Developer you were looking for ... 
+              <h1 className="hero-title">Zeeshan Kashif</h1>
+              <p className="hero-sub">"THE" Web Developer you were looking for ...</p>
               
-              </p>
               <div className="hero-ctas">
                 <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
                   Experience
@@ -470,28 +464,27 @@ function App() {
                   Projects
                 </button>
                 <a 
-                 className="pill pill--ghost" 
-                 href="cv.jpg" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                  className="pill pill--ghost" 
+                  href="cv.jpg" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                 >
-                 View CV
+                  View CV
                 </a>
                 <a 
-                 className="pill pill--ghost" 
-                 href="https://github.com/zeeshankashif" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                  className="pill pill--ghost" 
+                  href="https://github.com/zeeshankashif" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                 >
-                 Github
+                  Github
                 </a>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Your existing sections remain exactly the same */}
         <ExperienceSection />
         <WorkSection />
         <ProjectsSection />
@@ -502,4 +495,26 @@ function App() {
   );
 }
 
+
+function AboutSection() {
+  const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
+  return (
+    <section id="about" className="section section--footer" ref={ref}>
+      <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
+        <p className="eyebrow">About</p>
+        <h2 className="section-title">Zeeshan Kashif</h2>
+        <p className="about-text">I love everything that goes FAST & BOOM</p>
+        <div className="about-actions">
+          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
+          <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
+          <a className="pill pill--ghost" href="cv.jpg" target="_blank" rel="noopener noreferrer">View CV</a>
+          <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
+        </div>
+      </div>
+      <footer className="site-footer">
+        <span>©{new Date().getFullYear()} Zeeshan Kashif | Verified ✔</span>
+      </footer>
+    </section>
+  );
+}
 export default App;
