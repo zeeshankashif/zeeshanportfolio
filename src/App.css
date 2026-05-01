@@ -523,7 +523,7 @@
   font-size: 1.23rem;
   color: #ececec;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.866);
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 
