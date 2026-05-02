@@ -304,10 +304,13 @@ function ProjectsSection() {
     </section>
   );
 }
+
+
+
+
 function ColorGradeCard({ item, index, active, forceShowAfter }) {
   const [showAfter, setShowAfter] = useState(false);
 
-  // Sync with the "Grade All" button
   useEffect(() => {
     setShowAfter(forceShowAfter);
   }, [forceShowAfter]);
@@ -318,10 +321,20 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
       style={{ '--i': `${index * 120}ms` }}
       onClick={() => setShowAfter(!showAfter)}
     >
-      <div className="photo-card-body">
+      {/* The 'transform' style below is the secret fix for mobile border issues */}
+      <div 
+        className="photo-card-body" 
+        style={{ 
+          overflow: 'hidden', 
+          position: 'relative', 
+          transform: 'translateZ(0)', 
+          WebkitMaskImage: '-webkit-radial-gradient(white, black)' 
+        }}
+      >
         <img 
           src={showAfter ? item.after : item.before} 
           alt={item.title} 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
         <div className="button-container">
           <button className="button-before" style={{ fontSize: '0.75rem', padding: '6px 20px' }}>

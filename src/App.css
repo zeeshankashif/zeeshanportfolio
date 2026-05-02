@@ -291,6 +291,7 @@
     align-items: flex-start;
     justify-content: center;
     padding: 0.5rem clamp(1rem, 5vw, 3rem) 4rem;
+    margin-bottom: -30px;
   }
 
   .hero-inner {
@@ -426,6 +427,7 @@
 }
 /* 1. The Container: Remove padding so the card is the EXACT size of the photo */
 .grading-card {
+ 
   flex: 1 1 calc(34% - 24px); /* 2 cards per row, but they grow/shrink */
   max-width: calc(34% - 24px);
   padding: 0 !important;
@@ -472,14 +474,30 @@
   pointer-events: none;
 }
 
-/* 2. The Photo: Ensures it fills the card perfectly */
-.photo-card-body img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+.photo-card-body {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    
+    /* 1. Inherit the radius from the grading-card */
+    border-radius: inherit; 
 
+    /* 2. Fix for Mobile Safari/Chrome clipping bug */
+    /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    /* 3. Force hardware acceleration */
+    transform: translate3d(0, 0, 0);
+}
+
+/* Ensure the image doesn't try to overlap the border */
+.photo-card-body img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit; /* Double-protection for mobile */
 }
 
 .grading-card:hover img {
@@ -589,10 +607,11 @@
   /* —— Sections —— */
   .section {
     padding: 5rem clamp(1rem, 5vw, 3rem);
+    margin-top: -40px;
   }
 
   .section--tight {
-    padding-top: 3rem;
+    padding-top: 0rem;
   }
 
   .section-inner {
@@ -1411,6 +1430,8 @@
     min-height: 200px !important; /* Force visibility */
     object-fit: cover !important;
     display: block !important;
+    overflow: hidden !important;
+  
   }
 
   /* 4. Fix Overlay (Mobile doesn't have hover) */
