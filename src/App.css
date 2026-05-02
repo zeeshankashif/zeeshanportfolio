@@ -1,6 +1,7 @@
   /* —— Tokens —— */
   :root {
-    --bg: #f6f7f8;
+    /* --bg: #f6f7f8; */
+    --bg: #f0f0f0;
     --fg: #181818;
     --muted: #5f6670;
     --silver: #8a7a7a;
@@ -54,11 +55,11 @@
   }
 
   /* —— Flowing liquid glass backdrop —— */
-  .liquid-backdrop {
+  /* .liquid-backdrop {
     display: none;
-  }
+  } */
 
-  .liquid-streak {
+  /* .liquid-streak {
     position: absolute;
     width: min(140vw, 1800px);
     height: 180px;
@@ -71,29 +72,29 @@
     transition: opacity 0.8s ease, transform 1.2s ease;
     will-change: transform, opacity;
     /* mix-blend-mode is expensive on some GPUs; keep it off for smoother scroll */
-  }
+  /* } */
 
-  .liquid-streak--on {
+  /* .liquid-streak--on {
     opacity: 1;
     transform: rotate(-32deg) translate3d(-2%, -1%, 0) scale(1);
-  }
+  /* } */ 
 
-  .liquid-streak--a {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(199, 205, 212, 0.55) 35%,
-      var(--neon) 55%,
-      rgba(57, 255, 20, 0.2) 100%
-    );
-    box-shadow: var(--shadow-neon);
-    animation: liquid-drift-a 14s ease-in-out infinite;
-  }
+  /* .liquid-streak--a { */
+    /* background: linear-gradient( */
+      /* 90deg, */
+      /* rgba(255, 255, 255, 0.05) 0%, */
+      /* rgba(199, 205, 212, 0.55) 35%, */
+      /* var(--neon) 55%, */
+      /* rgba(57, 255, 20, 0.2) 100% */
+    /* ); */
+    /* box-shadow: var(--shadow-neon); */
+    /* animation: liquid-drift-a 14s ease-in-out infinite; */
+  /* } */
 
-  .liquid-streak--b {
-    right: -18%;
-    bottom: 3%;
-    height: 120px;
+  /* .liquid-streak--b { */
+    /* right: -18%; */
+    /* bottom: 3%; */
+    /* height: 120px;
     width: min(120vw, 1500px);
     opacity: 0.85;
     background: linear-gradient(
@@ -102,17 +103,17 @@
       rgba(57, 255, 20, 0.55) 45%,
       rgba(199, 205, 212, 0.35) 100%
     );
-    animation: liquid-drift-b 18s ease-in-out infinite;
-  }
+    animation: liquid-drift-b 18s ease-in-out infinite; */
+  /* } */
 
-  .liquid-veil {
+  /*.liquid-veil {
     position: absolute;
     inset: 0;
     background: radial-gradient(70% 55% at 80% 90%, rgba(57, 255, 20, 0.12), transparent 55%),
       radial-gradient(50% 40% at 50% 0%, rgba(255, 255, 255, 0.06), transparent 45%);
-  }
-
-  @keyframes liquid-drift-a {
+  } */
+ 
+  /* @keyframes liquid-drift-a {
     0%,
     100% {
       transform: rotate(-32deg) translate3d(0, 0, 0) scale(1);
@@ -131,7 +132,7 @@
       transform: rotate(-36deg) translate3d(3%, -4%, 0) scale(0.98);
     }
   }
-
+  */
   /* Video */
   .video-element {
     width: 15%;
@@ -157,13 +158,15 @@
     right: 0;
     z-index: 50;
     padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
+  
     /* padding-bottom: 2px; */
-     background: linear-gradient(
+     /* background: linear-gradient(
       to bottom,
       rgba(var(--surface-rgb), 0.92),
       rgba(var(--surface-rgb), 0.65),
       rgba(var(--surface-rgb), 0)
-    ); 
+    );  */
+    /* background: rgba(var(--surface-rgb), 0.5); */
   }
 
   .nav {
@@ -174,7 +177,7 @@
     gap: 1rem;
     padding: 0.65rem 1rem 0.65rem 1.25rem;
       /* Make background transparent/translucent */
-  background: rgba(var(--surface-rgb), 0.5); 
+  background: rgba(var(--surface-rgb), 0.7); 
   
   /* The "Mobile Style" Blur */
   backdrop-filter: blur(8px);
@@ -226,16 +229,6 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
-/* 
-  .nav-cta {
-    margin-left: 0rem;
-    flex-shrink: 0;
-    color: #0091ffcf;
-    font-style: italic;
-  }
-  .nav-cta:hover{
-    color: #454545;
-  } */
 
   .nav-theme-toggle {
     flex-shrink: 0;
@@ -636,6 +629,54 @@
     gap: 0.75rem 1rem;
     align-items: center;
   }
+
+
+
+
+
+
+
+/* Disable the heavy lifting elements */
+.liquid-backdrop, 
+.liquid-streak, 
+.liquid-veil {
+    display: none !important;
+}
+
+
+
+
+
+
+.section-divider {
+  width: 90%;          /* Keeps it centered and not touching edges */
+  height: 2px;
+  border-radius: 50px;         /* Thin and elegant */
+  margin: 40px auto;   /* Centers it and gives it breathing room */
+  border: none;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0.6;
+  margin-bottom: -20px;    
+}
+
+/* Light Theme: Subtle Grey */
+[data-theme="light"] .section-divider {
+  background-color: #616161; 
+}
+
+/* Dark Theme: Your Neon Green */
+[data-theme="dark"] .section-divider {
+  background-color: #37ff14c6; /* Replace with your specific neon hex if different */
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3); /* Optional: Very slight glow for dark mode */
+}
+
+
+
+
+
+
+
+
 
   @media (max-width: 720px) {
     .bar-row {

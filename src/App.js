@@ -153,7 +153,6 @@ function scrollToId(id) {
   }
 }
 
-
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
@@ -163,6 +162,7 @@ function LiquidBackdrop() {
     </div>
   );
 }
+
 
 function Navbar({ theme, onToggleTheme }) {
   return (
@@ -489,6 +489,7 @@ function App() {
         <WorkSection />
         <ProjectsSection />
         <GradingSection />
+        <div className="section-divider" aria-hidden="true" />
         <AboutSection />
       </main>
     </div>
