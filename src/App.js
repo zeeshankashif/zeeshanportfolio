@@ -90,7 +90,7 @@ const PROJECTS = [
     id: 3, 
     title: 'Alcedo Atthis', 
     before: 'bard.webp', 
-    after: 'bardcg.jpg' 
+    after: 'bbbbrd.jpg' 
    },
     { 
       id: 4, 
@@ -105,36 +105,42 @@ const PROJECTS = [
       after: 'gt3rscg.jpg' 
      },
      { 
+       id: 3, 
+       title: 'BMW WRT RACING', 
+       before: 'BMWC.webp', 
+       after: 'BMW.webp' 
+     },
+     { 
       id: 6, 
       title: '911 vs 296', 
       before: 'ferr.webp', 
       after: 'ferrcg.webp' 
-     },
+    },
      { 
-      id: 7, 
-      title: 'Nature', 
-     before: 'fiz.webp', 
-      after: 'fizcg.jpg' 
-     },
-      { 
-      id: 8, 
-      title: 'Yellow Warbler', 
-      before: 'bird.webp', 
-      after: 'birdcg.webp' 
-     },
-     { 
-     id: 11, 
-     title: 'BMW M4 GT3 EVO', 
-    before: 'm4gt.webp', 
-     after: 'm4gt3.webp' 
-   },
-      { 
+       id: 11, 
+       title: 'BMW M4 GT3 EVO', 
+       before: 'm4gt.webp', 
+       after: 'm4gt3.webp' 
+      },
+    { 
       id: 10, 
       title: 'Roxy Dino', 
       before: 'rexy.webp', 
       after: 'rexycg.webp' 
-     },
-
+    },
+    
+    { 
+      id: 7, 
+     title: 'Nature', 
+     before: 'fiz.webp', 
+     after: 'fizcg.jpg' 
+    },
+    { 
+      id: 8, 
+      title: 'Yellow Warbler', 
+      before: 'bird.webp', 
+      after: 'birdcg.webp' 
+    },
     { 
       id: 3, 
       title: 'Home', 
@@ -142,8 +148,8 @@ const PROJECTS = [
       after: 'hoomcg10.webp' 
     },
   ];
-
-
+    
+    
    
                             
 function scrollToId(id) {
