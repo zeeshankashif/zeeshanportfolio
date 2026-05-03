@@ -1621,6 +1621,16 @@
 }
 
 
+.section-divider {
+  width: 90%;          /* Keeps it centered and not touching edges */
+  height: 2px;
+  border-radius: 50px;         /* Thin and elegant */
+  margin: 40px auto;   /* Centers it and gives it breathing room */
+  border: none;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0.6;
+  margin-bottom: 30px;    
+}
 
 
 
