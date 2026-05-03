@@ -1430,6 +1430,10 @@
     margin-bottom: 20px !important;
     visibility: visible !important;
     opacity: 1 !important;
+   
+  }
+  .grading-card:hover {
+    transform: none !important; /* Disable hover effects on mobile */
   }
 
   /* 3. Ensure the image inside actually expands */
@@ -1442,6 +1446,9 @@
     overflow: hidden !important;
   
   }
+   .photo-card-body img:hover {
+    transform: none !important; /* Disable hover effects on mobile */
+  }
 
   /* 4. Fix Overlay (Mobile doesn't have hover) */
   .photo-overlay {
@@ -1449,6 +1456,9 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, transparent 100%) !important;
     padding: 15px !important;
     pointer-events: auto !important;
+  }
+  .photo-overlay:hover {
+    transform: none !important; /* No change on hover for mobile */
   }
 
   .button-container {
@@ -1479,6 +1489,7 @@
     gap: 10px 4% !important; /* 10px vertical gap | 4% horizontal gap */
     width: 100% !important;
     padding: 0 10px !important;
+    margin-bottom: -20px !important;
   }
 
   /* 2. Style all buttons to fit 2-per-row */
@@ -1572,15 +1583,17 @@
   .grading-card:hover::after {
     opacity: 1 !important;
     visibility: visible;
+    transform: none !important;
   }
 
   .grading-card:hover .photo-overlay {
     opacity: 1 !important;
     visibility: visible;
+    transform: none !important;
   }
 
   .grading-card:hover img {
-    transform: scale(1.08) !important;
+    transform: none !important;
   }
 }
 
@@ -1625,17 +1638,12 @@
   width: 90%;          /* Keeps it centered and not touching edges */
   height: 2px;
   border-radius: 50px;         /* Thin and elegant */
-  margin: 40px auto;   /* Centers it and gives it breathing room */
+  margin:45px auto;   /* Centers it and gives it breathing room */
   border: none;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   opacity: 0.6;
-  margin-bottom: 30px;    
+  margin-bottom: 40px;    
 }
 
 
 
-@media (max-width: 600px) {
-  .view-all-grid {
-    gap: 5px !important;
-  }
-}

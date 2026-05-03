@@ -138,8 +138,8 @@ const PROJECTS = [
     { 
       id: 3, 
       title: 'Home', 
-      before: 'home.webp', 
-      after: 'hoomcg.webp' 
+      before: 'home (2).webp', 
+      after: 'hoomcg10.webp' 
     },
   ];
 
@@ -345,7 +345,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
         <div className="photo-overlay">
           <div className="overlay-content">
              <h3>{item.title}</h3>
-             <span className="status-tag">{showAfter ? 'Graded' : 'Raw'}</span>
+             <span className="status-tag">{showAfter ? 'AFTER' : 'BEFORE'}</span>
           </div>
         </div>
       </div>
