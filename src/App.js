@@ -28,7 +28,7 @@ const EXPERIENCE = [
   { label: 'UI/UX Design', value: 70, years: 'Intermediate level' },
   { label: 'Error Handling', value: 88, years: 'Advanced level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
-  { label: 'Lightroom', value: 92, years: 'Expert level' },
+  { label: 'Adobe Lightroom', value: 88, years: 'Expert level' },
 ];
 
 const WORK_ITEMS = [
@@ -55,7 +55,7 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
     },
      {
-      name: 'Form',
+      name: 'Name & Age',
       tag: 'Registration Form · UI',
       blurb: 'Minimal and Clean',
       href: 'https://registration-phi-two.vercel.app/',
@@ -63,7 +63,7 @@ const PROJECTS = [
       'https://media.istockphoto.com/id/2205696704/photo/online-registration-form-identity-verification-personal-information-verification-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=mWIxjBpOJWLnQKOWjPj3JqvBV_QowjliAvKdQoi0QOE=',
     },
      {
-      name: 'Student Form',
+      name: 'Student',
       tag: 'Registration Form HTML',
       blurb: 'Basic and Simple',
       href: 'https://zeeshankashif.github.io/form/',
@@ -84,13 +84,13 @@ const PROJECTS = [
       id: 2, 
       title: 'Cats', 
       before: 'cats.webp', 
-      after: 'catscg.webp' 
+      after: 'catscg.jpg' 
     },
     { 
     id: 3, 
     title: 'Alcedo Atthis', 
     before: 'bard.webp', 
-    after: 'bardcg.webp' 
+    after: 'bardcg.jpg' 
    },
     { 
       id: 4, 
@@ -114,7 +114,7 @@ const PROJECTS = [
       id: 7, 
       title: 'Nature', 
      before: 'fiz.webp', 
-      after: 'fizcg.webp' 
+      after: 'fizcg.jpg' 
      },
       { 
       id: 8, 
@@ -337,8 +337,8 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
         <div className="button-container">
-          <button className="button-before" style={{ fontSize: '0.75rem', padding: '6px 20px' }}>
-            {showAfter ? 'AFTER' : 'BEFORE'}
+          <button className="button-before" style={{ fontSize: '0.8rem', padding: '6px 20px' }}>
+            {showAfter ? 'GRADED' : 'RAW'}
           </button>
         </div>
 
@@ -393,7 +393,7 @@ function GradingSection() {
 
 
           <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
-        <p className="section-note">Note : The Color-Graded previews may take a moment to load on "AFTER MODE".  All the color grading was performed exclusively within Adobe Lightroom.</p>
+        <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".  All the color grading was performed exclusively within Adobe Lightroom.</p>
        
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the graded images. Refresh the website after the photos have loaded for smooth experience.</p>
         <div className="card-grid">
@@ -416,6 +416,7 @@ function GradingSection() {
         </div>
       </div>
     </section>
+    
   );
 }
 
