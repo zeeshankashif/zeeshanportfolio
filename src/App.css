@@ -1210,7 +1210,9 @@
   .section {
     padding: 3rem 1.25rem; /* Reduce large desktop padding */
   }
-
+.section--tight {
+    margin-top: -50px;
+  }
   /* Ensure background streaks don't cause horizontal scroll */
   .liquid-streak {
     width: 150vw;
@@ -1573,7 +1575,7 @@
   
   
     .hero{
-     margin-bottom: -20px;
+     margin-bottom: -10px;
     }
   
   /* 3. Desktop-Only Activation */
