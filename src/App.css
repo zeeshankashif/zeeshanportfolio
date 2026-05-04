@@ -1211,7 +1211,7 @@
     padding: 3rem 1.25rem; /* Reduce large desktop padding */
   }
 .section--tight {
-    margin-top: -30vw;
+    margin-top: -40vw;
   }
   /* Ensure background streaks don't cause horizontal scroll */
   .liquid-streak {
