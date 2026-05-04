@@ -1069,7 +1069,7 @@
       justify-content: flex-start;
       overflow-x: auto;
       padding-bottom: 0.10rem;
-      /* -webkit-overflow-scrolling: touch; */
+      -webkit-overflow-scrolling: touch;
       /* scrollbar-width: thin; */
     }
 
@@ -1296,7 +1296,7 @@
 
   .nav-links a {
     font-size: 0.65rem !important;
-    padding: 2px 4px;
+    padding: 2px 2px;
   }
 
   /* 5. Make the Brand/Logo smaller */
@@ -1632,8 +1632,6 @@
  
   }
 }
-
-
 .section-divider {
   width: 90%;          /* Keeps it centered and not touching edges */
   height: 2px;
@@ -1644,6 +1642,5 @@
   opacity: 0.6;
   margin-bottom: 40px;    
 }
-
 
 

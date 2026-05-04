@@ -15,10 +15,10 @@ const preloadImages = (imageArray) => {
 
 const NAV = [
   { id: 'home', label: 'Home' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'experience', label: 'Skills' },
   { id: 'work', label: 'Work' },
   { id: 'projects', label: 'Projects' },
-  // { id: 'grading', label: 'Grading'}, 
+  { id: 'grading', label: 'Grading'}, 
   { id: 'about', label: 'About' },
   ];
 
