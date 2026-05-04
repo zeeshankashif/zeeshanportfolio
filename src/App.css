@@ -1557,43 +1557,41 @@
     overflow: hidden;
      box-shadow: 0px -50px 70px rgb(146, 146, 146);   
   }
-
   
-
-@media (max-width: 900px) {
-  .card-grid {
-    flex-direction: column;
-    align-items: stretch;
+  
+  @media (max-width: 900px) {
+    .card-grid {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .work-card {
+      width: 100%; /* Cards take full width but maintain equal padding/look */
+      flex: 0 0 auto;
+    }
   }
   
-  .work-card {
-    width: 100%; /* Cards take full width but maintain equal padding/look */
-    flex: 0 0 auto;
-  }
-}
-
-
-
-
- .hero{
-  margin-bottom: -12px;
- }
-/* 3. Desktop-Only Activation */
-/* This ONLY triggers if a mouse is detected */
-@media (hover: hover) and (pointer: fine) {
   
-  .grading-card:hover::after {
-    opacity: 1 !important;
-    visibility: visible;
-    transform: none !important;
-  }
-
-  .grading-card:hover .photo-overlay {
-    opacity: 1 !important;
-    visibility: visible;
-    transform: none !important;
-  }
-
+    .hero{
+     margin-bottom: -20px;
+    }
+  
+  /* 3. Desktop-Only Activation */
+  /* This ONLY triggers if a mouse is detected */
+  @media (hover: hover) and (pointer: fine) {
+  
+    .grading-card:hover::after {
+      opacity: 1 !important;
+      visibility: visible;
+      transform: none !important;
+    }
+    
+    .grading-card:hover .photo-overlay {
+      opacity: 1 !important;
+      visibility: visible;
+      transform: none !important;
+    }
+    
   .grading-card:hover img {
     transform: none !important;
   }
@@ -1605,15 +1603,14 @@
   .grading-card:hover img {
     transform: none !important;
   }
-   .grading-card::after {
+  .grading-card::after {
     display: none !important; /* Total removal for touch */
   }
-
-
-
+  
+  
+  
 }
 }
-
 
 
 
