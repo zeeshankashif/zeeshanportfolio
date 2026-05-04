@@ -1293,12 +1293,12 @@
     width: 100%;
     justify-content: center !important;
     gap: 8px 12px !important; /* Horizontal gap | Vertical gap */
-    margin: 4px 0 !important;
+    margin: 0px 0 !important;
   }
 
   .nav-links a {
     font-size: 0.65rem !important;
-    padding: 2px 2px;
+    padding: 2px 1px;
   }
 
   /* 5. Make the Brand/Logo smaller */
