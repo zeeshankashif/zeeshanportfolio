@@ -141,7 +141,17 @@
     transition: filter 0.3s ease;
     margin-bottom: 20px;
   }
+html {
+  /* This applies to every section by default */
+  scroll-padding-top: 40px; 
+  scroll-behavior: smooth;
+}
 
+/* Move this OUTSIDE of the html block */
+#skills {
+  /* This overrides the 40px and uses 110px instead when jumping to this ID */
+  scroll-margin-top: 200;
+}
   /* —— Glass panels —— */
   .glass-panel {
     background: var(--card);
@@ -845,10 +855,11 @@
 
 
   .work-card {
-    padding: 1rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
   }
+  
 
   .work-card h3 {
     margin: 0 0 0.5rem;
@@ -1140,6 +1151,11 @@
     width: 100% !important;
     padding: 0 5px !important;
   }
+html {
+  /* This applies to every section by default */
+  scroll-padding-top: 70px; 
+  scroll-behavior: smooth;
+}
 
   /* Make the buttons smaller to ensure they fit side-by-side */
   .hero-ctas .pill, 
@@ -1576,7 +1592,7 @@
   
     .hero{
      margin-bottom: -10px;
-     margin-top: 10px;
+     margin-top: 10px;;
     }
   
   /* 3. Desktop-Only Activation */

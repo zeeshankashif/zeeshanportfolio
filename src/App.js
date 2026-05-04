@@ -24,11 +24,11 @@ const NAV = [
 
 const EXPERIENCE = [
   { label: 'Web Development ( newbie )', value: 20, years: '2+ months' },
-  { label: 'AI Integration', value: 90, years: 'Advanced level' },
-  { label: 'UI/UX Design', value: 70, years: 'Intermediate level' },
+  { label: 'AI Integration', value: 85, years: 'Advanced level' },
+  { label: 'UI/UX Design', value: 75, years: 'Intermediate level' },
   { label: 'Error Handling', value: 88, years: 'Advanced level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
-  { label: 'Adobe Lightroom', value: 88, years: 'Expert level' },
+  { label: 'Adobe Lightroom', value: 90, years: 'Expert level' },
 ];
 
 const WORK_ITEMS = [
@@ -152,13 +152,23 @@ const PROJECTS = [
     
    
                             
+// function scrollToId(id) {
+//   const element = document.getElementById(id);
+//   if (element) {
+//     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+//   }
+// }
+// Usage: scrollToId('top') or just a custom check
 function scrollToId(id) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (id === 'home' || id === 'top') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
-
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
