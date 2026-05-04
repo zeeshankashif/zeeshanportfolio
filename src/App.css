@@ -1575,7 +1575,9 @@
 
 
 
-
+ .hero{
+  margin-bottom: -12px;
+ }
 /* 3. Desktop-Only Activation */
 /* This ONLY triggers if a mouse is detected */
 @media (hover: hover) and (pointer: fine) {
