@@ -1716,4 +1716,7 @@ html {
      .card-grid:hover {
        transform: none !important;
      }
-     
+     .nav-brand {
+       cursor: none !important;
+       color: #000000 !important;
+     }
