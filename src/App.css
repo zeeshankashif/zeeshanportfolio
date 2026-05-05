@@ -1694,9 +1694,16 @@ html {
      .nav-links a {
        cursor: none !important;
      }
+     
      .nav-links a:hover {
        color: #000000 !important;
      }
+     [data-theme='dark'] .nav-links a:hover {
+        color: #ffffff !important;
+      }
+[data-theme='light'] .nav-links a:hover {
+        color: #000000 !important;
+      }
      .project-block{
        cursor: none !important;
      }
