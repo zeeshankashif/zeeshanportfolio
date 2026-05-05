@@ -295,14 +295,17 @@ html {
 
 
   /* —— Hero —— */
-  .hero {
-    min-height: calc(100vh - 40px);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0.5rem clamp(1rem, 5vw, 3rem) 4rem;
-    margin-bottom: -30px;
-  }
+.hero {
+  /* Remove negative margins entirely */
+  margin-top: 10px;
+  margin-bottom: 0; 
+  /* Use min-height instead of fixed height so it expands if text wraps */
+  min-height: auto; 
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
   .hero-inner {
     width: 100%;
@@ -415,8 +418,8 @@ html {
   .hero-sub {
     margin: 0 0 2rem;
     color: var(--muted);
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.65;
     max-width: 28rem;
     font-weight: 600;
   }
@@ -1227,7 +1230,7 @@ html {
     padding: 3rem 1.25rem; /* Reduce large desktop padding */
   }
 .section--tight {
-    margin-top: -33vw;
+    margin-top: 0vw;
   }
   /* Ensure background streaks don't cause horizontal scroll */
   .liquid-streak {
@@ -1592,7 +1595,7 @@ html {
   
     .hero{
      margin-bottom: -10px;
-     margin-top: 10px;;
+     margin-top: 10px;
     }
   
   /* 3. Desktop-Only Activation */
@@ -1660,5 +1663,50 @@ html {
   opacity: 0.6;
   margin-bottom: 40px;    
 }
+.button-before {
+  cursor:none !important;
+}
+.photo-overlay h3 {
+  cursor: none !important;
+}
 
+ .pill {
+     cursor: none !important;
+     }
+  
+/* 3. Mobile/Desktop Click (The "Press" effect) */
+.pill--solid:active {
+  transform: translateY(0px) scale(0.98); /* Goes back to normal/pressed state instantly */
+  transition: transform 0.1s ease;
+}
 
+     .nav-links a {
+       cursor: none !important;
+     }
+     .nav-links a:hover {
+       color: #000000 !important;
+     }
+.pill--ghost:active {
+  transform: translateY(0px) scale(0.96); /* Goes back to normal/pressed state instantly */
+  transition: transform 0.1s ease;
+}
+
+     .nav-links a {
+       cursor: none !important;
+     }
+     .nav-links a:hover {
+       color: #000000 !important;
+     }
+     .project-block{
+       cursor: none !important;
+     }
+     .grading-card:hover {
+       transform: none !important;
+     }
+     .card-grid {
+       cursor: none !important;
+     }
+     .card-grid:hover {
+       transform: none !important;
+     }
+     

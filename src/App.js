@@ -350,8 +350,9 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
         <img 
           src={showAfter ? item.after : item.before} 
           alt={item.title} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
         />
+        
         <div className="button-container">
           <button className="button-before" style={{ fontSize: '0.8rem', padding: '6px 20px' }}>
             {showAfter ? 'GRADED' : 'RAW'}
