@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 
@@ -482,6 +481,7 @@ function App() {
                 />
               </div>
             </div>
+            
             <div className="hero-copy">
               <p className="eyebrow hero-eyebrow">Portfolio</p>
               <h1 className="hero-title">Zeeshan Kashif</h1>
