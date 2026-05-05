@@ -1478,9 +1478,11 @@ html {
     background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, transparent 100%) !important;
     padding: 15px !important;
     pointer-events: auto !important;
+    cursor: none;
   }
   .photo-overlay:hover {
-    transform: none !important; /* No change on hover for mobile */
+    transform: none !important;
+    cursor: none; /* No change on hover for mobile */
   }
 
   .button-container {
