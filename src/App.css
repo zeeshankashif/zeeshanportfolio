@@ -1646,81 +1646,79 @@ html {
 
 @media (max-width: 768px) {
   .video-element {
-    width: 60%; /* Made it slightly larger for mobile readability */
+    width: 60%;
     margin-bottom: 15px;
-    /* Optional: Slightly softer shadow for mobile to keep it clean */
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.518);
- 
+  }
+
+  .button-before {
+    cursor: none;
+  }
+
+  .photo-overlay h3 {
+    cursor: none;
+  }
+
+  .pill {
+    cursor: none;
+  }
+
+  .pill--solid:active {
+    transform: translateY(0px) scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  .pill--ghost:active {
+    transform: translateY(0px) scale(0.96);
+    transition: transform 0.1s ease;
+  }
+
+  .project-block {
+    cursor: none;
+  }
+
+  .grading-card:hover {
+    transform: none;
+  }
+
+  .nav-links a {
+  cursor: none;
+  }
+  .card-grid {
+    cursor: none;
+  }
+
+  .card-grid:hover {
+    transform: none;
+  }
+
+  .nav-brand {
+    cursor: none;
+  }
+
+  .nav-brand:active {
+    transform: translateY(0px) scale(0.97);
+    transition: transform 0.1s ease;
   }
 }
+
+/* These stay OUTSIDE the media query — apply to all screen sizes */
 .section-divider {
-  width: 90%;          /* Keeps it centered and not touching edges */
+  width: 90%;
   height: 2px;
-  border-radius: 50px;         /* Thin and elegant */
-  margin:45px auto;   /* Centers it and gives it breathing room */
+  border-radius: 50px;
+  margin: 45px auto;
   border: none;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   opacity: 0.6;
-  margin-bottom: 40px;    
-}
-.button-before {
-  cursor:none !important;
-}
-.photo-overlay h3 {
-  cursor: none !important;
+  margin-bottom: 40px;
 }
 
- .pill {
-     cursor: none !important;
-     }
   
-/* 3. Mobile/Desktop Click (The "Press" effect) */
-.pill--solid:active {
-  transform: translateY(0px) scale(0.98); /* Goes back to normal/pressed state instantly */
-  transition: transform 0.1s ease;
-}
-
-     .nav-links a {
-       cursor: none !important;
-     }
-     .nav-links a:hover {
-       color: #000000 !important;
-     }
-.pill--ghost:active {
-  transform: translateY(0px) scale(0.96); /* Goes back to normal/pressed state instantly */
-  transition: transform 0.1s ease;
-}
-
-     .nav-links a {
-       cursor: none !important;
-     }
-     
-     .nav-links a:hover {
-       color: #000000 !important;
-     }
-     [data-theme='dark'] .nav-links a:hover {
-        color: #ffffff !important;
-      }
-[data-theme='light'] .nav-links a:hover {
-        color: #000000 !important;
-      }
-     .project-block{
-       cursor: none !important;
-     }
-     .grading-card:hover {
-       transform: none !important;
-     }
-     .card-grid {
-       cursor: none !important;
-     }
-     .card-grid:hover {
-       transform: none !important;
-     }
-     .nav-brand {
-       cursor: none !important;
-       color: #000000 !important;
-     }
-     .nav-brand:active {
-  transform: translateY(0px) scale(0.97); /* Goes back to normal/pressed state instantly */
-  transition: transform 0.1s ease;
-}
+  [data-theme='dark'] .nav-links a:hover {
+    color: #ffffff !important;
+  }
+  
+  [data-theme='light'] .nav-links a:hover {
+    color: #000000 !important;
+  }
