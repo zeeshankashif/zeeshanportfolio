@@ -356,7 +356,7 @@ html {
     );
     transform: translateX(-140%) rotate(8deg);
     opacity: 0;
-    pointer-events: none;
+    /* pointer-events: none; */
   }
 
   .photo-wrap:hover {
@@ -523,6 +523,7 @@ html {
 
 /* 3. The Overlay: Text and Button appearing OVER the photo */
 .photo-overlay {
+  cursor: pointer;
   position: absolute;
   inset: 0; /* Covers the whole card */
   display: flex;
