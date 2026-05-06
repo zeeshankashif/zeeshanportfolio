@@ -439,25 +439,47 @@ function GradingSection() {
 
 
 
+
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
+  
+  // 1. PWA Install State
+  const [installPrompt, setInstallPrompt] = useState(null);
 
-  // Corrected Preloading Logic
   useEffect(() => {
-    // Wait 3 seconds to ensure the main UI is snappy and loaded first
+    // --- YOUR ORIGINAL PRELOADING LOGIC ---
     const timer = setTimeout(() => {
       const imagesToPreload = [
-        // We focus on "after" images so the toggle is instant
         ...COLOR_GRADING.map(item => item.after),
         ...PROJECTS.map(p => p.image),
       ];
-
       preloadImages(imagesToPreload);
     }, 3000);
 
-    return () => clearTimeout(timer); // Cleanup if user leaves quickly
+    // --- PWA INSTALL LOGIC ---
+    const handleBeforeInstall = (e) => {
+      e.preventDefault();
+      setInstallPrompt(e);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+    };
   }, []);
+
+  // --- TRIGGER INSTALL FUNCTION ---
+  const handleInstallClick = async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setInstallPrompt(null);
+    }
+  };
 
   return (
     <div className="page" data-theme={theme}>
@@ -468,6 +490,20 @@ function App() {
       />
 
       <main>
+        {/* UPDATED: Added 'mobile-only-install' class */}
+        {installPrompt && (
+          <div className="install-banner mobile-only-install">
+            <span>Install App for a better experience!</span>
+            <div className="banner-btns">
+              <button onClick={handleInstallClick} className="pill pill--ghost">
+                Install
+              </button>
+              <button onClick={() => setInstallPrompt(null)} className="close-btn">✕</button>
+            </div>
+          </div>
+        )}
+
+        {/* --- YOUR ORIGINAL HERO SECTION (UNTOUCHED) --- */}
         <section id="home" className="hero" ref={heroRef}>
           <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
             <div className="hero-visual">
@@ -515,7 +551,7 @@ function App() {
           </div>
         </section>
 
-        {/* Your existing sections remain exactly the same */}
+        {/* --- YOUR ORIGINAL SECTIONS (UNTOUCHED) --- */}
         <ExperienceSection />
         <WorkSection />
         <ProjectsSection />

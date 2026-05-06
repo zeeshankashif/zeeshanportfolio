@@ -141,11 +141,14 @@
     transition: filter 0.3s ease;
     margin-bottom: 20px;
   }
+
 html {
   /* This applies to every section by default */
   scroll-padding-top: 40px; 
   scroll-behavior: smooth;
 }
+
+
 
 /* Move this OUTSIDE of the html block */
 #skills {
@@ -298,7 +301,7 @@ html {
 .hero {
   /* Remove negative margins entirely */
   margin-top: 10px;
-  margin-bottom: 0; 
+  margin-bottom: 50px; 
   /* Use min-height instead of fixed height so it expands if text wraps */
   min-height: auto; 
   padding-bottom: 3rem;
@@ -875,6 +878,7 @@ html {
     margin: 0;
     color: var(--muted);
     line-height: 1.4;
+    
     font-weight: 500;
   }
 
@@ -1139,7 +1143,13 @@ html {
       width: var(--target, 0%);
     }
   } 
-/* —— Mobile Optimization Block —— */
+
+  
+
+
+
+
+/* ——============== Mobile Optimization Block============ —— */
 
 @media (max-width: 768px) {
   /* —— Single Row Button Optimization —— */
@@ -1648,7 +1658,7 @@ html {
 
 
 @media (max-width: 768px) {
-  .video-element {
+   .video-element {
     width: 60%;
     margin-bottom: 15px;
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.518);
@@ -1725,3 +1735,43 @@ html {
   [data-theme='light'] .nav-links a:hover {
     color: #000000 !important;
   }
+
+
+
+
+
+
+
+  /* 1. Hide it by default (Desktop/Tablets) */
+.mobile-only-install {
+  display: none; 
+}
+
+/* 2. Show it only on Mobile (Screens smaller than 768px) */
+@media (max-width: 768px) {
+  .mobile-only-install {
+    display: flex;
+    position: fixed;
+    bottom: 20px; /* Floating at the bottom for mobile thumb-reach */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    z-index: 9999;
+    width: 90%; /* Responsive width on mobile */
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .banner-btns {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+}
