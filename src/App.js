@@ -38,6 +38,21 @@ const WORK_ITEMS = [
 
 const PROJECTS = [
   {
+   name: 'Real Estate',
+   tag: 'Landing Page · UI',
+   blurb: 'Minimal and Clean',
+   href: 'https://zeeshankashif.github.io/Real-Estate/',
+   image:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=80',
+ },
+ {
+   name: 'Clock',
+   tag: 'Live Clock · UI',
+   blurb: 'Analogue and Digital time with smooth transitions.',
+   href: 'https://zeeshankashif.github.io/clocked/',
+   image:
+   'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
     name: 'MIZU',
     tag: 'Skincare · Landing',
     blurb: 'Glow from within — shop, journal, and everyday magic.',
@@ -45,27 +60,11 @@ const PROJECTS = [
     image:
       'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80',
     },
-    {
-      name: 'Clock',
-      tag: 'Live Clock · UI',
-      blurb: 'Analogue and Digital time with smooth transitions.',
-      href: 'https://zeeshankashif.github.io/clocked/',
-      image:
-      'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
-    },
-     {
-      name: 'Name & Age',
-      tag: 'Registration Form · UI',
-      blurb: 'Minimal and Clean',
+  {
+      name: 'Student Form',
+      tag: 'Registration · UI',
+      blurb: 'Form',
       href: 'https://registration-phi-two.vercel.app/',
-      image:
-      'https://media.istockphoto.com/id/2205696704/photo/online-registration-form-identity-verification-personal-information-verification-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=mWIxjBpOJWLnQKOWjPj3JqvBV_QowjliAvKdQoi0QOE=',
-    },
-     {
-      name: 'Student',
-      tag: 'Registration Form HTML',
-      blurb: 'Basic and Simple',
-      href: 'https://zeeshankashif.github.io/form/',
       image:
       'https://plus.unsplash.com/premium_photo-1683121468179-0e69d023adc9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGZvcm18ZW58MHx8MHx8fDA%3D',
     },
@@ -289,7 +288,7 @@ function ProjectsSection() {
     <section id="projects" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Projects</p>
-        <h2 className="section-title">Assignments</h2>
+        <h2 className="section-title">Prompted Assignments </h2>
         <div className="project-grid">
           {PROJECTS.map((p, i) => (
             <a
