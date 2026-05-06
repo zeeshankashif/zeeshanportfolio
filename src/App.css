@@ -1741,44 +1741,53 @@ html {
 
 
 
-  /* 1. Hide it by default (Desktop/Tablets) */
+ /* 1. Hide by default */
 .mobile-only-install {
-  display: none; 
+  display: none;
 }
 
-/* 2. Show it only on Mobile (Screens smaller than 768px) */
+/* 2. Mobile Styles */
 @media (max-width: 768px) {
   .mobile-only-install {
     display: flex;
+    /* Forces content to stay on one line */
+    flex-flow: row nowrap; 
+    align-items: center;
+    justify-content: space-between;
+    
     position: fixed;
-    bottom: 20px; /* Floating at the bottom for mobile thumb-reach */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    
     background: #e2e2e2;
     color: #2e2e2e;
-    padding: 8px 16px;
+    padding: 10px 16px;
     border-radius: 50px;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
     box-shadow: 0 8px 10px rgba(0,0,0,0.4);
     z-index: 9999;
-    width: 90%; /* Responsive width on mobile */
-    /* border: 1px solid rgba(255,255,255,0.1); */
+    width: 90%;
+    max-width: 400px; /* Prevents it from getting too wide on small tablets */
   }
-  .mobile-only-install button:last-child {
-    background: transparent !important;
-    border: none;
-    outline: none;
-    cursor: none !important;
+
+  /* Container for text and main button */
   .banner-btns {
     display: flex;
+    align-items: center;
     gap: 10px;
-    width: 100%;
-    justify-content: center;
-    background-color: none;
-    background: tra;
+    flex-grow: 1;
+    white-space: nowrap; /* Prevents text from wrapping to a second line */
   }
-  
-}
+
+  /* Styling the close (X) button */
+  .mobile-only-install button:last-child {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 5px;
+    margin-left: 10px;
+    color: inherit;
+  }
 }
