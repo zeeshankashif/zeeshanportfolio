@@ -1764,16 +1764,21 @@ html {
     box-shadow: 0 8px 10px rgba(0,0,0,0.4);
     z-index: 9999;
     width: 90%; /* Responsive width on mobile */
-    border: 1px solid rgba(255,255,255,0.1);
+    /* border: 1px solid rgba(255,255,255,0.1); */
   }
-
+  .mobile-only-install button:last-child {
+    background: transparent !important;
+    border: none;
+    outline: none;
+    cursor: none !important;
   .banner-btns {
     display: flex;
     gap: 10px;
     width: 100%;
     justify-content: center;
     background-color: none;
-    background: transparent;
+    background: tra;
   }
   
+}
 }
