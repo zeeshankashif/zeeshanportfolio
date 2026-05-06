@@ -1751,7 +1751,7 @@ html {
   .mobile-only-install {
     display: flex;
     position: fixed;
-    top: 20px; /* Floating at the bottom for mobile thumb-reach */
+    bottom: 20px; /* Floating at the bottom for mobile thumb-reach */
     left: 50%;
     transform: translateX(-50%);
     background: #e2e2e2;
@@ -1769,7 +1769,7 @@ html {
 
   .banner-btns {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     width: 100%;
     justify-content: center;
   }
