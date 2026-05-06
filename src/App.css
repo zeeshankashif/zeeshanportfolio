@@ -300,7 +300,7 @@ html {
 .hero {
   /* Remove negative margins entirely */
   margin-top: 10px;
-  margin-bottom: 50px; 
+  margin-bottom: 100px; 
   /* Use min-height instead of fixed height so it expands if text wraps */
   min-height: auto; 
   padding-bottom: 3rem;
@@ -844,7 +844,7 @@ html {
   display: flex;
   flex-direction: column; /* Allows content inside to stack */
   padding: 1rem;
-  min-height: 180px; /* Optional: ensures a nice baseline height */
+  min-height: 193px; /* Optional: ensures a nice baseline height */
   box-sizing: border-box;
   margin-bottom: -8px;
 }
@@ -852,7 +852,7 @@ html {
 /* Ensure the description text fills the space so the card stays rigid */
 .work-card p {
   flex-grow: 1;
-  margin: 0;
+  margin: 0px;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -861,7 +861,7 @@ html {
 
 
   .work-card {
-    padding: 2rem;
+    padding: 1.5rem;
     position: relative;
     overflow: hidden;
   }
@@ -1601,6 +1601,7 @@ html {
     .work-card {
       width: 100%; /* Cards take full width but maintain equal padding/look */
       flex: 0 0 auto;
+      min-height: 140px;
     }
   }
   
