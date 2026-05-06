@@ -1662,6 +1662,22 @@ html {
     margin-bottom: 15px;
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.518);
   }
+  .hero-sub {
+    margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
+    max-width: 28rem;
+    /* ... other styles ... */
+}
+.hero-sub {
+    display: block;      /* Ensures margin: auto works */
+    margin: 0 auto 2rem; /* Centers the block itself */
+    text-align: center;  /* Centers the text lines */
+    
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 28rem;
+    font-weight: 600;
+}
 
   .button-before {
     cursor: none;
