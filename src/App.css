@@ -149,7 +149,6 @@ html {
 }
 
 
-
 /* Move this OUTSIDE of the html block */
 #skills {
   /* This overrides the 40px and uses 110px instead when jumping to this ID */
@@ -1752,17 +1751,17 @@ html {
   .mobile-only-install {
     display: flex;
     position: fixed;
-    bottom: 20px; /* Floating at the bottom for mobile thumb-reach */
+    top: 20px; /* Floating at the bottom for mobile thumb-reach */
     left: 50%;
     transform: translateX(-50%);
-    background: #1a1a1a;
-    color: #fff;
-    padding: 15px 20px;
-    border-radius: 15px;
-    flex-direction: column;
+    background: #e2e2e2;
+    color: #2e2e2e;
+    padding: 8px 16px;
+    border-radius: 50px;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    gap: 5px;
+    box-shadow: 0 8px 10px rgba(0,0,0,0.4);
     z-index: 9999;
     width: 90%; /* Responsive width on mobile */
     border: 1px solid rgba(255,255,255,0.1);
@@ -1770,8 +1769,9 @@ html {
 
   .banner-btns {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
     justify-content: center;
   }
+  
 }
