@@ -1772,6 +1772,8 @@ html {
     gap: 10px;
     width: 100%;
     justify-content: center;
+    background-color: none;
+    background: transparent;
   }
   
 }
