@@ -531,7 +531,7 @@ function App() {
                 </button>
                 <a 
                   className="pill pill--ghost" 
-                  href="cv (2).jpg" 
+                  href="Resume.jpg" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
