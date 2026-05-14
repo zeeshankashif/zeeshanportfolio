@@ -41,8 +41,8 @@ const PROJECTS = [
    name: 'Real Estate',
    tag: 'Landing Page · UI',
    blurb: 'Minimal and Clean',
-   href: 'https://zeeshankashif.github.io/Real-Estate/',
-   image:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=80',
+   href: 'https://realestatezexan.vercel.app/',
+   image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
  },
  {
    name: 'Clock',
