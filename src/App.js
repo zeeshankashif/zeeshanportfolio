@@ -531,7 +531,7 @@ function App() {
                 </button>
                 <a 
                   className="pill pill--ghost" 
-                  href="CV.jpg" 
+                  href="cv.jpg" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -574,7 +574,7 @@ function AboutSection() {
         <div className="about-actions">
           <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
-          <a className="pill pill--ghost" href="CV.jpg" target="_blank" rel="noopener noreferrer">View CV</a>
+          <a className="pill pill--ghost" href="cv.jpg" target="_blank" rel="noopener noreferrer">View CV</a>
           <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
         </div>
       </div>
