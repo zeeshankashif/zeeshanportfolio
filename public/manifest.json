@@ -23,13 +23,13 @@
       "purpose": "any"
     },
     {
-      "src": "m-maskable.png",
+      "src": "k-maskable.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "m-maskable.png",
+      "src": "k-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
