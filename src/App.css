@@ -944,24 +944,22 @@ html {
     transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
-.project-block:nth-child(4) .project-block__media {
-  background-position: center 40%; 
-  background-size: 90%; /* Adjust this percentage to frame the 'P' logo perfectly */
-}
-.project-block:nth-child(1) .project-block__media {
-  background-position: center 50%;
-   /* Adjust this percentage to frame the 'P' logo perfectly */
-}
-.project-block:nth-child(3) .project-block__media {
-  background-position: center 60%;
-  background-size: 90%; 
-}
-  /* Adjust this percentage to frame the 'P' logo perfectly */
+  .project-block:nth-child(1) .project-block__media {
+    background-position: center 50%;
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
   .project-block:nth-child(2) .project-block__media {
-  background-position: center 65%;
- 
-
-}
+    background-position: center 65%;
+    }
+  .project-block:nth-child(3) .project-block__media {
+    background-position: center 60%;
+    background-size: 90%; 
+  }
+  /* Adjust this percentage to fame the 'P' logo perfectly */
+  .project-block:nth-child(4) .project-block__media {
+    background-position: center 40%; 
+    background-size: 90%; /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
   .project-block__scrim {
     position: absolute;
     inset: 0;
@@ -983,6 +981,7 @@ html {
     min-height: 300px;
     padding: 1.5rem 1.5rem 1.35rem;
 }
+
 
 
 
@@ -1685,9 +1684,6 @@ html {
 
 
 
-
-
-
 @media (max-width: 768px) {
    .video-element {
     width: 60%;
@@ -1837,5 +1833,17 @@ html {
     padding: 0 5px;
     margin-left: 10px;
     color: inherit;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .project-block:nth-child(4) .project-block__media {
+    /* Shifts the image to the right. Adjust the percentage (e.g., 60%, 70%) to perfect it */
+    background-position: 0% 90%; 
+    
+    /* Slightly increasing the size can help if the edges of the image start to show */
+    background-size: 130%; 
+    background-repeat: no-repeat;
   }
 }
