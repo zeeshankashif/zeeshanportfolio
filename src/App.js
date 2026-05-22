@@ -53,20 +53,20 @@ const PROJECTS = [
    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
-    name: 'MIZU',
-    tag: 'Skincare · Landing',
-    blurb: 'Glow from within — shop, journal, and everyday magic.',
-    href: 'https://zeeshankashif.github.io/mizu/',
+    name: 'Sneaky',
+    tag: 'E-Commerce Website',
+    blurb: 'Cool and Stylish',
+    href: 'https://sneaky-style.vercel.app/',
     image:
-      'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80',
+      'sneaky.png',
     },
   {
-      name: 'Student Form',
-      tag: 'Registration · UI',
-      blurb: 'Form',
-      href: 'https://registration-phi-two.vercel.app/',
+      name: 'Pixify AI',
+      tag: 'AI Image Editor',
+      blurb: 'Powered by ZEXAN',
+      href: 'https://pixify-ai-tau.vercel.app/',
       image:
-      'https://plus.unsplash.com/premium_photo-1683121468179-0e69d023adc9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGZvcm18ZW58MHx8MHx8fDA%3D',
+      'pixify.png',
     },
   ];
 
