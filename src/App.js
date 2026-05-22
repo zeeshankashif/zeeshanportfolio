@@ -288,7 +288,7 @@ function ProjectsSection() {
     <section id="projects" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Projects</p>
-        <h2 className="section-title">Assignments </h2>
+        <h2 className="section-title">Platforms</h2>
         <div className="project-grid">
           {PROJECTS.map((p, i) => (
             <a
