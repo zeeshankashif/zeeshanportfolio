@@ -1,4 +1,8 @@
-  /* —— Tokens —— */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@font-face{
+  font-family: 'Vampire Wars';
+  src: url('./assets/fonts/Vampire\ Wars.ttf') format('truetype');
+}  /* —— Tokens —— */
   :root {
     /* --bg: #f6f7f8; */
     --bg: #f0f0f0;
@@ -201,11 +205,11 @@ html {
   
 
   .nav-brand {
-    font-weight: 800;
-    letter-spacing: 0.06em;
+    
+    font-family: "Vampire Wars" , sans-serif;
     color: var(--fg);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 1rem;
     padding: 0.35rem 0.65rem;
     border-radius: var(--radius-pill);
     border: 1px solid var(--line);
@@ -1057,6 +1061,13 @@ html {
     flex-wrap: wrap;
     gap: 0.75rem;
   }
+  .brand-font {
+    font-family: 'Vampire Wars', sans-serif;
+    /* Optional: adjustments if the custom font renders too small/large */
+    font-size: 0.9rem; 
+    letter-spacing: 0.5px;
+    margin-left: 2px;
+}
 
   .site-footer {
     max-width: 1120px;
@@ -1067,6 +1078,7 @@ html {
     font-size: 0.85rem;
     font-weight: 600;
   }
+
 
   /* —— Responsive hero grid —— */
   @media (max-width: 860px) {

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
@@ -183,7 +184,7 @@ function Navbar({ theme, onToggleTheme }) {
       <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
         <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
-          ZK
+          ZEXAN
         </a>
         <ul className="nav-links">
           {NAV.map(({ id, label }) => (
@@ -579,8 +580,10 @@ function AboutSection() {
         </div>
       </div>
       <footer className="site-footer">
-        <span>©{new Date().getFullYear()} Zeeshan Kashif | Verified ✔</span>
-      </footer>
+    <span>©{new Date().getFullYear()} <span className="brand-font">ZEXAN </span></span>
+         
+    <span> - Verified ✔</span> 
+</footer>
     </section>
   );
 }
