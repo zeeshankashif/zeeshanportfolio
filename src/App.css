@@ -1843,7 +1843,7 @@ html {
     background-position: 0% 90%; 
     
     /* Slightly increasing the size can help if the edges of the image start to show */
-    background-size: 130%; 
+    background-size: 110%; 
     
   }
 }
