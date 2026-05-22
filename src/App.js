@@ -45,12 +45,12 @@ const PROJECTS = [
    image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
  },
  {
-   name: 'Clock',
-   tag: 'Live Clock · UI',
-   blurb: 'Analogue and Digital time with smooth transitions.',
-   href: 'https://zeeshankashif.github.io/clocked/',
+   name: 'Toasty',
+   tag: 'AI Cooking',
+   blurb: 'AI Powered Cooking App.',
+   href: 'https://toasty-ai.vercel.app/',
    image:
-   'https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=1200&q=80',
+   'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     name: 'MIZU',
