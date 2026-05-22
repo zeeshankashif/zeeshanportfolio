@@ -945,10 +945,22 @@ html {
     will-change: transform;
   }
 .project-block:nth-child(4) .project-block__media {
-  background-position: center 40%; /* Adjust this percentage to frame the 'P' logo perfectly */
+  background-position: center 40%; 
+  background-size: 90%; /* Adjust this percentage to frame the 'P' logo perfectly */
 }
 .project-block:nth-child(1) .project-block__media {
-  background-position: center 50%; /* Adjust this percentage to frame the 'P' logo perfectly */
+  background-position: center 50%;
+   /* Adjust this percentage to frame the 'P' logo perfectly */
+}
+.project-block:nth-child(3) .project-block__media {
+  background-position: center 60%;
+  background-size: 90%; 
+}
+  /* Adjust this percentage to frame the 'P' logo perfectly */
+  .project-block:nth-child(2) .project-block__media {
+  background-position: center 65%;
+ 
+
 }
   .project-block__scrim {
     position: absolute;
