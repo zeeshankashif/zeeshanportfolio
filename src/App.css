@@ -935,12 +935,17 @@ html {
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center;
+    background-position: center 60%;
     transform: scale(1);
     transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
-
+.project-block:nth-child(4) .project-block__media {
+  background-position: center 40%; /* Adjust this percentage to frame the 'P' logo perfectly */
+}
+.project-block:nth-child(1) .project-block__media {
+  background-position: center 50%; /* Adjust this percentage to frame the 'P' logo perfectly */
+}
   .project-block__scrim {
     position: absolute;
     inset: 0;
