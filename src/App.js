@@ -67,7 +67,31 @@ const PROJECTS = [
       blurb: 'Powered by ZEXAN',
       href: 'https://pixify-ai-tau.vercel.app/',
       image:
-      'https://plus.unsplash.com/premium_photo-1675876811760-de275fde11b9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHB8ZW58MHx8MHx8fDA%3D',
+      'https://plus.unsplash.com/premium_photo-1675876811959-ae0358cbf0e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8UHxlbnwwfHwwfHx8MA%3D%3D',
+    },
+    {
+      name: 'Watchout',
+      tag: 'Luxury Watch Landing Page',
+      blurb: 'Made by ZEXAN',
+      href: 'https://watchout-zexan.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D',
+    },
+     {
+      name: 'Motor Works',
+      tag: 'Dealership Landing Page',
+      blurb: 'Tuned by ZEXAN',
+      href: 'https://zexanmotorsports.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
+    },
+    {
+      name: 'Photography Portfolio',
+      tag: 'Smooth Revealing Images',
+      blurb: 'Low Cortisol',
+      href: 'https://photography-zexan.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtZXJhfGVufDB8fDB8fHww',
     },
   ];
 
