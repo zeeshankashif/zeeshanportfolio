@@ -85,14 +85,14 @@ const PROJECTS = [
       image:
       'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
     },
-    // {
-    //   name: 'Photography Portfolio',
-    //   tag: 'Smooth Revealing Images',
-    //   blurb: 'Low Cortisol',
-    //   href: 'https://photography-zexan.vercel.app/',
-    //   image:
-    //   'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtZXJhfGVufDB8fDB8fHww',
-    // },
+    {
+      name: 'Photography Portfolio',
+      tag: 'Smooth Revealing Images',
+      blurb: 'Low Cortisol',
+      href: 'https://photography-zexan.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtZXJhfGVufDB8fDB8fHww',
+    },
   ];
 
    const COLOR_GRADING = [
