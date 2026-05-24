@@ -273,7 +273,7 @@ function ExperienceSection() {
 
           <div className="mini-stats" aria-label="Highlights">
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '0ms' }}>
-              <span className="mini-stat__num">2+ months</span>
+              <span className="mini-stat__num">3+ months</span>
               <span className="mini-stat__cap">of being a Developer</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '80ms' }}>
