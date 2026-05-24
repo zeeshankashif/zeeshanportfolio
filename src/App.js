@@ -445,7 +445,7 @@ function GradingSection() {
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".</p>
        
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
-              <p className="section-notes">Software used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+              <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (

@@ -300,7 +300,9 @@ html {
     color: #333;
     display: flex;
     align-items: center;
-    gap: 8px; /* Spaces the text and the logo nicely */
+    gap: 8px; 
+    font-weight: 500;
+    /* Spaces the text and the logo nicely */
   }
 
   .lr-logo {
