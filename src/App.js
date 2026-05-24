@@ -23,7 +23,7 @@ const NAV = [
   ];
 
 const EXPERIENCE = [
-  { label: 'Web Development ( newbie )', value: 20, years: '2+ months' },
+  { label: 'Web Development ( newbie )', value: 20, years: '3+ months' },
   { label: 'WordPress', value: 82, years: 'Intermediate level' },
   { label: 'AI Integration', value: 85, years: 'Advanced level' },
   { label: 'UI/UX Design', value: 75, years: 'Intermediate level' },
