@@ -442,9 +442,11 @@ function GradingSection() {
 
 
           <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
-        <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".  All the color grading was performed exclusively within Adobe Lightroom.</p>
+        <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".</p>
        
-        <p className="section-notes">Tip : View in Dark Mode for a better comparison of the graded images. Refresh the website after the photos have loaded for smooth experience.</p>
+        <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
+              <p className="section-notes">Software used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
             <ColorGradeCard 
