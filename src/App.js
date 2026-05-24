@@ -26,7 +26,7 @@ const EXPERIENCE = [
   { label: 'Web Development ( newbie )', value: 20, years: '3+ months' },
   { label: 'WordPress', value: 82, years: 'Intermediate level' },
   { label: 'AI Integration', value: 85, years: 'Advanced level' },
-  { label: 'UI/UX Design', value: 75, years: 'Intermediate level' },
+  { label: 'UI/UX Design', value: 80, years: 'Intermediate level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
   { label: 'Adobe Lightroom', value: 90, years: 'Expert level' },
 ];
