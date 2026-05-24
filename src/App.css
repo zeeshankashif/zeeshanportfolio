@@ -921,7 +921,7 @@ html {
     min-height: 300px;
     border-radius: var(--radius-card);
     overflow: hidden;
-    border: 0px solid var(--card-border);
+    border: 1px solid var(--card-border);
     text-decoration: none;
     color: inherit;
     box-shadow: var(--shadow);
@@ -965,8 +965,12 @@ html {
     background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
   }
    .project-block:nth-child(6) .project-block__media {
-    background-position: center 50%; 
-    background-size: 105%; /* Adjust this percentage to frame the 'P' logo perfectly */
+    background-position: center 16%; 
+    background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+   .project-block:nth-child(7) .project-block__media {
+    background-position: center 16%; 
+    background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
   }
   .project-block__scrim {
     position: absolute;
@@ -1050,6 +1054,7 @@ html {
     .project-block__media,
     .project-block__cta {
       transition: none;
+    
     }
 
     .project-block:hover {
@@ -1739,6 +1744,7 @@ html {
 
   .project-block {
     cursor: none;
+     
   }
 
   .grading-card:hover {
@@ -1764,6 +1770,7 @@ html {
     transform: translateY(0px) scale(0.97);
     transition: transform 0.1s ease;
   }
+  
 }
 
 /* These stay OUTSIDE the media query — apply to all screen sizes */
@@ -1859,4 +1866,17 @@ html {
     background-size: 145%; 
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
+  .project-block:nth-child(7) .project-block__media {
+    background-position: center 15%; 
+    background-size: 100%; 
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+   .project-block:nth-child(8) .project-block__media {
+    background-position: 43% ; 
+    
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
 }
+
+
+

@@ -77,14 +77,6 @@ const PROJECTS = [
       image:
       'https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D',
     },
-     {
-      name: 'Motor Works',
-      tag: 'Dealership Landing Page',
-      blurb: 'Tuned by ZEXAN',
-      href: 'https://zexanmotorsports.vercel.app/',
-      image:
-      'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
-    },
     {
       name: 'Photography Portfolio',
       tag: 'Smooth Revealing Images',
@@ -92,6 +84,22 @@ const PROJECTS = [
       href: 'https://photography-zexan.vercel.app/',
       image:
       'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtZXJhfGVufDB8fDB8fHww',
+    },
+    {
+     name: 'Motor Works',
+     tag: 'Dealership Landing Page',
+     blurb: 'Tuned by ZEXAN',
+     href: 'https://zexanmotorsports.vercel.app/',
+     image:
+     'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
+   },
+     {
+      name: 'BMW M4 Competition',
+      tag: 'Digital Showroom',
+      blurb: 'Tuned by ZEXAN MENCY',
+      href: 'https://bmw-zexan.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
     },
   ];
 
