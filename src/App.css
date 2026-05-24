@@ -924,7 +924,7 @@ html {
     border: 1px solid var(--card-border);
     text-decoration: none;
     color: inherit;
-    box-shadow: var(--shadow);
+    /* box-shadow: #ffffff13 0px 0px 100px; */
     transition:
       transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 0.45s ease;
@@ -966,7 +966,7 @@ html {
   }
    .project-block:nth-child(6) .project-block__media {
     background-position: center 16%; 
-    background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
+    background-size: 110%; /* Adjust this percentage to frame the 'P' logo perfectly */
   }
    .project-block:nth-child(7) .project-block__media {
     background-position: center 16%; 
@@ -1862,8 +1862,8 @@ html {
     
   }
   .project-block:nth-child(6) .project-block__media {
-    background-position:  80% 30%; 
-    background-size: 145%; 
+    background-position:  55% ; 
+    background-size: 195%; 
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
   .project-block:nth-child(7) .project-block__media {
@@ -1877,6 +1877,4 @@ html {
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
 }
-
-
 

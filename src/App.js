@@ -78,12 +78,12 @@ const PROJECTS = [
       'https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D',
     },
     {
-      name: 'Photography Portfolio',
-      tag: 'Smooth Revealing Images',
-      blurb: 'Low Cortisol',
-      href: 'https://photography-zexan.vercel.app/',
+      name: 'Quantum Synthesis',
+      tag: 'Ultra Effects Neon Landing Page',
+      blurb: 'Smooth and Fluid',
+      href: 'https://fluid-zexan.vercel.app/',
       image:
-      'https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtZXJhfGVufDB8fDB8fHww',
+      'https://plus.unsplash.com/premium_photo-1733342554594-102b8e2d0623?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHF1YW50dW0lMjBzeW50aGVzaXN8ZW58MHx8MHx8fDA%3D',
     },
     {
      name: 'Motor Works',
