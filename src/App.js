@@ -525,7 +525,7 @@ function App() {
         {/* UPDATED: Added 'mobile-only-install' class */}
         {installPrompt && (
           <div className="install-banner mobile-only-install">
-            <span>Install App for a better experience!</span>
+            <span>Install App for a better experience !</span>
             <div className="banner-btns">
               <button onClick={handleInstallClick} className="pill pill--ghost">
                 Install

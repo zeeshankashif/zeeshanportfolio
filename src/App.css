@@ -1828,18 +1828,20 @@ html {
     background: #e2e2e2;
     color: #2e2e2e;
     padding: 10px 16px;
-    border-radius: 50px;
-    box-shadow: 0 8px 10px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     z-index: 9999;
     width: 90%;
     max-width: 400px; /* Prevents it from getting too wide on small tablets */
   }
-
+.install-banner{
+  font-size: 0.9rem;
+}
   /* Container for text and main button */
   .banner-btns {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     flex-grow: 1;
     white-space: nowrap; /* Prevents text from wrapping to a second line */
   }
@@ -1852,7 +1854,7 @@ html {
     cursor: pointer;
     font-weight: bold;
     padding: 0 5px;
-    margin-left: 10px;
+    margin-left: 1px;
     color: inherit;
   }
 }
