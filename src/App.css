@@ -1862,7 +1862,7 @@ html {
     
   }
   .project-block:nth-child(6) .project-block__media {
-    background-position: center 40%; 
+    background-position:  80% 30%; 
     background-size: 145%; 
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
@@ -1872,7 +1872,7 @@ html {
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
    .project-block:nth-child(8) .project-block__media {
-    background-position: 38% ; 
+    background-position: 43% ; 
     
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
