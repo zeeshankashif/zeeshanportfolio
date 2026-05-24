@@ -49,7 +49,7 @@ const PROJECTS = [
    name: 'Toasty',
    tag: 'AI Cooking',
    blurb: 'AI Powered Cooking App.',
-   href: 'https://toasty-ai.vercel.app/',
+   href: 'https://toasty-zexan.vercel.app/',
    image:
    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
   },
@@ -57,7 +57,7 @@ const PROJECTS = [
     name: 'Sneaky',
     tag: 'E-Commerce Website',
     blurb: 'Cool and Stylish',
-    href: 'https://sneaky-style.vercel.app/',
+    href: 'https://sneaky-zexan.vercel.app/',
     image:
       'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8fDA%3D',
     },
@@ -65,7 +65,7 @@ const PROJECTS = [
       name: 'Pixify AI',
       tag: 'AI Image Editor',
       blurb: 'Powered by ZEXAN',
-      href: 'https://pixify-ai-tau.vercel.app/',
+      href: 'https://pixify-zexan.vercel.app/',
       image:
       'https://plus.unsplash.com/premium_photo-1675876811959-ae0358cbf0e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8UHxlbnwwfHwwfHx8MA%3D%3D',
     },
@@ -81,7 +81,7 @@ const PROJECTS = [
       name: 'Quantum Synthesis',
       tag: 'Ultra Effects Neon Landing Page',
       blurb: 'Smooth and Fluid',
-      href: 'https://fluid-zexan.vercel.app/',
+      href: 'https://quantumsynthesis-zexan.vercel.app/',
       image:
       'https://plus.unsplash.com/premium_photo-1733342554594-102b8e2d0623?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHF1YW50dW0lMjBzeW50aGVzaXN8ZW58MHx8MHx8fDA%3D',
     },
@@ -89,7 +89,7 @@ const PROJECTS = [
      name: 'Motor Works',
      tag: 'Dealership Landing Page',
      blurb: 'Tuned by ZEXAN',
-     href: 'https://zexanmotorsports.vercel.app/',
+     href: 'https://motorworks-zexan.vercel.app/',
      image:
      'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
    },
