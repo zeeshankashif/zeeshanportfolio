@@ -280,6 +280,20 @@ html {
     font-weight: 900;
     
   }
+    .section-leadd {
+    margin: 0 0 2rem;
+    max-width: 16rem;
+    /* color: var(--fg); */
+    color: #181818;
+    background-color: #dddddd;
+    border-radius: 12px;
+    padding: 15px 22px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    font-weight: 900;
+    
+  }
+
 
   .section-note {
     margin: 0 0 2rem;
