@@ -1,11 +1,10 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
+// Framer Motion hooks for physics-based dreamy lens movement and state transitions
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-
-
-// --- Place this helper outside the App component ---
+// --- Helper outside the App component ---
 const preloadImages = (imageArray) => {
   imageArray.forEach((url) => {
     const img = new Image();
@@ -20,7 +19,7 @@ const NAV = [
   { id: 'projects', label: 'Projects' },
   { id: 'grading', label: 'Grading'}, 
   { id: 'about', label: 'About' },
-  ];
+];
 
 const EXPERIENCE = [
   { label: 'Web Development ( newbie )', value: 20, years: '3+ months' },
@@ -40,7 +39,7 @@ const WORK_ITEMS = [
 const PROJECTS = [
   {
    name: 'Real Estate',
-   tag: 'Complete',
+   tag: 'desktop mode in progress',
    blurb: 'Minimal and Clean',
    href: 'https://realestatezexan.vercel.app/',
    image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
@@ -86,12 +85,12 @@ const PROJECTS = [
       'https://plus.unsplash.com/premium_photo-1733342554594-102b8e2d0623?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHF1YW50dW0lMjBzeW50aGVzaXN8ZW58MHx8MHx8fDA%3D',
     },
     {
-     name: 'Motor Works',
-     tag: 'Dealership Landing Page',
-     blurb: 'Tuned by ZEXAN',
-     href: 'https://motorworks-zexan.vercel.app/',
-     image:
-     'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
+      name: 'Motor Works',
+      tag: 'Dealership Landing Page',
+      blurb: 'Tuned by ZEXAN',
+      href: 'https://motorworks-zexan.vercel.app/',
+      image:
+      'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
    },
      {
       name: 'BMW M4 Competition',
@@ -101,95 +100,23 @@ const PROJECTS = [
       image:
       'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
     },
-  ];
+];
 
-   const COLOR_GRADING = [
-    { 
-      id: 1, 
-      title: 'Orange Cat', 
-      before: 'flying.webp', 
-      after: 'flyingcg.webp' 
-    },
-   
-    { 
-      id: 2, 
-      title: 'Cats', 
-      before: 'cats.webp', 
-      after: 'catscg.jpg' 
-    },
-    { 
-    id: 3, 
-    title: 'Alcedo Atthis', 
-    before: 'bard.webp', 
-    after: 'bbbbrd.jpg' 
-   },
-    { 
-      id: 4, 
-      title: 'BMW M4 G82', 
-      before: 'm4.webp', 
-      after: 'bbwcg.webp' 
-    },
-     { 
-      id: 5, 
-      title: 'Porsche 911 GT3 RS', 
-     before: 'gt3rs.webp', 
-      after: 'gt3rscg.jpg' 
-     },
-     { 
-       id: 3, 
-       title: 'BMW WRT RACING', 
-       before: 'BMWC.webp', 
-       after: 'BMW.webp' 
-     },
-     { 
-      id: 6, 
-      title: '911 vs 296', 
-      before: 'ferr.webp', 
-      after: 'pf.webp' 
-    },
-     { 
-       id: 11, 
-       title: 'BMW M4 GT3 EVO', 
-       before: 'm4gt.webp', 
-       after: 'aas.webp' 
-      },
-    { 
-      id: 10, 
-      title: 'Roxy Dino', 
-      before: 'rexy.webp', 
-      after: 'rexycg.webp' 
-    },
-    
-    { 
-      id: 7, 
-     title: 'Nature', 
-     before: 'fiz.webp', 
-     after: 'fizcg.jpg' 
-    },
-    { 
-      id: 8, 
-      title: 'Yellow Warbler', 
-      before: 'bird.webp', 
-      after: 'birdcg.webp' 
-    },
-    { 
-      id: 3, 
-      title: 'Home', 
-      before: 'home (2).webp', 
-      after: 'hoomcg10.webp' 
-    },
-  ];
-    
-    
-   
-                            
-// function scrollToId(id) {
-//   const element = document.getElementById(id);
-//   if (element) {
-//     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-//   }
-// }
-// Usage: scrollToId('top') or just a custom check
+const COLOR_GRADING = [
+  { id: 1, title: 'Orange Cat', before: 'flying.webp', after: 'flyingcg.webp' },
+  { id: 2, title: 'Cats', before: 'cats.webp', after: 'catscg.jpg' },
+  { id: 3, title: 'Alcedo Atthis', before: 'bard.webp', after: 'bbbbrd.jpg' },
+  { id: 4, title: 'BMW M4 G82', before: 'm4.webp', after: 'bbwcg.webp' },
+  { id: 5, title: 'Porsche 911 GT3 RS', before: 'gt3rs.webp', after: 'gt3rscg.jpg' },
+  { id: 6, title: 'BMW WRT RACING', before: 'BMWC.webp', after: 'BMW.webp' },
+  { id: 7, title: '911 vs 296', before: 'ferr.webp', after: 'pf.webp' },
+  { id: 8, title: 'BMW M4 GT3 EVO', before: 'm4gt.webp', after: 'aas.webp' },
+  { id: 9, title: 'Roxy Dino', before: 'rexy.webp', after: 'rexycg.webp' },
+  { id: 10, title: 'Nature', before: 'fiz.webp', after: 'fizcg.jpg' },
+  { id: 11, title: 'Yellow Warbler', before: 'bird.webp', after: 'birdcg.webp' },
+  { id: 12, title: 'Home', before: 'home (2).webp', after: 'hoomcg10.webp' },
+];
+
 function scrollToId(id) {
   if (id === 'home' || id === 'top') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -200,6 +127,7 @@ function scrollToId(id) {
     }
   }
 }
+
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
@@ -210,10 +138,9 @@ function LiquidBackdrop() {
   );
 }
 
-
 function Navbar({ theme, onToggleTheme }) {
   return (
-      <header className="nav-shell">
+    <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
         <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
           ZEXAN
@@ -227,9 +154,6 @@ function Navbar({ theme, onToggleTheme }) {
             </li>
           ))}
         </ul>
-        {/* <a className="nav-cta pill" href="#projects" onClick={(e) => { e.preventDefault(); scrollToId('projects'); }}>
-          View work
-        </a> */}
         <button
           type="button"
           className="nav-theme-toggle pill pill--ghost"
@@ -245,13 +169,11 @@ function Navbar({ theme, onToggleTheme }) {
 
 function ExperienceSection() {
   const [ref, active] = useRepeatableIntersect(0.18, '0px 0px -8% 0px', true);
-
   return (
     <section id="experience" className="section section--tight" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Experience</p>
         <h2 className="section-title">Skills in Motion</h2>
-       
         <div className="chart-card glass-panel">
           <div className="bar-chart" role="list">
             {EXPERIENCE.map((row) => (
@@ -270,7 +192,6 @@ function ExperienceSection() {
               </div>
             ))}
           </div>
-
           <div className="mini-stats" aria-label="Highlights">
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '0ms' }}>
               <span className="mini-stat__num">3+ months</span>
@@ -353,9 +274,6 @@ function ProjectsSection() {
   );
 }
 
-
-
-
 function ColorGradeCard({ item, index, active, forceShowAfter }) {
   const [showAfter, setShowAfter] = useState(false);
 
@@ -369,7 +287,6 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
       style={{ '--i': `${index * 120}ms` }}
       onClick={() => setShowAfter(!showAfter)}
     >
-      {/* The 'transform' style below is the secret fix for mobile border issues */}
       <div 
         className="photo-card-body" 
         style={{ 
@@ -384,13 +301,11 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
           alt={item.title} 
           style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
         />
-        
         <div className="button-container">
           <button className="button-before" style={{ fontSize: '0.8rem', padding: '6px 20px' }}>
             {showAfter ? 'GRADED' : 'RAW'}
           </button>
         </div>
-
         <div className="photo-overlay">
           <div className="overlay-content">
              <h3>{item.title}</h3>
@@ -402,50 +317,26 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
   );
 }
 
-// --- MAIN SECTION ---
 function GradingSection() {
-  // Assuming useRepeatableIntersect is defined elsewhere in your project
   const [ref, active] = useRepeatableIntersect(0.15, '0px 0px -8% 0px', true);
   const [globalShowAfter, setGlobalShowAfter] = useState(false);
-
   const toggleAll = () => setGlobalShowAfter(!globalShowAfter);
 
   return (
     <section id="grading" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">here i've showcased my side skill</p>
-        {/* <h2 className="section-title">Color Grading</h2> */}
-
-
-
-
-
         <div className="flex items-center gap-3">
-  {/* Your Heading */}
-  <h2 className="section-title">Color Grading</h2>
-
-  {/* Your Video */}
-  <video 
-  autoPlay 
-  loop 
-  muted 
-  playsInline 
-  className="video-element"
->
-  <source src="video.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-</div>
-
-
-
-
-
-          <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
+          <h2 className="section-title">Color Grading</h2>
+          <video autoPlay loop muted playsInline className="video-element">
+            <source src="video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".</p>
-       
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
-              <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+        <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
         <div className="card-grid">
           {COLOR_GRADING.map((item, i) => (
@@ -459,7 +350,6 @@ function GradingSection() {
           ))}
         </div>
 
-        {/* BOTTOM BUTTON */}
         <div style={{ display: 'flex', justifyContent: 'left', marginTop: '20px' , marginBottom: '-50px'}}>
           <button className="pill pill--solid" onClick={toggleAll}>
             {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
@@ -467,23 +357,33 @@ function GradingSection() {
         </div>
       </div>
     </section>
-    
   );
 }
-
-
-
-
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
-  
-  // 1. PWA Install State
   const [installPrompt, setInstallPrompt] = useState(null);
 
+  // --- COGNITIVE ENGINE HOVER & PHYSICS CONTROLS ---
+  const maskContainerRef = useRef(null);
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Soft snappy spring settings to keep the dreamy lens focused around the cursor tightly
+  const springConfig = { damping: 35, stiffness: 140, mass: 1.0 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Track size through a spring to stop the sudden "tak" snap on leave
+  const maskSizeValue = useMotionValue(0);
+  const smoothSize = useSpring(maskSizeValue, { damping: 30, stiffness: 120 });
+
+  const [dreamyMask, setDreamyMask] = useState("");
+
   useEffect(() => {
-    // --- YOUR ORIGINAL PRELOADING LOGIC ---
     const timer = setTimeout(() => {
       const imagesToPreload = [
         ...COLOR_GRADING.map(item => item.after),
@@ -492,21 +392,53 @@ function App() {
       preloadImages(imagesToPreload);
     }, 3000);
 
-    // --- PWA INSTALL LOGIC ---
     const handleBeforeInstall = (e) => {
       e.preventDefault();
       setInstallPrompt(e);
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
-
     return () => {
+      document.body.removeAttribute('data-theme');
       clearTimeout(timer);
       window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
     };
   }, []);
 
-  // --- TRIGGER INSTALL FUNCTION ---
+  // Update hover size with physics injection
+  useEffect(() => {
+    maskSizeValue.set(isHeroHovered ? 260 : 0);
+  }, [isHeroHovered, maskSizeValue]);
+
+  // Sync animation spring values to update the gradient template mapping seamlessly
+  useEffect(() => {
+    const updateHeroMask = () => {
+      const size = smoothSize.get();
+      const featherStart = size * 0.40; 
+      const maskString = `radial-gradient(circle ${size}px at ${smoothX.get()}px ${smoothY.get()}px, black ${featherStart}px, transparent 100%)`;
+      setDreamyMask(maskString);
+    };
+
+    const unsubX = smoothX.on("change", updateHeroMask);
+    const unsubY = smoothY.on("change", updateHeroMask);
+    const unsubSize = smoothSize.on("change", updateHeroMask);
+    updateHeroMask();
+
+    return () => {
+      unsubX();
+      unsubY();
+      unsubSize();
+    };
+  }, [smoothX, smoothY, smoothSize]);
+
+  const handleHeroMouseMove = (e) => {
+    const container = maskContainerRef.current;
+    if (!container) return;
+    const rect = container.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
   const handleInstallClick = async () => {
     if (!installPrompt) return;
     installPrompt.prompt();
@@ -525,7 +457,6 @@ function App() {
       />
 
       <main>
-        {/* UPDATED: Added 'mobile-only-install' class */}
         {installPrompt && (
           <div className="install-banner mobile-only-install">
             <span>Install App for a better experience !</span>
@@ -538,17 +469,76 @@ function App() {
           </div>
         )}
 
-        {/* --- YOUR ORIGINAL HERO SECTION (UNTOUCHED) --- */}
+        {/* ================= RE-ENGINEERED HERO SECTION ================= */}
         <section id="home" className="hero" ref={heroRef}>
           <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
-            <div className="hero-visual">
-              <div className="photo-wrap">
-                <img
-                  className="hero-photo"
-                  src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
-                  alt="Zeeshan Kashif"
-                  width={340}
-                  height={340}
+            
+            {/* INTERACTION BOUNDARY */}
+            <div 
+              ref={maskContainerRef}
+              onMouseMove={handleHeroMouseMove}
+              onMouseEnter={() => setIsHeroHovered(true)}
+              onMouseLeave={() => setIsHeroHovered(false)}
+              className="hero-visual"
+              style={{ position: 'relative' }}
+            >
+              {/* FIXED CENTER ALIGNMENT: Removed frame translations so container balances perfectly with typography line heights */}
+              <div 
+                style={{ 
+                  width: '500px', 
+                  height: '500px', 
+                  borderRadius: '50%', 
+                  overflow: 'hidden', 
+                  position: 'relative',
+                  boxShadow: '0 25px 60px -15px rgba(0,0,0,0.5)'
+                }}
+              >
+                {/* 1ST BOTTOM LAYER: Authentic, full-color portrait with hair adjusted down 15% */}
+                <div 
+                  style={{ 
+                    position: 'absolute', 
+                    inset: 0, 
+                    opacity: 1, 
+                    transition: 'opacity 0.4s ease'
+                  }}
+                >
+                  <img
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
+                    src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
+                    alt="Zeeshan Kashif Genuine"
+                  />
+                </div>
+
+                {/* OVERLAY LAYER: F1 Driver Reveal Overlay with spring-interpolated mask coordinates on exit */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    pointerEvents: 'none',
+                    maskImage: dreamyMask,
+                    WebkitMaskImage: dreamyMask,
+                    filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(20px)",
+                    transition: 'filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                >
+                  <img
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
+                    src={`${process.env.PUBLIC_URL}/zexan.png`}
+                    alt="ZEXAN Brand Reveal Overlay"
+                  />
+                </div>
+
+                {/* REVEAL ACCENT BOUNDARY RING */}
+                <div 
+                  style={{ 
+                    position: 'absolute', 
+                    inset: 0, 
+                    borderRadius: '50%', 
+                    border: '1px solid rgba(255,255,255,0.12)', 
+                    pointerEvents: 'none',
+                    opacity: isHeroHovered ? 1 : 0.4,
+                    transition: 'opacity 0.5s ease'
+                  }} 
                 />
               </div>
             </div>
@@ -586,7 +576,6 @@ function App() {
           </div>
         </section>
 
-        {/* --- YOUR ORIGINAL SECTIONS (UNTOUCHED) --- */}
         <ExperienceSection />
         <WorkSection />
         <ProjectsSection />
@@ -597,7 +586,6 @@ function App() {
     </div>
   );
 }
-
 
 function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
@@ -615,21 +603,11 @@ function AboutSection() {
         </div>
       </div>
       <footer className="site-footer">
-    <span>©{new Date().getFullYear()} <span className="brand-font">ZEXAN </span></span>
-         
-    <span> - Verified ✔</span> 
-</footer>
+        <span>©{new Date().getFullYear()} <span className="brand-font">ZEXAN </span></span>
+        <span> - Verified ✔</span> 
+      </footer>
     </section>
   );
 }
 
-
-
-
-
-
-
-
-
-      
 export default App;
