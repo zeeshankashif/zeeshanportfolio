@@ -1240,7 +1240,9 @@ html {
       transition: none;
       animation: none;
     }
-
+    .hero-photo{
+  margin-top: 12px !important;
+ }
     .reveal--in,
     .lift--in,
     .mini-stat--in {
