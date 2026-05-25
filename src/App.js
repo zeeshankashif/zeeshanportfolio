@@ -40,7 +40,7 @@ const WORK_ITEMS = [
 const PROJECTS = [
   {
    name: 'Real Estate',
-   tag: 'Landing Page · UI',
+   tag: 'Complete',
    blurb: 'Minimal and Clean',
    href: 'https://realestatezexan.vercel.app/',
    image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
