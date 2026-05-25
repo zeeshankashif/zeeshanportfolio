@@ -952,6 +952,9 @@ html {
 
   .work-card:hover {
     border-color: rgb(13, 255, 0);
+    transform: translateY(-5px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer !important;
 
   }
 
@@ -1938,6 +1941,13 @@ html {
       background-size: auto 100%;
     
     /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+   .work-card:hover {
+    border-color: rgb(13, 255, 0);
+    transform: translateY(-5px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: none !important;
+
   }
 }
 
