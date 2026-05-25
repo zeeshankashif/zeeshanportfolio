@@ -325,7 +325,8 @@ function GradingSection() {
   return (
     <section id="grading" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
-        <p className="eyebrow">here i've showcased my side skill</p>
+        {/* ESCAPED APOSTROPHE HERE SO VERCEL CAN SUCCESSFULLY COMPILE */}
+        <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
           <h2 className="section-title">Color Grading</h2>
           <video autoPlay loop muted playsInline className="video-element">
@@ -335,6 +336,8 @@ function GradingSection() {
         </div>
         <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on "GRADED MODE".</p>
+        <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
+        <p className="section-note">Note : The Color-Graded previews may take a moment to load on &quot;GRADED MODE&quot;.</p>
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
         <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
