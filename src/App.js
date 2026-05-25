@@ -79,7 +79,7 @@ const PROJECTS = [
     },
     {
       name: 'Quantum Synthesis',
-      tag: 'Ultra Effects Neon Landing Page',
+      tag: 'High End Neon Landing Page',
       blurb: 'Smooth and Fluid',
       href: 'https://quantumsynthesis-zexan.vercel.app/',
       image:
