@@ -384,6 +384,17 @@ html {
   justify-content: center;
   
 }
+.hero-avatar-frame {
+  width: 500px;
+  height: 500px;
+  max-width: 85vw;
+  max-height: 85vw;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+}
 
   .photo-wrap {
     display: inline-flex;
@@ -677,7 +688,6 @@ html {
     border: 1px solid var(--line);
   }
 
-  
   .pill--ghosts:hover {
     background-color: #000000;
     /* border-color: rgba(102, 255, 0, 0.993); */
@@ -1352,7 +1362,7 @@ html {
     padding: 3rem 1.25rem; /* Reduce large desktop padding */
   }
 .section--tight {
-    margin-top: 0vw;
+    margin-top: -20vw;
   }
   /* Ensure background streaks don't cause horizontal scroll */
   .liquid-streak {
@@ -1958,3 +1968,88 @@ html {
   }
 }
 
+
+
+@media (max-width: 768px) {
+  .hero-avatar-frame {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-avatar-frame {
+    width: 280px;
+    height: 280px;
+  }
+}
+@media (max-width: 968px) {
+  .hero {
+    margin-bottom: 60px;
+    padding: 0 16px 2rem 16px;
+  }
+
+  .hero-inner {
+    /* Switch grid layout from side-by-side to a clean vertical stack */
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-visual {
+    /* Overriding desktop rigid dimensions cleanly on smaller breakpoints */
+    width: 420px !important;
+    height: 420px !important;
+    max-width: 90vw !important;
+    max-height: 90vw !important;
+    margin: -20px auto;
+  }
+
+  .hero-avatar-frame,
+  .photo-wrap {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-copy {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-sub {
+    margin: 0 0 1.5rem;
+    max-width: 90%;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    /* Clean split rows for quick layout balance */
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+
+  /* Make sure every CTA button takes full container grid widths on mobile */
+  .hero-ctas .pill,
+  .hero-ctas a,
+  .hero-ctas button {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-visual {
+    width: 270px !important;
+    height: 270px !important;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}

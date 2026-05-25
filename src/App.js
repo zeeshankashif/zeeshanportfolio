@@ -3,6 +3,7 @@ import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 // Framer Motion hooks for physics-based dreamy lens movement and state transitions
 import { useMotionValue, useSpring } from 'framer-motion';
+
 // --- Helper outside the App component ---
 const preloadImages = (imageArray) => {
   imageArray.forEach((url) => {
@@ -324,7 +325,6 @@ function GradingSection() {
   return (
     <section id="grading" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
-        {/* ESCAPED APOSTROPHE HERE SO VERCEL CAN SUCCESSFULLY COMPILE */}
         <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
           <h2 className="section-title">Color Grading</h2>
@@ -364,6 +364,7 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   // --- COGNITIVE ENGINE HOVER & PHYSICS CONTROLS ---
   const maskContainerRef = useRef(null);
@@ -384,6 +385,14 @@ function App() {
   const [dreamyMask, setDreamyMask] = useState("");
 
   useEffect(() => {
+    // Check screen size for mobile responsiveness optimizations
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const timer = setTimeout(() => {
       const imagesToPreload = [
         ...COLOR_GRADING.map(item => item.after),
@@ -401,6 +410,7 @@ function App() {
     return () => {
       document.body.removeAttribute('data-theme');
       clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
     };
   }, []);
@@ -431,13 +441,13 @@ function App() {
     };
   }, [smoothX, smoothY, smoothSize]);
 
-  const handleHeroMouseMove = (e) => {
-    const container = maskContainerRef.current;
-    if (!container) return;
-    const rect = container.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
+ const handleHeroMouseMove = (e) => {
+  const container = maskContainerRef.current;
+  if (!container) return;
+  const rect = container.getBoundingClientRect();
+  mouseX.set(e.clientX - rect.left);
+  mouseY.set(e.clientY - rect.top); // <--- FIXED: Changed to e.clientY
+};
 
   const handleInstallClick = async () => {
     if (!installPrompt) return;
@@ -482,17 +492,8 @@ function App() {
               className="hero-visual"
               style={{ position: 'relative' }}
             >
-              {/* FIXED CENTER ALIGNMENT: Removed frame translations so container balances perfectly with typography line heights */}
-              <div 
-                style={{ 
-                  width: '500px', 
-                  height: '500px', 
-                  borderRadius: '50%', 
-                  overflow: 'hidden', 
-                  position: 'relative',
-                  boxShadow: '0 25px 60px -15px rgba(0,0,0,0.5)'
-                }}
-              >
+              {/* RESPONSIVE CONTAINER BOUNDS: Replaced fixed 500px values with CSS variables mapping to global responsive styling */}
+              <div className="hero-avatar-frame">
                 {/* 1ST BOTTOM LAYER: Authentic, full-color portrait with hair adjusted down 15% */}
                 <div 
                   style={{ 
@@ -546,7 +547,7 @@ function App() {
             <div className="hero-copy">
               <p className="eyebrow hero-eyebrow">Portfolio</p>
               <h1 className="hero-title">Zeeshan Kashif</h1>
-              <p className="hero-sub">"THE" Web Developer you were looking for ...</p>
+              <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
               
               <div className="hero-ctas">
                 <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
@@ -571,6 +572,10 @@ function App() {
                 >
                   Github
                 </a>
+                {/* CONDITIONAL REMOVAL: Hidden cleanly on mobile view via state check */}
+                {!isMobile && (
+                  <p className="pill pill--solid">Hover on the photo to reveal the masterpiece !</p>
+                )}
               </div>
             </div>
           </div>
