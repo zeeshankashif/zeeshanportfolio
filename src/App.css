@@ -1883,106 +1883,11 @@ html {
 .mobile-only-install {
   display: none;
 }
+/* ==========================================================================
+   2. Mobile Styles
+   ========================================================================== */
 
-/* 2. Mobile Styles */
-@media (max-width: 768px) {
-  .mobile-only-install {
-    display: flex;
-    /* Forces content to stay on one line */
-    flex-flow: row nowrap; 
-    align-items: center;
-    justify-content: space-between;
-    
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    
-    background: #e2e2e2;
-    color: #2e2e2e;
-    padding: 10px 16px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    z-index: 9999;
-    width: 90%;
-    max-width: 400px; /* Prevents it from getting too wide on small tablets */
-  }
-.install-banner{
-  font-size: 0.9rem;
-}
-  /* Container for text and main button */
-  .banner-btns {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    flex-grow: 1;
-    white-space: nowrap; /* Prevents text from wrapping to a second line */
-  }
-
-  /* Styling the close (X) button */
-  .mobile-only-install button:last-child {
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 0 5px;
-    margin-left: 1px;
-    color: inherit;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .project-block:nth-child(4) .project-block__media {
-    /* Shifts the image to the right. Adjust the percentage (e.g., 60%, 70%) to perfect it */
-    background-position: 0% 90%; 
-    
-    /* Slightly increasing the size can help if the edges of the image start to show */
-    background-size: 115%; 
-    
-  }
-  .project-block:nth-child(6) .project-block__media {
-    background-position:  55% ; 
-    background-size: auto 100%; 
-    /* Adjust this percentage to frame the 'P' logo perfectly */
-  }
-  .project-block:nth-child(7) .project-block__media {
-    background-position: center 15%; 
-    background-size: 100%; 
-    /* Adjust this percentage to frame the 'P' logo perfectly */
-  }
-   .project-block:nth-child(8) .project-block__media {
-    background-position: 43% ; 
-      filter: brightness(1.8) contrast(0.98); 
-      background-size: auto 100%;
-    
-    /* Adjust this percentage to frame the 'P' logo perfectly */
-  }
-   .work-card:hover {
-    border-color: rgb(13, 255, 0);
-    transform: translateY(-5px);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-    cursor: none !important;
-
-  }
-}
-
-
-
-@media (max-width: 768px) {
-  .hero-avatar-frame {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-avatar-frame {
-    width: 280px;
-    height: 280px;
-  }
-}
+/* --- TABLET BREAKPOINT (968px and below) --- */
 @media (max-width: 968px) {
   .hero {
     margin-bottom: 60px;
@@ -1996,11 +1901,11 @@ html {
   }
 
   .hero-visual {
-    /* Overriding desktop rigid dimensions cleanly on smaller breakpoints */
-    width: 420px !important;
-    height: 420px !important;
-    max-width: 90vw !important;
-    max-height: 90vw !important;
+    /* SCALED UP: Gives the picture container a much larger footprint */
+    width: 440px !important;
+    height: 440px !important;
+    max-width: 92vw !important;
+    max-height: 92vw !important;
     margin: -20px auto;
   }
 
@@ -2027,12 +1932,10 @@ html {
     width: 100%;
     max-width: 400px;
     display: grid;
-    /* Clean split rows for quick layout balance */
     grid-template-columns: 1fr 1fr; 
     gap: 10px;
   }
 
-  /* Make sure every CTA button takes full container grid widths on mobile */
   .hero-ctas .pill,
   .hero-ctas a,
   .hero-ctas button {
@@ -2043,10 +1946,96 @@ html {
   }
 }
 
+/* --- SMALL TABLET / LARGE PHONE BREAKPOINT (768px and below) --- */
+@media (max-width: 768px) {
+  /* SCALED UP: Lifted photo width from 320px to 380px */
+  .hero-avatar-frame {
+    width: 380px;
+    height: 380px;
+  }
+
+  .mobile-only-install {
+    display: flex;
+    flex-flow: row nowrap; 
+    align-items: center;
+    justify-content: space-between;
+    
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background: #e2e2e2;
+    color: #2e2e2e;
+    padding: 10px 16px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .install-banner {
+    font-size: 0.9rem;
+  }
+
+  .banner-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-grow: 1;
+    white-space: nowrap;
+  }
+
+  .mobile-only-install button:last-child {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 5px;
+    margin-left: 1px;
+    color: inherit;
+  }
+
+  /* Project Grid Framing Adjustments */
+  .project-block:nth-child(4) .project-block__media {
+    background-position: 0% 90%; 
+    background-size: 115%; 
+  }
+  .project-block:nth-child(6) .project-block__media {
+    background-position: 55%; 
+    background-size: auto 100%; 
+  }
+  .project-block:nth-child(7) .project-block__media {
+    background-position: center 15%; 
+    background-size: 100%; 
+  }
+  .project-block:nth-child(8) .project-block__media {
+    background-position: 43%; 
+    filter: brightness(1.8) contrast(0.98); 
+    background-size: auto 100%;
+  }
+  .work-card:hover {
+    border-color: rgb(13, 255, 0);
+    transform: translateY(-5px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: none !important;
+  }
+}
+
+/* --- SMALL PHONE BREAKPOINT (480px and below) --- */
 @media (max-width: 480px) {
   .hero-visual {
-    width: 270px !important;
-    height: 270px !important;
+    /* SCALED UP: Lifted layout wrapper from 270px up to 340px */
+    width: 340px !important;
+    height: 340px !important;
+  }
+
+  /* SCALED UP: Lifted matching internal frame layout bounds from 280px up to 340px */
+  .hero-avatar-frame {
+    width: 340px;
+    height: 340px;
   }
   
   .hero-title {
