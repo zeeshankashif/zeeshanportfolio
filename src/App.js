@@ -127,7 +127,7 @@ const PROJECTS = [
       id: 4, 
       title: 'BMW M4 G82', 
       before: 'm4.webp', 
-      after: 'm4cg.webp' 
+      after: 'bbwcg.webp' 
     },
      { 
       id: 5, 
@@ -145,13 +145,13 @@ const PROJECTS = [
       id: 6, 
       title: '911 vs 296', 
       before: 'ferr.webp', 
-      after: 'ferrcg.webp' 
+      after: 'pf.webp' 
     },
      { 
        id: 11, 
        title: 'BMW M4 GT3 EVO', 
        before: 'm4gt.webp', 
-       after: 'm4gt3.webp' 
+       after: 'aas.webp' 
       },
     { 
       id: 10, 
