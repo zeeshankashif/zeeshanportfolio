@@ -518,7 +518,7 @@ function App() {
                     pointerEvents: 'none',
                     maskImage: dreamyMask,
                     WebkitMaskImage: dreamyMask,
-                    filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(20px)",
+                    filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(90px)",
                     transition: 'filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                 >
