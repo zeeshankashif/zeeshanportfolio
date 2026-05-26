@@ -128,48 +128,6 @@ function scrollToId(id) {
   }
 }
 
-// --- CLEAN FEFEFE BLANK PRELOADER ---
-function Preloader({ setLoading }) {
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    // 1. Force browser to abandon historical scroll memory tracking on render refresh
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-
-    // 2. Instantly snap coordinates to top before white screen opacity lifts
-    window.scrollTo(0, 0);
-
-    const fadeTimeout = setTimeout(() => {
-      setFadeOut(true);
-    }, 350);
-
-    const removeTimeout = setTimeout(() => {
-      setLoading(false);
-    }, 500);
-
-    return () => {
-      clearTimeout(fadeTimeout);
-      clearTimeout(removeTimeout);
-    };
-  }, [setLoading]);
-
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 9999,
-        background: '#fefefe',
-        opacity: fadeOut ? 0 : 1,
-        transition: 'opacity 200ms cubic-bezier(0.25, 1, 0.5, 1)',
-        pointerEvents: 'none'
-      }}
-    />
-  );
-}
-
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
@@ -427,7 +385,6 @@ function AboutSection() {
 
 function App() {
   const [theme, setTheme] = useState('light');
-  const [loading, setLoading] = useState(true); 
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -449,6 +406,11 @@ function App() {
   const [dreamyMask, setDreamyMask] = useState("");
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -462,7 +424,7 @@ function App() {
         ...PROJECTS.map(p => p.image),
       ];
       preloadImages(imagesToPreload);
-    }, 3000);
+    }, 2000);
 
     const handleBeforeInstall = (e) => {
       e.preventDefault();
@@ -491,14 +453,13 @@ function App() {
     };
 
     const unsubX = smoothX.on("change", updateHeroMask);
-    const unsubY = smoothY.on("change", updateHeroMask);
     const unsubSize = smoothSize.on("change", updateHeroMask);
-    updateHeroMask();
+    const unsubYReal = smoothY.on("change", updateHeroMask);
 
     return () => {
       unsubX();
-      unsubY();
       unsubSize();
+      unsubYReal();
     };
   }, [smoothX, smoothY, smoothSize]);
 
@@ -521,141 +482,144 @@ function App() {
 
   return (
     <>
-      {/* Blank white layer screen wrapper */}
-      {loading && <Preloader setLoading={setLoading} />}
+      <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
 
-      {/* Main container block animating cleanly using ease-out exposure dynamics */}
-      <div 
-        className="page" 
-        data-theme={theme}
-        style={{
-          opacity: loading ? 0 : 1,
-          filter: loading ? 'blur(20px)' : 'blur(0px)',
-          transform: loading ? 'translateY(25px)' : 'translateY(0px)',
-          transition: 'opacity 0.5s ease-out, filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
-        }}
-      >
         <LiquidBackdrop />
+
         <Navbar
           theme={theme}
           onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
         />
 
-        <main>
-          {installPrompt && (
-            <div className="install-banner mobile-only-install">
-              <span>Install App for a better experience !</span>
-              <div className="banner-btns">
-                <button onClick={handleInstallClick} className="pill pill--ghost">
-                  Install
-                </button>
-                <button onClick={() => setInstallPrompt(null)} className="close-btn">✕</button>
-              </div>
-            </div>
-          )}
-
-          {/* ================= HERO SECTION ================= */}
-          <section id="home" className="hero" ref={heroRef}>
-            <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
-              
-              <div    
-                ref={maskContainerRef}
-                onMouseMove={handleHeroMouseMove}
-                onMouseEnter={() => setIsHeroHovered(true)}
-                onMouseLeave={() => setIsHeroHovered(false)}
-                className="hero-visual"
-                style={{ position: 'relative' }}
-              >
-                <div className="hero-avatar-frame">
-                  <div 
-                    style={{ 
-                      position: 'absolute', 
-                      inset: 0, 
-                      opacity: 1, 
-                      transition: 'opacity 0.4s ease'
-                    }}
-                  >
-                    <img
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-                      src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
-                      alt="Zeeshan Kashif Genuine"
-                    />
-                  </div>
-
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      pointerEvents: 'none',
-                      maskImage: dreamyMask,
-                      WebkitMaskImage: dreamyMask,
-                      filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(100px)",
-                      transition: 'filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-                    }}
-                  >
-                    <img
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-                      src={`${process.env.PUBLIC_URL}/zexan.png`}
-                      alt="ZEXAN Brand Reveal Overlay"
-                    />
-                  </div>
-
-                  <div 
-                    style={{ 
-                      position: 'absolute', 
-                      inset: 0, 
-                      borderRadius: '50%', 
-                      border: '1px solid rgba(255,255,255,0.12)', 
-                      pointerEvents: 'none',
-                      opacity: isHeroHovered ? 1 : 0.4,
-                      transition: 'opacity 0.5s ease'
-                    }} 
-                  />
+        <main style={{ width: '100%', position: 'relative', overflow: 'hidden' }}>
+          <div
+            className={`app-entrance-wrapper ${heroActive ? 'entrance-ready' : 'entrance-loading'}`}
+            style={{ width: '100%' }}
+          >
+            {installPrompt && (
+              <div className="install-banner mobile-only-install">
+                <span>Install App for a better experience !</span>
+                <div className="banner-btns">
+                  <button onClick={handleInstallClick} className="pill pill--ghost">
+                    Install
+                  </button>
+                  <button onClick={() => setInstallPrompt(null)} className="close-btn">✕</button>
                 </div>
               </div>
-              
-              <div className="hero-copy">
-                <p className="eyebrow hero-eyebrow">Portfolio</p>
-                <h1 className="hero-title">Zeeshan Kashif</h1>
-                <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
+            )}
+
+            {/* ================= HERO SECTION ================= */}
+            <section id="home" className="hero" ref={heroRef}>
+              <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
                 
-                <div className="hero-ctas">
-                  <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
-                    Experience
-                  </button>
-                  <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
-                    Projects
-                  </button>
-                  <a 
-                    className="pill pill--ghost" 
-                    href="cv.jpg" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    View CV
-                  </a>
-                  <a 
-                    className="pill pill--ghost" 
-                    href="https://github.com/zeeshankashif" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Github
-                  </a>
-                  {!isMobile && (
-                    <p className="pill pill--solidd">HOVER ON MY PHOTO TO FEEL THE AURA !</p>
-                  )}
+                <div    
+                  ref={maskContainerRef}
+                  onMouseMove={handleHeroMouseMove}
+                  onMouseEnter={() => setIsHeroHovered(true)}
+                  onMouseLeave={() => setIsHeroHovered(false)}
+                  className="hero-visual"
+                  style={{ position: 'relative' }}
+                >
+                  <div className="hero-avatar-frame">
+                    
+                    {/* FIX: The clear base layer image is completely separated from the masking filters.
+                        This keeps your original portrait entirely visible and pristine at all times. */}
+                    <div 
+                      style={{ 
+                        position: 'absolute', 
+                        inset: 0, 
+                        opacity: 1,
+                        zIndex: 1,
+                        transition: 'opacity 0.4s ease'
+                      }}
+                    >
+                      <img
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
+                        src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
+                        alt="Zeeshan Kashif Genuine"
+                      />
+                    </div>
+
+                    {/* FIX: The lens blur and dynamic radial masking calculations are isolated exclusively 
+                        to the top brand image layer overlay. */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 2,
+                        pointerEvents: 'none',
+                        maskImage: dreamyMask,
+                        WebkitMaskImage: dreamyMask,
+                        opacity: isHeroHovered ? 1 : 0,
+                        filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(40px)",
+                        transition: 'opacity 0.4s ease, filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+                      }}
+                    >
+                      <img
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
+                        src={`${process.env.PUBLIC_URL}/zexan.png`}
+                        alt="ZEXAN Brand Reveal Overlay"
+                      />
+                    </div>
+
+                    <div 
+                      style={{ 
+                        position: 'absolute', 
+                        inset: 0, 
+                        borderRadius: '50%', 
+                        zIndex: 3,
+                        border: '1px solid rgba(255,255,255,0.12)', 
+                        pointerEvents: 'none',
+                        opacity: isHeroHovered ? 1 : 0.4,
+                        transition: 'opacity 0.5s ease'
+                      }} 
+                    />
+                  </div>
+                </div>
+                
+                <div className="hero-copy">
+                  <p className="eyebrow hero-eyebrow">Portfolio</p>
+                  <h1 className="hero-title">Zeeshan Kashif</h1>
+                  <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
+                  
+                  <div className="hero-ctas">
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
+                      Experience
+                    </button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
+                      Projects
+                    </button>
+                    <a 
+                      className="pill pill--ghost" 
+                      href="cv.jpg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View CV
+                    </a>
+                    <a 
+                      className="pill pill--ghost" 
+                      href="https://github.com/zeeshankashif" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Github
+                    </a>
+                    {!isMobile && (
+                      <p className="pill pill--solidd">HOVER ON MY PHOTO TO FEEL THE AURA !</p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <ExperienceSection />
-          <WorkSection />
-          <ProjectsSection />
-          <GradingSection />
-          <div className="section-divider" aria-hidden="true" />
-          <AboutSection />
+            <ExperienceSection />
+            <WorkSection />
+            <ProjectsSection />
+            <GradingSection />
+            <div className="section-divider" aria-hidden="true" />
+            <AboutSection />
+          </div>
         </main>
       </div>
     </>
