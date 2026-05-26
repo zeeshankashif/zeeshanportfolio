@@ -574,7 +574,7 @@ function App() {
                 </a>
                 {/* CONDITIONAL REMOVAL: Hidden cleanly on mobile view via state check */}
                 {!isMobile && (
-                  <p className="pill pill--solid">Hover on the photo to reveal the masterpiece !</p>
+                  <p className="pill pill--solidd">HOVER ON MY PHOTO TO FEEL THE AURA !</p>
                 )}
               </div>
             </div>

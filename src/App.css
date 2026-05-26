@@ -681,6 +681,19 @@ html {
     transform: translateY(-1px);
     box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
   }
+ .pill--solidd {
+    background: var(--btn-solid-bg);
+    color: var(--btn-solid-fg);
+    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
+    padding: 15px 73.3px;
+  }
+
+  .pill--solidd:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
+    cursor: default;
+  }
+
 
   .pill--ghost {
     background: transparent;
