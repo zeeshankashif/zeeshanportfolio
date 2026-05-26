@@ -243,7 +243,7 @@ function ProjectsSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Projects</p>
         <h2 className="section-title">Platforms</h2>
-        <p className="section-leadd">Better Experience on Desktop</p>
+        <p className="section-leadd">Better Experience on Desktop !</p>
         <div className="project-grid">
           {PROJECTS.map((p, i) => (
             <a

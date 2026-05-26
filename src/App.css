@@ -279,10 +279,32 @@ html {
     line-height: 1.65;
     font-weight: 900;
     margin-bottom: 20px;
+     text-align: center;
+  
   }
-    .section-leadd {
+  @media (max-width: 720px) {
+    .section-lead {
     margin: 0 0 2rem;
-    max-width: 16rem;
+    max-width: 40rem;
+    /* color: var(--fg); */
+    color: #181818;
+    background-color: #dddddd;
+    border-radius: 12px;
+    padding: 15px 15px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    font-weight: 900;
+    margin-bottom: 12px;
+     text-align: left;
+  
+  }
+}
+
+    .section-leadd {
+      align-items: center;
+      text-align: center;
+    margin: 0 0 2rem;
+    max-width: 17rem;
     /* color: var(--fg); */
     color: #181818;
     background-color: #dddddd;
