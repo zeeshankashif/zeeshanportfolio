@@ -49,19 +49,12 @@
     color: var(--fg);
     font-family: var(--font);
     overflow-x: hidden;
+    padding-top: 100px !important;
     /* space for fixed navbar */
-    padding-top: 40px;
+    
   }
 
-  main {
-    position: relative;
-    z-index: 1;
-  }
-  /* Secure horizontal viewport overflow constraints */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
+
 
 /* Stable Entrance Animations */
 .app-entrance-wrapper {
@@ -174,11 +167,7 @@ html, body {
     margin-bottom: 20px;
   }
 
-html {
-  /* This applies to every section by default */
-  scroll-padding-top: 40px; 
-  scroll-behavior: smooth;
-}
+
 
 
 /* Move this OUTSIDE of the html block */
@@ -202,10 +191,6 @@ html {
     right: 0;
     z-index: 50;
     padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
-    animation: none !important;
-  transition: none !important;
-  transform: none !important;
-  filter: none !important;
   
     /* padding-bottom: 2px; */
      /* background: linear-gradient(
@@ -436,6 +421,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible !important;
   
 }
 .hero-avatar-frame {
@@ -1278,6 +1264,7 @@ html {
     .hero-inner {
       grid-template-columns: 1fr;
       text-align: center;
+      margin-top: 10px;
     }
 
     .hero-copy {
@@ -1489,7 +1476,7 @@ html {
 
   /* 2. Push everything down so the photo is visible */
   .page {
-    padding-top: 130px !important; 
+    padding-top: 100px !important; 
   }
 
   /* 3. Give the photo breathing room */
@@ -1553,7 +1540,7 @@ html {
 
   /* 6. Push the page content up slightly to match the thinner nav */
   .page {
-    padding-top: 110px !important; 
+    padding-top: 100px !important; 
   }
 }
 /* —— Optimized Mobile Layout: Row 1 (ZK + Dark), Row 2 (Links) —— */
@@ -1578,7 +1565,7 @@ html {
 
   /* 6. Page breathing room */
   .page {
-    padding-top: 120px !important; 
+    padding-top: 100px !important; 
   }
 /* —— Final Mobile Optimization: Row 1 (Buttons), Row 2 (Links) —— */
 @media (max-width: 768px) {
@@ -1652,7 +1639,7 @@ html {
 
   /* 6. Adjust page padding so the navbar doesn't overlap your hero image */
   .page {
-    padding-top: 135px !important;
+    padding-top: 100px !important;
   }
 }
 /* —— FINAL REPAIR: Mobile Photo Grid —— */
@@ -1998,7 +1985,7 @@ html {
     height: 440px !important;
     max-width: 92vw !important;
     max-height: 92vw !important;
-    margin: 0 auto;
+    margin: -10px auto;
   }
 
   .hero-avatar-frame,
@@ -2045,6 +2032,7 @@ html {
     width: 380px;
     height: 380px;
   }
+  
 
   .mobile-only-install {
     display: flex;
