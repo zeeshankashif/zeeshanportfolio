@@ -1998,7 +1998,7 @@ html {
     height: 440px !important;
     max-width: 92vw !important;
     max-height: 92vw !important;
-    margin: -10px auto;
+    margin: 0 auto;
   }
 
   .hero-avatar-frame,
