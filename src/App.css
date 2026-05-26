@@ -85,6 +85,7 @@ html, body {
     opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+
   /* —— Flowing liquid glass backdrop —— */
   /* .liquid-backdrop {
     display: none;
@@ -1493,7 +1494,7 @@ html {
 
   /* 3. Give the photo breathing room */
   .photo-wrap {
-    margin-top: -30px !important;
+    margin-top: 0vw !important;
     width: 85vw !important; 
     height: 85vw !important;
   }
@@ -1997,7 +1998,7 @@ html {
     height: 440px !important;
     max-width: 92vw !important;
     max-height: 92vw !important;
-    margin: -20px auto;
+    margin: -10px auto;
   }
 
   .hero-avatar-frame,
