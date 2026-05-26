@@ -243,7 +243,7 @@ function ProjectsSection() {
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">Projects</p>
         <h2 className="section-title">Platforms</h2>
-        <p className="section-leadd">Better Experience on Desktop !</p>
+        <p className="section-leadd">Better Experience on Desktop</p>
         <div className="project-grid">
           {PROJECTS.map((p, i) => (
             <a
@@ -484,7 +484,7 @@ function App() {
           <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
             
             {/* INTERACTION BOUNDARY */}
-            <div 
+            <div  
               ref={maskContainerRef}
               onMouseMove={handleHeroMouseMove}
               onMouseEnter={() => setIsHeroHovered(true)}
@@ -518,7 +518,7 @@ function App() {
                     pointerEvents: 'none',
                     maskImage: dreamyMask,
                     WebkitMaskImage: dreamyMask,
-                    filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(90px)",
+                    filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(100px)",
                     transition: 'filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                 >

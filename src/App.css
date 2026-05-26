@@ -709,6 +709,10 @@ html {
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
     padding: 15px 73.3px;
   }
+[data-theme="dark"] .pill--solidd {
+  background-color: #ffffff;
+  color: #181818;
+}
 
   .pill--solidd:hover {
     transform: translateY(-1px);
@@ -1034,6 +1038,8 @@ html {
     transition:
       transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 0.45s ease;
+
+      
   }
 
   .project-block:focus-visible {
