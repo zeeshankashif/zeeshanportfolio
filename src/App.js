@@ -378,6 +378,8 @@ function AboutSection() {
         <p className="eyebrow">About</p>
         <h2 className="section-title">Zeeshan Kashif</h2>
         <p className="about-text">I love everything that goes FAST & BOOM</p>
+       
+
         <div className="about-actions">
           <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>

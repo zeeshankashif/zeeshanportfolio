@@ -214,7 +214,7 @@
   }
 
   .nav {
-    max-width: 1120px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -348,16 +348,6 @@
     transform: translate3d(0, 0, 0);
   }
 
-.section-divider {
-  width: 90%;          /* Keeps it centered and not touching edges */
-  height: 2px;
-  border-radius: 50px;         /* Thin and elegant */
-  margin: 40px auto;   /* Centers it and gives it breathing room */
-  border: none;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-  opacity: 0.6;
-  margin-bottom: -20px;    
-}
 
 /* Light Theme: Subtle Grey */
 [data-theme="light"] .section-divider {
@@ -372,10 +362,10 @@
 
 /* These stay OUTSIDE the media query — apply to all screen sizes */
 .section-divider {
-  width: 90%;
-  height: 2px;
-  border-radius: 50px;
-  margin: 45px auto;
+  width: 92.5%;
+  height: 1.5px;
+  border-radius: 50%;
+  margin: 45px auto;  
   border: none;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   opacity: 0.6;
@@ -1196,7 +1186,7 @@
 }
 
   .site-footer {
-    max-width: 1120px;
+    max-width: 100%;
     margin: 4rem auto 0;
     padding-top: 1.5rem;
     border-top: 1px solid var(--line);
