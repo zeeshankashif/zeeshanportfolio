@@ -33,8 +33,7 @@ const EXPERIENCE = [
 const WORK_ITEMS = [
   { title: 'Project Engineering', detail: 'I utilize AI to optimize production timelines and enhance output quality. A standard approach for high-level professional work in 2026.' },
   { title: 'Design Systems', detail: 'By leveraging advanced prompting techniques, I can rapidly iterate on complex designs, ensuring a more efficient workflow without compromising on quality.' },
-  { title: 'Collaboration', detail: 'Sure ! Let me give you the chance to unlock your full potential by collaborating with me. I promise you wont regret it.'},
-];
+{ title: 'Collaboration', detail: "Sure ! Let me give you the chance to unlock your full potential by collaborating with me. I promise you won't regret it."},];
 
 const PROJECTS = [
   {
@@ -322,7 +321,7 @@ function GradingSection() {
   const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -5% 0px', true);
   
   // Hook 2: Triggers the image grid cleanly right as the cards crawl into perspective
-  const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -8% 0px', true);
+  const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -1% 0px', true);
   
   const [globalShowAfter, setGlobalShowAfter] = useState(false);
   const toggleAll = () => setGlobalShowAfter(!globalShowAfter);
