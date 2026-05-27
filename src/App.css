@@ -1437,6 +1437,7 @@
      text-align: left;
   
   }
+
 }
 
 /* ============================================================
@@ -1697,7 +1698,7 @@ html {
     top: 11px !important; /* Original position + your 4px request */
     margin: 0 !important;
     font-size: 1rem !important;
-    padding: 4px 10px !important;
+    padding: 6px 12px !important;
     width: auto !important;
   }
 
@@ -1839,7 +1840,7 @@ html {
     flex: 0 0 48% !important;    /* Take up exactly 48% width */
     min-width: 0 !important;
     padding: 12px 4px !important;
-    font-size: 0.9rem !important; /* Slightly larger text now that there is room */
+    font-size: 0.8rem !important; /* Slightly larger text now that there is room */
     text-align: center !important;
     justify-content: center !important;
     white-space: nowrap !important;
@@ -2121,4 +2122,21 @@ html {
   .hero-title {
     font-size: 2.2rem;
   }
+}
+
+
+@media (max-width: 768px){
+    .flag-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.name-flag {
+  height: 18px; /* Matches nicely with standard h2 sizes */
+  width: auto;
+  border-radius: 3px; /* Optional: adds a subtle roundness to match a matte UI */
+  box-shadow: 0 1.3px 4px rgba(0, 0, 0, 0.215); /* Optional: soft depth */
+  object-fit: contain;
+margin-left: -2px;
+}
 }
