@@ -415,7 +415,7 @@
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-    padding: 15px 73.3px;
+    padding: 15px 39.7px;
     max-width: fit-content;
   }
 [data-theme="dark"] .pill--solidd {

@@ -630,7 +630,7 @@ function App() {
                       Github
                     </a>
                     {!isMobile && (
-                      <p className="pill pill--solidd">HOVER ON MY PHOTO TO FEEL THE AURA !</p>
+                      <p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>
                     )}
                   </div>
                 </div>
