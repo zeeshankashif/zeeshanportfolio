@@ -1208,7 +1208,6 @@
   border-radius: 3px; /* Optional: adds a subtle roundness to match a matte UI */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.306); /* Optional: soft depth */
   object-fit: contain;
-  margin-left: 0px;
 
 }
 
