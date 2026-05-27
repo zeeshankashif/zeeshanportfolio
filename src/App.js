@@ -376,8 +376,20 @@ function AboutSection() {
     <section id="about" className="section section--footer" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">About</p>
-        <h2 className="section-title">Zeeshan Kashif</h2>
+        {/* <h2 className="section-title">Zeeshan Kashif <span></span>🇵🇰</h2> */}
+        <h2 className="section-title">
+  Zeeshan Kashif 
+  <span className="flag-container">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" 
+      alt="PK" 
+      className="name-flag"
+    />
+  </span>
+</h2>
         <p className="about-text">I love everything that goes FAST & BOOM</p>
+
+
        
 
         <div className="about-actions">

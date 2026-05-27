@@ -305,6 +305,9 @@
     font-size: clamp(1.75rem, 4vw, 2.75rem);
     font-weight: 800;
     letter-spacing: -0.03em;
+    display: inline-flex;
+  align-items: center;
+  gap: 12px; /* Adjusts the space between your name and the flag */
   }
 
   /* —— Sections —— */
@@ -1194,6 +1197,20 @@
     font-size: 0.85rem;
     font-weight: 600;
   }
+  .flag-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.name-flag {
+  height: 22px; /* Matches nicely with standard h2 sizes */
+  width: auto;
+  border-radius: 3px; /* Optional: adds a subtle roundness to match a matte UI */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.306); /* Optional: soft depth */
+  object-fit: contain;
+  margin-left: 0px;
+
+}
 
 /* ============================================================
    INSTALL BANNER — Mobile PWA install prompt
