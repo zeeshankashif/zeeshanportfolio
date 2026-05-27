@@ -318,13 +318,19 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
 }
 
 function GradingSection() {
-  const [ref, active] = useRepeatableIntersect(0.15, '0px 0px -8% 0px', true);
+  // Hook 1: Triggers the video and title instantly as soon as the top of the section enters
+  const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -5% 0px', true);
+  
+  // Hook 2: Triggers the image grid cleanly right as the cards crawl into perspective
+  const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -8% 0px', true);
+  
   const [globalShowAfter, setGlobalShowAfter] = useState(false);
   const toggleAll = () => setGlobalShowAfter(!globalShowAfter);
 
   return (
-    <section id="grading" className="section" ref={ref}>
-      <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
+    <section id="grading" className="section" ref={sectionRef}>
+      {/* The Header & Video container now triggers much faster (0.05 threshold) */}
+      <div className={`section-inner reveal ${sectionActive ? 'reveal--in' : ''}`}>
         <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
           <h2 className="section-title">Color Grading</h2>
@@ -338,13 +344,18 @@ function GradingSection() {
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
         <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
-        <div className="card-grid">
+        {/* Separated Image Grid container managing its own isolated intersection point */}
+        <div 
+          ref={gridRef}
+          className={`card-grid reveal ${gridActive ? 'reveal--in' : ''}`}
+          style={{ marginTop: '30px' }}
+        >
           {COLOR_GRADING.map((item, i) => (
             <ColorGradeCard 
               key={item.id} 
               item={item} 
               index={i} 
-              active={active} 
+              active={gridActive} 
               forceShowAfter={globalShowAfter} 
             />
           ))}

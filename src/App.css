@@ -2,7 +2,11 @@
 @font-face{
   font-family: 'Vampire Wars';
   src: url('./assets/fonts/Vampire\ Wars.ttf') format('truetype');
-}  /* —— Tokens —— */
+}
+
+/* ============================================================
+   TOKENS — CSS Variables & Dark Theme
+   ============================================================ */
   :root {
     /* --bg: #f6f7f8; */
     --bg: #f0f0f0;
@@ -43,6 +47,9 @@
     --bar-fill-b: rgba(57, 255, 20, 1);
   }
 
+/* ============================================================
+   PAGE SHELL — Base page, entrance animations, glass panels
+   ============================================================ */
   /* —— Page shell —— */
   .page {
     position: relative;
@@ -79,7 +86,18 @@
     opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+  /* —— Glass panels —— */
+  .glass-panel {
+    background: var(--card);
+    border: 1.5px solid var(--card-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow);
 
+  }
+
+/* ============================================================
+   LIQUID BACKDROP — Commented out / disabled streaks
+   ============================================================ */
   /* —— Flowing liquid glass backdrop —— */
   /* .liquid-backdrop {
     display: none;
@@ -159,31 +177,17 @@
     }
   }
   */
-  /* Video */
-  .video-element {
-    width: 15%;
-    border-radius: 20px;
-    box-shadow: #18181854 0px 0px 20px;
-    transition: filter 0.3s ease;
-    margin-bottom: 20px;
-  }
 
-
-
-
-/* Move this OUTSIDE of the html block */
-#skills {
-  /* This overrides the 40px and uses 110px instead when jumping to this ID */
-  scroll-margin-top: 200;
+/* Disable the heavy lifting elements */
+.liquid-backdrop, 
+.liquid-streak, 
+.liquid-veil {
+    display: none !important;
 }
-  /* —— Glass panels —— */
-  .glass-panel {
-    background: var(--card);
-    border: 1.5px solid var(--card-border);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow);
-  }
 
+/* ============================================================
+   NAVBAR — Nav shell, nav bar, brand, links, theme toggle
+   ============================================================ */
   /* —— Nav —— */
   .nav-shell {
     position: fixed !important;
@@ -193,6 +197,7 @@
     z-index: 50;
     padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
     height: var(--nav-height);
+   
 
      /* Use the exact height you defined in your variable */
    /* Ensure this is identical to .page background */
@@ -224,6 +229,7 @@
   
   /* Optional: add a subtle bottom border to define the edge */
   border-bottom: 1px solid var(--card-border);
+  
   }
   
 
@@ -273,6 +279,17 @@
     flex-shrink: 0;
   }
 
+  [data-theme='dark'] .nav-links a:hover {
+    color: #ffffff !important;
+  }
+  
+  [data-theme='light'] .nav-links a:hover {
+    color: #000000 !important;
+  }
+
+/* ============================================================
+   GLOBAL TYPOGRAPHY & SECTIONS — Eyebrow, titles, section shell
+   ============================================================ */
   /* —— Type —— */
   .eyebrow {
     margin: 0 0 0.75rem;
@@ -290,114 +307,150 @@
     letter-spacing: -0.03em;
   }
 
-  .section-lead {
-    margin: 0 0 2rem;
-    max-width: 40rem;
-    /* color: var(--fg); */
-    color: #181818;
-    background-color: #dddddd;
-    border-radius: 12px;
-    padding: 15px 15px;
-    font-size: 0.9rem;
-    line-height: 1.65;
-    font-weight: 900;
-    margin-bottom: 20px;
-     text-align: center;
-  
+  /* —— Sections —— */
+  .section {
+    padding: 5rem clamp(1rem, 5vw, 3rem);
+    margin-top: -35px;
   }
-  @media (max-width: 720px) {
-    .section-lead {
-    margin: 0 0 2rem;
-    max-width: 40rem;
-    /* color: var(--fg); */
-    color: #181818;
-    background-color: #dddddd;
-    border-radius: 12px;
-    padding: 15px 15px;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    font-weight: 900;
-    margin-bottom: 12px;
-     text-align: left;
-  
+
+  .section--tight {
+    padding-top: 0rem;
   }
+  /* for all sections */----------------------------
+  .section-inner { 
+
+    max-width: 1120px;
+    margin:0 auto;
+
+  }
+
+  /* Scroll-triggered reveal */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal--in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .lift {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s ease;
+    transition-delay: var(--i, 0ms);
+  }
+
+  .lift--in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+.section-divider {
+  width: 90%;          /* Keeps it centered and not touching edges */
+  height: 2px;
+  border-radius: 50px;         /* Thin and elegant */
+  margin: 40px auto;   /* Centers it and gives it breathing room */
+  border: none;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0.6;
+  margin-bottom: -20px;    
 }
 
-    .section-leadd {
-      align-items: center;
-      text-align: center;
-    margin: 0 0 2rem;
-    max-width: 17rem;
-    /* color: var(--fg); */
-    color: #181818;
-    background-color: #dddddd;
-    border-radius: 12px;
-    padding: 15px 22px;
-    font-size: 0.9rem;
-    line-height: 1.65;
-    font-weight: 900;
-    
-  }
-  
-  .section-notes {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 8px; 
-    font-weight: 500;
-    /* Spaces the text and the logo nicely */
-  
-  }
+/* Light Theme: Subtle Grey */
+[data-theme="light"] .section-divider {
+  background-color: #616161; 
+}
 
-  .lr-logo {
+/* Dark Theme: Your Neon Green */
+[data-theme="dark"] .section-divider {
+  background-color: #37ff14c6; /* Replace with your specific neon hex if different */
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3); /* Optional: Very slight glow for dark mode */
+}
+
+/* These stay OUTSIDE the media query — apply to all screen sizes */
+.section-divider {
+  width: 90%;
+  height: 2px;
+  border-radius: 50px;
+  margin: 45px auto;
+  border: none;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+
+/* ============================================================
+   GLOBAL BUTTONS — Pill variants
+   ============================================================ */
+  /* Container for the image toggle */
+  /* —— Buttons —— */
+  .pill {
     display: inline-flex;
-    align-items: center ;
+    align-items: center;
     justify-content: center;
-    
-    /* Box Dimensions & Styling */
-    width: 15px;
-    height: 15px;
-    background-color: #16242B; /* Dark charcoal Lightroom background */
-    
-    border-radius: 3px; /* Slightly rounded corners */
-    
-    /* Typography */
-    color: #00C8FF; /* Text matches the border color */
-    font-family: "Adobe Clean", Myriad Pro, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 9px;
-    margin-left: -4px;
-    line-height: 1;
-    
-    
-    
-    /* Smooth rendering */
-    box-sizing: border-box;
-    user-select: none;
+    padding: 0.75rem 1.35rem;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    font-family: inherit;
   }
 
-
-  .section-note {
-    margin: 0 0 2rem;
-    max-width: 63rem;
-    color: #878787;
-    font-size: 0.85rem;
-    line-height: 1.65;
-    font-weight: 400;
-  }
-   .section-notes {
-    margin: 0 0 2rem;
-    max-width: 56rem;
-    color: #878787;
-    font-size: 0.85rem;
-    line-height: 1.65;
-    font-weight: 400;
-    margin-top: -30px;
+  .pill:focus-visible {
+    outline: 2px solid rgba(24, 24, 24, 0.75);
+    outline-offset: 3px;
   }
 
+  .pill--solid {
+    background: var(--btn-solid-bg);
+    color: var(--btn-solid-fg);
+    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
+  }
 
+  .pill--solid:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
+  }
+ .pill--solidd {
+    background: var(--btn-solid-bg);
+    color: var(--btn-solid-fg);
+    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
+    padding: 15px 73.3px;
+    max-width: fit-content;
+  }
+[data-theme="dark"] .pill--solidd {
+  background-color: #ffffff;
+  color: #181818;
+}
+
+  .pill--solidd:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
+    cursor: default;
+  }
+
+  .pill--ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--line);
+  }
+
+  .pill--ghosts:hover {
+    background-color: #000000;
+    /* border-color: rgba(102, 255, 0, 0.993); */
+    color: rgb(213, 213, 213); 
+  }
+
+/* ============================================================
+   HERO SECTION — Visual, avatar frame, copy, CTAs
+   ============================================================ */
   /* —— Hero —— */
 .hero {
   /* Remove negative margins entirely */
@@ -550,260 +603,15 @@
     flex-wrap: wrap;
     gap: 0.60rem;
   }
-  .grading-display img {
-  /* filter: saturate(1.1) contrast(1.05); Slight pop */
-  animation: fadeIn 0.4s ease;
+
+/* ============================================================
+   EXPERIENCE / SKILLS SECTION — Bar chart, mini stats
+   ============================================================ */
+/* Move this OUTSIDE of the html block */
+#skills {
+  /* This overrides the 40px and uses 110px instead when jumping to this ID */
+  scroll-margin-top: 200;
 }
-
-@keyframes fadeIn {
-  from { opacity: 0.7; }
-  to { opacity: 1; }
-}
-/* 1. The Container: Remove padding so the card is the EXACT size of the photo */
-.grading-card {
- 
-  flex: 1 1 calc(34% - 24px); /* 2 cards per row, but they grow/shrink */
-  max-width: calc(34% - 24px);
-  padding: 0 !important;
-  overflow: hidden;
-  position: relative;
-  border-radius: 20px; /* Keep your glass-morphism rounded corners */
-  line-height: 0;
-  height: auto; /* Let the content decide the height */
-  border: none;
-  box-shadow: #00000038 0px 0px 15px;
-}
-.button-container {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  line-height: normal; /* Fixes button text alignment */
-  z-index: 10;
-  opacity: 0.8;
-}
-.button-before {
-   display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.35rem;
-    border-radius: var(--radius-pill);
-    font-weight: 800;
-    font-size: 0.88rem;
-    letter-spacing: 0.02em;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-    font-family: inherit;
-    background-color: #00000083;
-    color: #ffffff;
-}
-
-.grading-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.061), transparent);
-  pointer-events: none;
-}
-
-.photo-card-body {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    
-    /* 1. Inherit the radius from the grading-card */
-    border-radius: inherit; 
-
-    /* 2. Fix for Mobile Safari/Chrome clipping bug */
-    /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-    
-    /* 3. Force hardware acceleration */
-    transform: translate3d(0, 0, 0);
-}
-
-/* Ensure the image doesn't try to overlap the border */
-.photo-card-body img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: inherit;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Double-protection for mobile */
-}
-
-.grading-card:hover img {
-  transform: scale(1.08);
-   /* Zoom effect on hover */
-}
-
-/* 3. The Overlay: Text and Button appearing OVER the photo */
-.photo-overlay {
-  cursor: pointer;
-  position: absolute;
-  inset: 0; /* Covers the whole card */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Keeps content at the bottom */
-  padding: 24px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.646) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
- line-height: normal;
- /* Resets text spacing */
-}
-
-
-
-
-
-.grading-card:hover .photo-overlay {
-  opacity: 1;
-  
-}
-
-.photo-overlay h3 {
-  margin: 0;
-  font-size: 1.23rem;
-  color: #ececec;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.866);
-  cursor: pointer;
-}
-
-
-
-
-
-/* 4. The UI Controls inside the overlay */
-.overlay-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.status-tag {
-  color: #39FF14; /* Neon Green */
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-}
-/* Container for the image toggle */
-  /* —— Buttons —— */
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.35rem;
-    border-radius: var(--radius-pill);
-    font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-    font-family: inherit;
-  }
-
-  .pill:focus-visible {
-    outline: 2px solid rgba(24, 24, 24, 0.75);
-    outline-offset: 3px;
-  }
-
-  .pill--solid {
-    background: var(--btn-solid-bg);
-    color: var(--btn-solid-fg);
-    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-  }
-
-  .pill--solid:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
-  }
- .pill--solidd {
-    background: var(--btn-solid-bg);
-    color: var(--btn-solid-fg);
-    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-    padding: 15px 73.3px;
-    max-width: fit-content;
-  }
-[data-theme="dark"] .pill--solidd {
-  background-color: #ffffff;
-  color: #181818;
-}
-
-  .pill--solidd:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
-    cursor: default;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .pill--ghost {
-    background: transparent;
-    color: var(--fg);
-    border: 1px solid var(--line);
-  }
-
-  .pill--ghosts:hover {
-    background-color: #000000;
-    /* border-color: rgba(102, 255, 0, 0.993); */
-    color: rgb(213, 213, 213); 
-  }
-
-
-  /* —— Sections —— */
-  .section {
-    padding: 5rem clamp(1rem, 5vw, 3rem);
-    margin-top: -40px;
-  }
-
-  .section--tight {
-    padding-top: 0rem;
-  }
-
-  .section-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-
-  /* Scroll-triggered reveal */
-  .reveal {
-    opacity: 0;
-    transform: translate3d(0, 22px, 0);
-    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .reveal--in {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
 
   /* —— Experience chart —— */
   .chart-card {
@@ -821,70 +629,6 @@
     grid-template-columns: 1fr minmax(120px, 52%) 3rem;
     gap: 0.75rem 1rem;
     align-items: center;
-  }
-
-
-
-
-
-
-
-/* Disable the heavy lifting elements */
-.liquid-backdrop, 
-.liquid-streak, 
-.liquid-veil {
-    display: none !important;
-}
-
-
-.view-all-grid {
-  display: grid !important;
-  /* Forces two images side-by-side even on small screens */
-  grid-template-columns: repeat(2, 1fr) !important; 
-  gap: 10px !important;
-}
-
-
-
-
-.section-divider {
-  width: 90%;          /* Keeps it centered and not touching edges */
-  height: 2px;
-  border-radius: 50px;         /* Thin and elegant */
-  margin: 40px auto;   /* Centers it and gives it breathing room */
-  border: none;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-  opacity: 0.6;
-  margin-bottom: -20px;    
-}
-
-/* Light Theme: Subtle Grey */
-[data-theme="light"] .section-divider {
-  background-color: #616161; 
-}
-
-/* Dark Theme: Your Neon Green */
-[data-theme="dark"] .section-divider {
-  background-color: #37ff14c6; /* Replace with your specific neon hex if different */
-  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3); /* Optional: Very slight glow for dark mode */
-}
-
-
-
-
-
-
-
-
-
-  @media (max-width: 720px) {
-    .bar-row {
-      grid-template-columns: 1fr;
-    }
-
-    .bar-value {
-      justify-self: start;
-    }
   }
 
   .bar-meta {
@@ -941,12 +685,6 @@
     border-top: 1px solid var(--line);
   }
 
-  @media (max-width: 640px) {
-    .mini-stats {
-      grid-template-columns: 1fr;
-    }
-  }
-
   .mini-stat {
     padding: 1rem;
     border-radius: 14px;
@@ -976,6 +714,9 @@
     color: var(--muted);
   }
 
+/* ============================================================
+   WORK SECTION — Card grid, work cards, lift animation
+   ============================================================ */
   /* —— Work / projects cards —— */
   .card-grid {
   display: flex;
@@ -983,15 +724,6 @@
   gap: 24px;
   align-items: flex-start; /* CRITICAL: prevents cards from stretching vertically */
 }
-
-  @media (max-width: 900px) {
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-
-
 
   /* Update your existing .work-card / .lift */
 .work-card {
@@ -1011,9 +743,6 @@
   color: var(--muted);
   line-height: 1.6;
 }
-
-
-
 
   .work-card {
     padding: 1.5rem;
@@ -1036,18 +765,6 @@
     font-weight: 500;
   }
 
-  .lift {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-    transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s ease;
-    transition-delay: var(--i, 0ms);
-  }
-
-  .lift--in {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
   .work-card:hover {
     border-color: rgb(13, 255, 0);
     transform: translateY(-5px);
@@ -1056,17 +773,30 @@
 
   }
 
+/* ============================================================
+   PROJECTS SECTION — Grid, project blocks, scrim, body, CTA
+   ============================================================ */
   /* —— Project link blocks (image + overlay) —— */
+  .section-leadd {
+      align-items: center;
+      text-align: center;
+    margin: 0 0 2rem;
+    max-width: 17rem;
+    /* color: var(--fg); */
+    color: #181818;
+    background-color: #dddddd;
+    border-radius: 12px;
+    padding: 15px 22px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    font-weight: 900;
+    
+  }
+
   .project-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
-  }
-
-  @media (max-width: 720px) {
-    .project-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   .project-block {
@@ -1156,9 +886,6 @@
     padding: 1.5rem 1.5rem 1.35rem;
 }
 
-
-
-
   .project-block__tag {
     display: inline-block;
     align-self: flex-start;
@@ -1211,23 +938,236 @@
     letter-spacing: 0.1em;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .project-block,
-    .project-block__media,
-    .project-block__cta {
-      transition: none;
-    
-    }
-
-    .project-block:hover {
-      transform: none;
-    }
-
-    .project-block:hover .project-block__media {
-      transform: none;
-    }
+/* ============================================================
+   COLOR GRADING SECTION — Video, notes, cards, overlay, buttons
+   ============================================================ */
+  /* Video */
+  .video-element {
+    width: 15%;
+    border-radius: 20px;
+    box-shadow: #18181854 0px 0px 20px;
+    transition: filter 0.3s ease;
+    margin-bottom: 20px;
   }
 
+  .section-lead {
+    margin: 0 0 2rem;
+    max-width: 40rem;
+    /* color: var(--fg); */
+    color: #181818;
+    background-color: #dddddd;
+    border-radius: 12px;
+    padding: 15px 15px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    font-weight: 900;
+    margin-bottom: 20px;
+     text-align: center;
+  
+  }
+
+  .section-note {
+    margin: 0 0 2rem;
+    max-width: 63rem;
+    color: #878787;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .section-notes {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    font-weight: 500;
+    /* Spaces the text and the logo nicely */
+  
+  }
+
+   .section-notes {
+    margin: 0 0 2rem;
+    max-width: 56rem;
+    color: #878787;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    font-weight: 400;
+    margin-top: -30px;
+  }
+
+  .lr-logo {
+    display: inline-flex;
+    align-items: center ;
+    justify-content: center;
+    
+    /* Box Dimensions & Styling */
+    width: 15px;
+    height: 15px;
+    background-color: #16242B; /* Dark charcoal Lightroom background */
+    
+    border-radius: 3px; /* Slightly rounded corners */
+    
+    /* Typography */
+    color: #00C8FF; /* Text matches the border color */
+    font-family: "Adobe Clean", Myriad Pro, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    margin-left: -4px;
+    line-height: 1;
+    
+    
+    
+    /* Smooth rendering */
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+/* 1. The Container: Remove padding so the card is the EXACT size of the photo */
+.grading-card {
+ 
+  flex: 1 1 calc(34% - 24px); /* 2 cards per row, but they grow/shrink */
+  max-width: calc(34% - 24px);
+  padding: 0 !important;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px; /* Keep your glass-morphism rounded corners */
+  line-height: 0;
+  height: auto; /* Let the content decide the height */
+  border: none;
+  box-shadow: #00000038 0px 0px 15px;
+}
+
+.grading-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.061), transparent);
+  pointer-events: none;
+}
+
+.photo-card-body {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    
+    /* 1. Inherit the radius from the grading-card */
+    border-radius: inherit; 
+
+    /* 2. Fix for Mobile Safari/Chrome clipping bug */
+    /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    /* 3. Force hardware acceleration */
+    transform: translate3d(0, 0, 0);
+}
+
+/* Ensure the image doesn't try to overlap the border */
+.photo-card-body img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Double-protection for mobile */
+}
+
+.grading-card:hover img {
+  transform: scale(1.08);
+   /* Zoom effect on hover */
+}
+
+/* 3. The Overlay: Text and Button appearing OVER the photo */
+.photo-overlay {
+  cursor: pointer;
+  position: absolute;
+  inset: 0; /* Covers the whole card */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keeps content at the bottom */
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.646) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+ line-height: normal;
+ /* Resets text spacing */
+}
+
+.grading-card:hover .photo-overlay {
+  opacity: 1;
+  
+}
+
+.photo-overlay h3 {
+  margin: 0;
+  font-size: 1.23rem;
+  color: #ececec;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.866);
+  cursor: pointer;
+}
+
+/* 4. The UI Controls inside the overlay */
+.overlay-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.status-tag {
+  color: #39FF14; /* Neon Green */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  line-height: normal; /* Fixes button text alignment */
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.button-before {
+   display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.35rem;
+    border-radius: var(--radius-pill);
+    font-weight: 800;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    font-family: inherit;
+    background-color: #00000083;
+    color: #ffffff;
+}
+
+  .grading-display img {
+  /* filter: saturate(1.1) contrast(1.05); Slight pop */
+  animation: fadeIn 0.4s ease;
+  
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   ABOUT / FOOTER SECTION — About text, actions, site footer
+   ============================================================ */
   /* —— About / footer —— */
   .section--footer {
     padding-bottom: 2rem;
@@ -1265,7 +1205,144 @@
     font-weight: 600;
   }
 
+/* ============================================================
+   INSTALL BANNER — Mobile PWA install prompt
+   ============================================================ */
+ /* 1. Hide by default */
+.mobile-only-install {
+  display: none;
+}
 
+/* ============================================================
+   MISC UTILITIES
+   ============================================================ */
+.view-all-grid {
+  display: grid !important;
+  /* Forces two images side-by-side even on small screens */
+  grid-template-columns: repeat(2, 1fr) !important; 
+  gap: 10px !important;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    .project-block,
+    .project-block__media,
+    .project-block__cta {
+      transition: none;
+    
+    }
+
+    .project-block:hover {
+      transform: none;
+    }
+
+    .project-block:hover .project-block__media {
+      transform: none;
+    }
+  }
+
+  /* —— Reduced motion —— */
+  @media (prefers-reduced-motion: reduce) {
+    .liquid-streak--a,
+    .liquid-streak--b {
+      animation: none;
+    }
+
+    .reveal,
+    .lift,
+    .mini-stat,
+    .bar-fill {
+      transition: none;
+    }
+
+    .photo-wrap,
+    .hero-photo,
+    .photo-wrap::after {
+      transition: none;
+      animation: none;
+    }
+    .hero-photo{
+  margin-top: 12px !important;
+ }
+    .reveal--in,
+    .lift--in,
+    .mini-stat--in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .bar-fill--grow {
+      width: var(--target, 0%);
+    }
+  } 
+
+/* ============================================================
+   RESPONSIVE — TABLET (max-width: 968px)
+   ============================================================ */
+/* --- TABLET BREAKPOINT (968px and below) --- */
+@media (max-width: 968px) {
+  .hero {
+    margin-bottom: 60px;
+    padding: 0 16px 2rem 16px;
+  }
+
+  .hero-inner {
+    /* Switch grid layout from side-by-side to a clean vertical stack */
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-visual {
+    /* SCALED UP: Gives the picture container a much larger footprint */
+    width: 440px !important;
+    height: 440px !important;
+    max-width: 92vw !important;
+    max-height: 92vw !important;
+    margin: -10px auto;
+  }
+
+  .hero-avatar-frame,
+  .photo-wrap {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-copy {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-sub {
+    margin: 0 0 1.5rem;
+    max-width: 90%;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+
+  .hero-ctas .pill,
+  .hero-ctas a,
+  .hero-ctas button {
+    width: 100% !important;
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — HERO GRID (max-width: 860px)
+   ============================================================ */
   /* —— Responsive hero grid —— */
   @media (max-width: 860px) {
     .hero-inner {
@@ -1310,52 +1387,73 @@
     }
   }
 
+/* ============================================================
+   RESPONSIVE — WORK CARDS (max-width: 900px)
+   ============================================================ */
+  @media (max-width: 900px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+/* ============================================================
+   RESPONSIVE — BAR ROW / PROJECT GRID / SECTION LEAD (max-width: 720px)
+   ============================================================ */
+  @media (max-width: 720px) {
+    .bar-row {
+      grid-template-columns: 1fr;
+    }
+
+    .bar-value {
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .section-lead {
+    margin: 0 0 2rem;
+    max-width: 40rem;
+    /* color: var(--fg); */
+    color: #181818;
+    background-color: #dddddd;
+    border-radius: 12px;
+    padding: 15px 15px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    font-weight: 900;
+    margin-bottom: 12px;
+     text-align: left;
+  
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MINI STATS (max-width: 640px)
+   ============================================================ */
+  @media (max-width: 640px) {
+    .mini-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+/* ============================================================
+   RESPONSIVE — PAGE PADDING (max-width: 520px)
+   ============================================================ */
   @media (max-width: 520px) {
     .page {
       padding-top: 80px !important;
     }
   }
- 
-  /* —— Reduced motion —— */
-  @media (prefers-reduced-motion: reduce) {
-    .liquid-streak--a,
-    .liquid-streak--b {
-      animation: none;
-    }
 
-    .reveal,
-    .lift,
-    .mini-stat,
-    .bar-fill {
-      transition: none;
-    }
-
-    .photo-wrap,
-    .hero-photo,
-    .photo-wrap::after {
-      transition: none;
-      animation: none;
-    }
-    .hero-photo{
-  margin-top: 12px !important;
- }
-    .reveal--in,
-    .lift--in,
-    .mini-stat--in {
-      opacity: 1;
-      transform: none;
-    }
-
-    .bar-fill--grow {
-      width: var(--target, 0%);
-    }
-  } 
-
-  
-
-
-
-
+/* ============================================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+   ============================================================ */
 /* ——============== Mobile Optimization Block============ —— */
 
 @media (max-width: 768px) {
@@ -1475,11 +1573,6 @@ html {
   .nav-links a {
     font-size: 0.7rem !important;
   }
-
-
-
-
-
 
   /* 2. Push everything down so the photo is visible */
   .page {
@@ -1717,8 +1810,6 @@ html {
   }
 }
 
-
-
 @media (max-width: 768px) {
   /* 1. Setup the container to allow wrapping into rows */
   .hero-ctas, 
@@ -1750,10 +1841,6 @@ html {
   }
 }
 
-
-
-
-
 @media (max-width: 768px) {
   /* 1. Kill the background and shadow on the outermost wrapper */
   [data-theme="dark"] .nav-shell {
@@ -1775,8 +1862,6 @@ html {
     box-shadow: 0px -50px 70px rgb(0, 0, 0);                         /* Keeps content inside the roundness */
   }
 }
-
-
 
 @media (max-width: 768px) {
   /* 1. Remove the background and shadow from the outer wrapper */
@@ -1855,13 +1940,6 @@ html {
 }
 }
 
-
-
-
-
-
-
-
 @media (max-width: 768px) {
    .video-element {
     width: 60%;
@@ -1936,100 +2014,6 @@ html {
     transition: transform 0.1s ease;
   }
   
-}
-
-/* These stay OUTSIDE the media query — apply to all screen sizes */
-.section-divider {
-  width: 90%;
-  height: 2px;
-  border-radius: 50px;
-  margin: 45px auto;
-  border: none;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-  opacity: 0.6;
-  margin-bottom: 40px;
-}
-
-  
-  [data-theme='dark'] .nav-links a:hover {
-    color: #ffffff !important;
-  }
-  
-  [data-theme='light'] .nav-links a:hover {
-    color: #000000 !important;
-  }
-
-
-
-
-
-
-
- /* 1. Hide by default */
-.mobile-only-install {
-  display: none;
-}
-/* ==========================================================================
-   2. Mobile Styles
-   ========================================================================== */
-
-/* --- TABLET BREAKPOINT (968px and below) --- */
-@media (max-width: 968px) {
-  .hero {
-    margin-bottom: 60px;
-    padding: 0 16px 2rem 16px;
-  }
-
-  .hero-inner {
-    /* Switch grid layout from side-by-side to a clean vertical stack */
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .hero-visual {
-    /* SCALED UP: Gives the picture container a much larger footprint */
-    width: 440px !important;
-    height: 440px !important;
-    max-width: 92vw !important;
-    max-height: 92vw !important;
-    margin: -10px auto;
-  }
-
-  .hero-avatar-frame,
-  .photo-wrap {
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .hero-copy {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-sub {
-    margin: 0 0 1.5rem;
-    max-width: 90%;
-  }
-
-  .hero-ctas {
-    justify-content: center;
-    width: 100%;
-    max-width: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px;
-  }
-
-  .hero-ctas .pill,
-  .hero-ctas a,
-  .hero-ctas button {
-    width: 100% !important;
-    text-align: center;
-    justify-content: center;
-    margin: 0;
-  }
 }
 
 /* --- SMALL TABLET / LARGE PHONE BREAKPOINT (768px and below) --- */
@@ -2111,6 +2095,9 @@ html {
   }
 }
 
+/* ============================================================
+   RESPONSIVE — SMALL PHONE (max-width: 480px)
+   ============================================================ */
 /* --- SMALL PHONE BREAKPOINT (480px and below) --- */
 @media (max-width: 480px) {
   .hero-visual {
