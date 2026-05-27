@@ -236,7 +236,7 @@ function WorkSection() {
 }
 
 function ProjectsSection() {
-  const [ref, active] = useRepeatableIntersect(0.12, '0px 0px -8% 0px', true);
+  const [ref, active] = useRepeatableIntersect(0.12, '0px 0px -4% 0px', true);
   return (
     <section id="projects" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
@@ -318,7 +318,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
 
 function GradingSection() {
   // Hook 1: Triggers the video and title instantly as soon as the top of the section enters
-  const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -5% 0px', true);
+  const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -4% 0px', true);
   
   // Hook 2: Triggers the image grid cleanly right as the cards crawl into perspective
   const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -1% 0px', true);
