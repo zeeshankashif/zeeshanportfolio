@@ -425,7 +425,7 @@ function App() {
   const smoothY = useSpring(mouseY, springConfig);
 
   const maskSizeValue = useMotionValue(0);
-  const smoothSize = useSpring(maskSizeValue, { damping: 30, stiffness: 120 });
+  const smoothSize = useSpring(maskSizeValue, { damping: 40, stiffness: 120 });
 
   const [dreamyMask, setDreamyMask] = useState("");
 
@@ -554,7 +554,7 @@ function App() {
                         inset: 0, 
                         opacity: 1,
                         zIndex: 1,
-                        transition: 'opacity 0.4s ease'
+                        transition: 'opacity 0.7s ease'
                       }}
                     >
                       <img
@@ -576,7 +576,7 @@ function App() {
                         WebkitMaskImage: dreamyMask,
                         opacity: isHeroHovered ? 1 : 0,
                         filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(40px)",
-                        transition: 'opacity 0.4s ease, filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+                        transition: 'opacity 0.7s ease, filter 0.7s cubic-bezier(0.16, 1, 0.3, 1)'
                       }}
                     >
                       <img
