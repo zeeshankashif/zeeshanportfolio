@@ -936,12 +936,14 @@
    ============================================================ */
   /* Video */
   .video-element {
-    width: 15%;
-    border-radius: 20px;
-    box-shadow: #18181854 0px 0px 20px;
-    transition: filter 0.3s ease;
-    margin-bottom: 20px;
-  }
+  display: block;        /* Forces the element to start on a new line and act as a block */
+  margin-left: 0;        /* Pulls it completely to the left boundary of its container */
+  width: 15%;
+  border-radius: 20px;
+  box-shadow: #18181854 0px 0px 20px;
+  transition: filter 0.3s ease;
+  margin-bottom: 30px;
+}
 
   .section-lead {
     margin: 0 0 2rem;
@@ -1951,7 +1953,7 @@ html {
    .video-element {
     width: 60%;
     margin-bottom: 15px;
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.518);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.285);
   }
   .hero-sub {
     margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
