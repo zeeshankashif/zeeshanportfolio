@@ -22,6 +22,8 @@
     --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --radius-pill: 999px;
     --radius-card: 20px;
+
+    --nav-height: 70px;
   }
 
   .page[data-theme='dark'] {
@@ -49,12 +51,11 @@
     color: var(--fg);
     font-family: var(--font);
     overflow-x: hidden;
-    padding-top: 100px !important;
+    padding-top: var(--nav-height) !important;
+
     /* space for fixed navbar */
     
   }
-
-
 
 /* Stable Entrance Animations */
 .app-entrance-wrapper {
@@ -191,14 +192,19 @@
     right: 0;
     z-index: 50;
     padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
+    height: var(--nav-height);
+
+     /* Use the exact height you defined in your variable */
+   /* Ensure this is identical to .page background */
   
-    /* padding-bottom: 2px; */
-     /* background: linear-gradient(
+    /* This will highlight the actual boundary */
+
+      /* background: linear-gradient( 
       to bottom,
       rgba(var(--surface-rgb), 0.92),
       rgba(var(--surface-rgb), 0.65),
       rgba(var(--surface-rgb), 0)
-    );  */
+    );   */
     /* background: rgba(var(--surface-rgb), 0.5); */
   }
 
@@ -395,11 +401,11 @@
   /* —— Hero —— */
 .hero {
   /* Remove negative margins entirely */
-  margin-top: 10px;
-  margin-bottom: 100px; 
+  margin-top: 20px;
+
   /* Use min-height instead of fixed height so it expands if text wraps */
   min-height: auto; 
-  padding-bottom: 3rem;
+  padding-bottom: 9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -421,7 +427,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible !important;
+  /* overflow: visible !important; */
   
 }
 .hero-avatar-frame {
@@ -726,6 +732,7 @@
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
     padding: 15px 73.3px;
+    max-width: fit-content;
   }
 [data-theme="dark"] .pill--solidd {
   background-color: #ffffff;
