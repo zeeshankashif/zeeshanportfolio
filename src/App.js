@@ -135,13 +135,7 @@ function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
-        {/* Optimized inline rendering handles to guarantee simultaneous print alongside hero area */}
-        <a 
-          className="nav-brand" 
-          href="#home" 
-          style={{ contentVisibility: 'auto', textRendering: 'optimizeLegibility' }}
-          onClick={(e) => { e.preventDefault(); scrollToId('home'); }}
-        >
+        <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
           ZEXAN
         </a>
         <ul className="nav-links">
@@ -253,15 +247,11 @@ function ProjectsSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="project-block__media" aria-hidden="true">
-                <img 
-                  src={p.image} 
-                  alt="" 
-                  loading="lazy" 
-                  decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
+              <div
+                className="project-block__media"
+                style={{ backgroundImage: `url(${p.image})` }}
+                aria-hidden="true"
+              />
               <div className="project-block__scrim" aria-hidden="true" />
               <div className="project-block__body">
                 <span className="project-block__tag">{p.tag}</span>
@@ -284,6 +274,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
     setShowAfter(forceShowAfter);
   }, [forceShowAfter]);
 
+  // Resolve correct path depending on local asset source
   const imageSrc = showAfter 
     ? `${process.env.PUBLIC_URL}/${item.after}` 
     : `${process.env.PUBLIC_URL}/${item.before}`;
@@ -306,8 +297,6 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
         <img 
           src={imageSrc} 
           alt={item.title} 
-          loading="lazy"
-          decoding="async"
           style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
         />
         <div className="button-container">
@@ -326,7 +315,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
   );
 }
 
-function GradingSection({ readyToRender }) {
+function GradingSection() {
   const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -4% 0px', true);
   const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -1% 0px', true);
   
@@ -339,12 +328,10 @@ function GradingSection({ readyToRender }) {
         <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
           <h2 className="section-title">Color Grading</h2>
-          {readyToRender && (
-            <video autoPlay loop muted playsInline className="video-element">
-              <source src="video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+          <video autoPlay loop muted playsInline className="video-element">
+            <source src="video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on &quot;GRADED MODE&quot;.</p>
@@ -416,10 +403,7 @@ function App() {
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // --- PRIORITY CONTROLLERS ---
-const [, setHeroLoadedCount] = useState(0);
-  const [startSecondaryPreload, setStartSecondaryPreload] = useState(false);
-
+  // --- COGNITIVE ENGINE HOVER & PHYSICS CONTROLS ---
   const maskContainerRef = useRef(null);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
 
@@ -448,6 +432,17 @@ const [, setHeroLoadedCount] = useState(0);
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
+    // --- CRITICAL BACKGROUND PRELOAD OPTIMIZATION ENGINE ---
+    const timer = setTimeout(() => {
+      // Correctly maps out full context URLs for both RAW and GRADED states inside /public folder
+      const gradedImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.after}`);
+      const rawImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.before}`);
+      const projectImages = PROJECTS.map(p => p.image);
+
+      const imagesToPreload = [...rawImages, ...gradedImages, ...projectImages];
+      preloadImages(imagesToPreload);
+    }, 2000); // 2-second buffer prevents preloading requests from stalling critical initial paint assets
+
     const handleBeforeInstall = (e) => {
       e.preventDefault();
       setInstallPrompt(e);
@@ -456,36 +451,11 @@ const [, setHeroLoadedCount] = useState(0);
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
     return () => {
       document.body.removeAttribute('data-theme');
+      clearTimeout(timer);
       window.removeEventListener('resize', checkMobile);
       window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
     };
   }, []);
-
-  const handleHeroImageLoad = () => {
-    setHeroLoadedCount((prev) => {
-      const nextCount = prev + 1;
-      if (nextCount === 2) {
-        setStartSecondaryPreload(true);
-      }
-      return nextCount;
-    });
-  };
-
-  // --- PHASED WATERFALL PRELOAD STREAM ---
-  useEffect(() => {
-    if (!startSecondaryPreload) return;
-
-    const engineCushion = setTimeout(() => {
-      const gradedImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.after}`);
-      const rawImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.before}`);
-      const projectImages = PROJECTS.map(p => p.image);
-
-      const backgroundPipeline = [...rawImages, ...gradedImages, ...projectImages];
-      preloadImages(backgroundPipeline);
-    }, 400);
-
-    return () => clearTimeout(engineCushion);
-  }, [startSecondaryPreload]);
 
   useEffect(() => {
     maskSizeValue.set(isHeroHovered ? 260 : 0);
@@ -569,7 +539,6 @@ const [, setHeroLoadedCount] = useState(0);
                 >
                   <div className="hero-avatar-frame">
                     
-                    {/* BASE LAYER */}
                     <div 
                       style={{ 
                         position: 'absolute', 
@@ -583,12 +552,9 @@ const [, setHeroLoadedCount] = useState(0);
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
                         src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
                         alt="Zeeshan Kashif Genuine"
-                        fetchpriority="high"
-                        onLoad={handleHeroImageLoad}
                       />
                     </div>
 
-                    {/* ILLUMINATION LAYER */}
                     <div
                       style={{
                         position: 'absolute',
@@ -606,8 +572,6 @@ const [, setHeroLoadedCount] = useState(0);
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
                         src={`${process.env.PUBLIC_URL}/zexan.png`}
                         alt="ZEXAN Brand Reveal Overlay"
-                        fetchpriority="high"
-                        onLoad={handleHeroImageLoad}
                       />
                     </div>
 
@@ -638,10 +602,20 @@ const [, setHeroLoadedCount] = useState(0);
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
                       Projects
                     </button>
-                    <a className="pill pill--ghost" href="cv.jpg" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      className="pill pill--ghost" 
+                      href="cv.jpg" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
                       View CV
                     </a>
-                    <a className="pill pill--ghost" href="https://github.com/zeeshankashif" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      className="pill pill--ghost" 
+                      href="https://github.com/zeeshankashif" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
                       Github
                     </a>
                     {!isMobile && (
@@ -655,7 +629,7 @@ const [, setHeroLoadedCount] = useState(0);
             <ExperienceSection />
             <WorkSection />
             <ProjectsSection />
-            <GradingSection readyToRender={startSecondaryPreload} />
+            <GradingSection />
             <div className="section-divider" aria-hidden="true" />
             <AboutSection />
           </div>
