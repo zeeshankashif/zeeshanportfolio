@@ -1,4 +1,4 @@
-import { SpeedInsights } from "@vercel/speed-insights/react"
+
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
