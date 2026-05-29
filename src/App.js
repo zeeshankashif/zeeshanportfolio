@@ -135,7 +135,13 @@ function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
-        <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
+        {/* Optimized inline rendering handles to guarantee simultaneous print alongside hero area */}
+        <a 
+          className="nav-brand" 
+          href="#home" 
+          style={{ contentVisibility: 'auto', textRendering: 'optimizeLegibility' }}
+          onClick={(e) => { e.preventDefault(); scrollToId('home'); }}
+        >
           ZEXAN
         </a>
         <ul className="nav-links">
@@ -247,7 +253,6 @@ function ProjectsSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {/* Native img element with lazy handling replaces old heavy dynamic inline backgrounds */}
               <div className="project-block__media" aria-hidden="true">
                 <img 
                   src={p.image} 
@@ -298,7 +303,6 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
           WebkitMaskImage: '-webkit-radial-gradient(white, black)' 
         }}
       >
-        {/* Native decoding and lazy attributes keep the browser thread clear during deep scrolls */}
         <img 
           src={imageSrc} 
           alt={item.title} 
@@ -335,7 +339,6 @@ function GradingSection({ readyToRender }) {
         <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
           <h2 className="section-title">Color Grading</h2>
-          {/* Heavy background operations like video rendering wait explicitly for the priority unlock */}
           {readyToRender && (
             <video autoPlay loop muted playsInline className="video-element">
               <source src="video.mp4" type="video/mp4" />
@@ -413,7 +416,7 @@ function App() {
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // --- COGNITIVE ENGINE INTERACTION STATE AND LIFECYCLE TARGETS ---
+  // --- PRIORITY CONTROLLERS ---
   const [heroLoadedCount, setHeroLoadedCount] = useState(0);
   const [startSecondaryPreload, setStartSecondaryPreload] = useState(false);
 
@@ -458,11 +461,9 @@ function App() {
     };
   }, []);
 
-  // Native hardware tracker monitoring asset compilation inside view stack
   const handleHeroImageLoad = () => {
     setHeroLoadedCount((prev) => {
       const nextCount = prev + 1;
-      // Triggers strictly after both absolute graphic overlays complete assembly
       if (nextCount === 2) {
         setStartSecondaryPreload(true);
       }
@@ -470,11 +471,10 @@ function App() {
     });
   };
 
-  // --- BACKGROUND WATERFALL PRELOAD STREAM ---
+  // --- PHASED WATERFALL PRELOAD STREAM ---
   useEffect(() => {
     if (!startSecondaryPreload) return;
 
-    // The Bullet phase has landed cleanly. Background stream initiates now.
     const engineCushion = setTimeout(() => {
       const gradedImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.after}`);
       const rawImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.before}`);
@@ -569,7 +569,7 @@ function App() {
                 >
                   <div className="hero-avatar-frame">
                     
-                    {/* BASE LAYER - priority allocation level 1 */}
+                    {/* BASE LAYER */}
                     <div 
                       style={{ 
                         position: 'absolute', 
@@ -588,7 +588,7 @@ function App() {
                       />
                     </div>
 
-                    {/* ILLUMINATION LAYER - priority allocation level 1 */}
+                    {/* ILLUMINATION LAYER */}
                     <div
                       style={{
                         position: 'absolute',
