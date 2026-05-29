@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
-// Framer Motion hooks for physics-based dreamy lens movement and state transitions
 import { useMotionValue, useSpring } from 'framer-motion';
 
 const NAV = [
@@ -29,62 +28,14 @@ const WORK_ITEMS = [
 ];
 
 const PROJECTS = [
-  {
-    name: 'Real Estate',
-    tag: 'desktop mode in progress',
-    blurb: 'Minimal and Clean',
-    href: 'https://realestatezexan.vercel.app/',
-    image:'real.avif',
-  },
-  {
-    name: 'Toasty',
-    tag: 'AI Cooking',
-    blurb: 'AI Powered Cooking App.',
-    href: 'https://toasty-zexan.vercel.app/',
-    image: 'toasty.avif',
-  },
-  {
-    name: 'Sneaky',
-    tag: 'E-Commerce Website',
-    blurb: 'Cool and Stylish',
-    href: 'https://sneaky-zexan.vercel.app/',
-    image: 'sneaky.avif',
-  },
-  {
-    name: 'Pixify AI',
-    tag: 'AI Image Editor',
-    blurb: 'Powered by ZEXAN',
-    href: 'https://pixify-zexan.vercel.app/',
-    image: 'pixify.avif',
-  },
-  {
-    name: 'Watchout',
-    tag: 'Luxury Watch Landing Page',
-    blurb: 'Made by ZEXAN',
-    href: 'https://watchout-zexan.vercel.app/',
-    image: 'watch.avif',
-  },
-  {
-    name: 'Quantum Synthesis',
-    tag: 'High End Neon Landing Page',
-    blurb: 'Smooth and Fluid',
-    href: 'https://quantumsynthesis-zexan.vercel.app/',
-    image: 'quantum.avif',
-  },
-  {
-    name: 'Motor Works',
-    tag: 'Dealership Landing Page',
-    blurb: 'Tuned by ZEXAN',
-    href: 'https://motorworks-zexan.vercel.app/',
-    image: 'mw.avif',
-  },
-  {
-    name: 'BMW M4 Competition',
-    tag: 'Digital Showroom',
-    blurb: 'Tuned by ZEXAN MENCY',
-    href: 'https://bmw-zexan.vercel.app/',
-    image: 'bmw.avif',
-  },
+  { name: 'Real Estate', tag: 'desktop mode in progress', blurb: 'Minimal and Clean', href: 'https://realestatezexan.vercel.app/', image:'real.avif', },
+  { name: 'Toasty', tag: 'AI Cooking', blurb: 'AI Powered Cooking App.', href: 'https://toasty-zexan.vercel.app/', image: 'toasty.avif', },
+  { name: 'Sneaky', tag: 'E-Commerce Website', blurb: 'Cool and Stylish', href: 'https://sneaky-zexan.vercel.app/', image: 'sneaky.avif', },
+  { name: 'Pixify AI', tag: 'AI Image Editor', blurb: 'Powered by ZEXAN', href: 'https://pixify-zexan.vercel.app/', image: 'pixify.avif', },
+  { name: 'Watchout', tag: 'Luxury Watch Landing Page', blurb: 'Made by ZEXAN', href: 'https://watchout-zexan.vercel.app/', image: 'watch.avif', },
+  { name: 'Quantum Synthesis', tag: 'High End Neon Landing Page', blurb: 'Smooth and Fluid', href: 'https://quantumsynthesis-zexan.vercel.app/', image: 'quantum.avif', },
+  { name: 'Motor Works', tag: 'Dealership Landing Page', blurb: 'Tuned by ZEXAN', href: 'https://motorworks-zexan.vercel.app/', image: 'mw.avif', },
+  { name: 'BMW M4 Competition', tag: 'Digital Showroom', blurb: 'Tuned by ZEXAN MENCY', href: 'https://bmw-zexan.vercel.app/', image: 'bmw.avif', },
 ];
 
 const COLOR_GRADING = [
@@ -112,7 +63,6 @@ function scrollToId(id) {
     }
   }
 }
-
 
 function LiquidBackdrop() {
   return (
@@ -298,8 +248,8 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
         </div>
         <div className="photo-overlay">
           <div className="overlay-content">
-             <h3>{item.title}</h3>
-             <span className="status-tag">{showAfter ? 'AFTER' : 'BEFORE'}</span>
+              <h3>{item.title}</h3>
+              <span className="status-tag">{showAfter ? 'AFTER' : 'BEFORE'}</span>
           </div>
         </div>
       </div>
@@ -395,7 +345,6 @@ function App() {
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // --- HOVER & PHYSICS CONTROLS ---
   const maskContainerRef = useRef(null);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
 
@@ -425,21 +374,23 @@ function App() {
     window.addEventListener('resize', checkMobile);
 
     // =========================================================================
-    // --- ADAPTIVE QUEUE THROTTLING PRELOAD ENGINE ---
+    // --- NEW PHASED LOADING ENGINE ---
     // =========================================================================
     const publicPath = process.env.PUBLIC_URL || '';
 
-    // Group assets down by order of appearance
-    const primaryDownstream = [
-      ...PROJECTS.map(p => p.image),
-      ...COLOR_GRADING.map(item => `${publicPath}/${item.before}`)
-    ];
-    const secondaryDownstream = COLOR_GRADING.map(item => `${publicPath}/${item.after}`);
-
-    // High-priority core elements forming visible critical viewport boundary
+    // Phase 1: High-priority core assets for immediate viewport
     const coreHeroAssets = [
-      `${publicPath}/zeezee.jpg`,
-      `${publicPath}/zexan.png`
+      `${publicPath}/zeezee.avif`,
+      `${publicPath}/zexan.avif`
+    ];
+
+    // Phase 2: Everything else combined (Projects + RAW + Graded)
+    const phaseTwoAssets = [
+      ...PROJECTS.map(p => p.image),
+      ...COLOR_GRADING.flatMap(item => [
+        `${publicPath}/${item.before}`,
+        `${publicPath}/${item.after}`
+      ])
     ];
 
     const preloadSingleImage = (url) => {
@@ -451,13 +402,11 @@ function App() {
       });
     };
 
-    // Feeds arrays down to cache dynamically inside balanced connection pools
-    const executeQueueBatches = async (urls, batchSize = 4) => {
+    const executeQueueBatches = async (urls, batchSize = 6) => {
       for (let i = 0; i < urls.length; i += batchSize) {
         const batch = urls.slice(i, i + batchSize);
         await Promise.all(batch.map(url => preloadSingleImage(url)));
         
-        // Yield thread runtime back to engine so physics springs hold 60+ FPS bounds
         await new Promise(resolve => {
           if ('requestIdleCallback' in window) {
             window.requestIdleCallback(() => resolve());
@@ -468,13 +417,11 @@ function App() {
       }
     };
 
-    // Wait exactly until above-the-fold canvas renders fully, then chain flood line
+    // Execution Chain
     Promise.all(coreHeroAssets.map(url => preloadSingleImage(url)))
       .then(async () => {
-        // Wave 1: Immediate fetch for project thumbs & base state RAWs
-        await executeQueueBatches(primaryDownstream, 4);
-        // Wave 2: Stream downstream GRADED alterations directly behind them
-        await executeQueueBatches(secondaryDownstream, 4);
+        // Run Phase 2 in parallel-friendly batches
+        await executeQueueBatches(phaseTwoAssets, 6); 
       });
     // =========================================================================
 
@@ -534,127 +481,43 @@ function App() {
   return (
     <>
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
-
         <LiquidBackdrop />
-
-        <Navbar
-          theme={theme}
-          onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
-        />
-
+        <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} />
         <main style={{ width: '100%', position: 'relative', overflow: 'hidden' }}>
-          <div
-            className={`app-entrance-wrapper ${heroActive ? 'entrance-ready' : 'entrance-loading'}`}
-            style={{ width: '100%' }}
-          >
+          <div className={`app-entrance-wrapper ${heroActive ? 'entrance-ready' : 'entrance-loading'}`} style={{ width: '100%' }}>
             {installPrompt && (
               <div className="install-banner mobile-only-install">
                 <span>Install App for a better experience !</span>
                 <div className="banner-btns">
-                  <button onClick={handleInstallClick} className="pill pill--ghost">
-                    Install
-                  </button>
+                  <button onClick={handleInstallClick} className="pill pill--ghost">Install</button>
                   <button onClick={() => setInstallPrompt(null)} className="close-btn">✕</button>
                 </div>
               </div>
             )}
 
-            {/* ================= HERO SECTION ================= */}
             <section id="home" className="hero" ref={heroRef}>
               <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
-                
-                <div    
-                  ref={maskContainerRef}
-                  onMouseMove={handleHeroMouseMove}
-                  onMouseEnter={() => setIsHeroHovered(true)}
-                  onMouseLeave={() => setIsHeroHovered(false)}
-                  className="hero-visual"
-                  style={{ position: 'relative' }}
-                >
+                <div ref={maskContainerRef} onMouseMove={handleHeroMouseMove} onMouseEnter={() => setIsHeroHovered(true)} onMouseLeave={() => setIsHeroHovered(false)} className="hero-visual" style={{ position: 'relative' }}>
                   <div className="hero-avatar-frame">
-                    
-                    <div 
-                      style={{ 
-                        position: 'absolute', 
-                        inset: 0, 
-                        opacity: 1,
-                        zIndex: 1,
-                        transition: 'opacity 0.7s ease'
-                      }}
-                    >
-                      <img
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-                        src={`${process.env.PUBLIC_URL}/zeezee.jpg`}
-                        alt="Zeeshan Kashif Genuine"
-                      />
+                    <div style={{ position: 'absolute', inset: 0, opacity: 1, zIndex: 1, transition: 'opacity 0.7s ease' }}>
+                      <img style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} src={`${process.env.PUBLIC_URL}/zeezee.avif`} alt="Zeeshan Kashif Genuine" />
                     </div>
-
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        zIndex: 2,
-                        pointerEvents: 'none',
-                        maskImage: dreamyMask,
-                        WebkitMaskImage: dreamyMask,
-                        opacity: isHeroHovered ? 1 : 0,
-                        filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(40px)",
-                        transition: 'opacity 0.7s ease, filter 0.7s cubic-bezier(0.16, 1, 0.3, 1)'
-                      }}
-                    >
-                      <img
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
-                        src={`${process.env.PUBLIC_URL}/zexan.png`}
-                        alt="ZEXAN Brand Reveal Overlay"
-                      />
+                    <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none', maskImage: dreamyMask, WebkitMaskImage: dreamyMask, opacity: isHeroHovered ? 1 : 0, filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(40px)", transition: 'opacity 0.7s ease, filter 0.7s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+                      <img style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} src={`${process.env.PUBLIC_URL}/zexan.avif`} alt="ZEXAN Brand Reveal Overlay" />
                     </div>
-
-                    <div 
-                      style={{ 
-                        position: 'absolute', 
-                        inset: 0, 
-                        borderRadius: '50%', 
-                        zIndex: 3,
-                        border: '1px solid rgba(255,255,255,0.12)', 
-                        pointerEvents: 'none',
-                        opacity: isHeroHovered ? 1 : 0.4,
-                        transition: 'opacity 0.5s ease'
-                      }} 
-                    />
+                    <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', zIndex: 3, border: '1px solid rgba(255,255,255,0.12)', pointerEvents: 'none', opacity: isHeroHovered ? 1 : 0.4, transition: 'opacity 0.5s ease' }} />
                   </div>
                 </div>
-                
                 <div className="hero-copy">
                   <p className="eyebrow hero-eyebrow">Portfolio</p>
                   <h1 className="hero-title">Zeeshan Kashif</h1>
                   <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
-                  
                   <div className="hero-ctas">
-                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>
-                      Experience
-                    </button>
-                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>
-                      Projects
-                    </button>
-                    <a 
-                      className="pill pill--ghost" 
-                      href="cv.jpg" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      View CV
-                    </a>
-                    <a 
-                      className="pill pill--ghost" 
-                      href="https://github.com/zeeshankashif" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Github
-                    </a>
-                    {!isMobile && (
-                      <p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>
-                    )}
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
+                    <a className="pill pill--ghost" href="cv.jpg" target="_blank" rel="noopener noreferrer">View CV</a>
+                    <a className="pill pill--ghost" href="https://github.com/zeeshankashif" target="_blank" rel="noopener noreferrer">Github</a>
+                    {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
               </div>
