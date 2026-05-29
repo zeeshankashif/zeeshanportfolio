@@ -39,18 +39,18 @@ const PROJECTS = [
 ];
 
 const COLOR_GRADING = [
-  { id: 1, title: 'Orange Cat', before: 'orange.avif', after: 'orangecg.avif' },
-  { id: 2, title: 'Cats', before: 'cats.avif', after: 'catscg.avif' },
-  { id: 3, title: 'Alcedo Atthis', before: 'bird.avif', after: 'birdcg.avif' },
-  { id: 4, title: 'BMW M4 G82', before: 'm4.avif', after: 'm4cg.avif' },
-  { id: 5, title: 'Porsche 911 GT3 RS', before: '911.avif', after: '911cg.avif' },
-  { id: 6, title: 'BMW WRT RACING', before: 'wrt.avif', after: 'wrtcg.avif' },
-  { id: 7, title: '911 vs 296', before: '911296.avif', after: '911296cg.avif' },
-  { id: 8, title: 'BMW M4 GT3 EVO', before: 'evo.avif', after: 'evocg.avif' },
-  { id: 9, title: 'Roxy Dino', before: 'roxy.avif', after: 'roxycg.avif' },
-  { id: 10, title: 'Nature', before: 'nature.avif', after: 'naturecg.avif' },
-  { id: 11, title: 'Yellow Warbler', before: 'yellow.avif', after: 'yellowcg.avif' },
-  { id: 12, title: 'Home', before: 'home.avif', after: 'homecg.avif' },
+  { id: 1, title: 'Orange Cat', before: 'org.avif', after: 'orgs.avif' },
+  { id: 2, title: 'Cats', before: 'cat.avif', after: 'cts.avif' },
+  { id: 3, title: 'Alcedo Atthis', before: 'bir.avif', after: 'birs.avif' },
+  { id: 4, title: 'BMW M4 G82', before: 'm482.avif', after: 'm482s.avif' },
+  { id: 5, title: 'Porsche 911 GT3 RS', before: 'pit.avif', after: 'pits.avif' },
+  { id: 6, title: 'BMW WRT RACING', before: 'wr.avif', after: 'wrs.avif' },
+  { id: 7, title: '911 vs 296', before: '911.avif', after: '911s.avif' },
+  { id: 8, title: 'BMW M4 GT3 EVO', before: 'es.avif', after: 'e.avif' },
+  { id: 9, title: 'Roxy Dino', before: 'rox.avif', after: 'roxs.avif' },
+  { id: 10, title: 'Nature', before: 'nat.avif', after: 'nats.avif' },
+  { id: 11, title: 'Yellow Warbler', before: 'yell.avif', after: 'yells.avif' },
+  { id: 12, title: 'Home', before: 'hom.avif', after: 'homs.avif' },
 ];
 
 function scrollToId(id) {
