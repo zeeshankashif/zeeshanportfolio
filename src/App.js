@@ -5,7 +5,7 @@ import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 // Framer Motion hooks for physics-based dreamy lens movement and state transitions
 import { useMotionValue, useSpring } from 'framer-motion';
 
-// --- Helper outside the App component ---
+// --- Helper outside the App component  fvvf---
 const preloadImages = (imageArray) => {
   imageArray.forEach((url) => {
     const img = new Image();
