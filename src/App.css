@@ -1120,8 +1120,8 @@
 }
 
 .status-tag {
-  color: #39FF14; /* Neon Green */
-  font-weight: bold;
+  color: #4dff00dc; /* Neon Green */
+  font-weight: 999;
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 1px;
@@ -1204,10 +1204,7 @@
     font-size: 0.85rem;
     font-weight: 600;
   }
-  .flag-container {
-  display: inline-flex;
-  align-items: center;
-}
+
 
 .name-flag {
   height: 22px; /* Matches nicely with standard h2 sizes */

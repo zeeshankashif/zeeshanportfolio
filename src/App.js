@@ -4,14 +4,6 @@ import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 // Framer Motion hooks for physics-based dreamy lens movement and state transitions
 import { useMotionValue, useSpring } from 'framer-motion';
 
-// --- Helper outside the App component ---
-const preloadImages = (imageArray) => {
-  imageArray.forEach((url) => {
-    const img = new Image();
-    img.src = url;
-  });
-};
-
 const NAV = [
   { id: 'home', label: 'Home' },
   { id: 'experience', label: 'Skills' },
@@ -120,6 +112,7 @@ function scrollToId(id) {
     }
   }
 }
+
 
 function LiquidBackdrop() {
   return (
@@ -274,7 +267,6 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
     setShowAfter(forceShowAfter);
   }, [forceShowAfter]);
 
-  // Resolve correct path depending on local asset source
   const imageSrc = showAfter 
     ? `${process.env.PUBLIC_URL}/${item.after}` 
     : `${process.env.PUBLIC_URL}/${item.before}`;
@@ -403,7 +395,7 @@ function App() {
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // --- COGNITIVE ENGINE HOVER & PHYSICS CONTROLS ---
+  // --- HOVER & PHYSICS CONTROLS ---
   const maskContainerRef = useRef(null);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
 
@@ -432,16 +424,59 @@ function App() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // --- CRITICAL BACKGROUND PRELOAD OPTIMIZATION ENGINE ---
-    const timer = setTimeout(() => {
-      // Correctly maps out full context URLs for both RAW and GRADED states inside /public folder
-      const gradedImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.after}`);
-      const rawImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.before}`);
-      const projectImages = PROJECTS.map(p => p.image);
+    // =========================================================================
+    // --- ADAPTIVE QUEUE THROTTLING PRELOAD ENGINE ---
+    // =========================================================================
+    const publicPath = process.env.PUBLIC_URL || '';
 
-      const imagesToPreload = [...rawImages, ...gradedImages, ...projectImages];
-      preloadImages(imagesToPreload);
-    }, 2000); // 2-second buffer prevents preloading requests from stalling critical initial paint assets
+    // Group assets down by order of appearance
+    const primaryDownstream = [
+      ...PROJECTS.map(p => p.image),
+      ...COLOR_GRADING.map(item => `${publicPath}/${item.before}`)
+    ];
+    const secondaryDownstream = COLOR_GRADING.map(item => `${publicPath}/${item.after}`);
+
+    // High-priority core elements forming visible critical viewport boundary
+    const coreHeroAssets = [
+      `${publicPath}/zeezee.jpg`,
+      `${publicPath}/zexan.png`
+    ];
+
+    const preloadSingleImage = (url) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); 
+      });
+    };
+
+    // Feeds arrays down to cache dynamically inside balanced connection pools
+    const executeQueueBatches = async (urls, batchSize = 4) => {
+      for (let i = 0; i < urls.length; i += batchSize) {
+        const batch = urls.slice(i, i + batchSize);
+        await Promise.all(batch.map(url => preloadSingleImage(url)));
+        
+        // Yield thread runtime back to engine so physics springs hold 60+ FPS bounds
+        await new Promise(resolve => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(() => resolve());
+          } else {
+            setTimeout(resolve, 30);
+          }
+        });
+      }
+    };
+
+    // Wait exactly until above-the-fold canvas renders fully, then chain flood line
+    Promise.all(coreHeroAssets.map(url => preloadSingleImage(url)))
+      .then(async () => {
+        // Wave 1: Immediate fetch for project thumbs & base state RAWs
+        await executeQueueBatches(primaryDownstream, 4);
+        // Wave 2: Stream downstream GRADED alterations directly behind them
+        await executeQueueBatches(secondaryDownstream, 4);
+      });
+    // =========================================================================
 
     const handleBeforeInstall = (e) => {
       e.preventDefault();
@@ -451,7 +486,6 @@ function App() {
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
     return () => {
       document.body.removeAttribute('data-theme');
-      clearTimeout(timer);
       window.removeEventListener('resize', checkMobile);
       window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
     };
