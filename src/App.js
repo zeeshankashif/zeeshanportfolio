@@ -417,7 +417,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   // --- PRIORITY CONTROLLERS ---
-  const [heroLoadedCount, setHeroLoadedCount] = useState(0);
+const [, setHeroLoadedCount] = useState(0);
   const [startSecondaryPreload, setStartSecondaryPreload] = useState(false);
 
   const maskContainerRef = useRef(null);
