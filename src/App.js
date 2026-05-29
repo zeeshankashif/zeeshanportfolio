@@ -33,72 +33,66 @@ const EXPERIENCE = [
 const WORK_ITEMS = [
   { title: 'Project Engineering', detail: 'I utilize AI to optimize production timelines and enhance output quality. A standard approach for high-level professional work in 2026.' },
   { title: 'Design Systems', detail: 'By leveraging advanced prompting techniques, I can rapidly iterate on complex designs, ensuring a more efficient workflow without compromising on quality.' },
-{ title: 'Collaboration', detail: "Sure ! Let me give you the chance to unlock your full potential by collaborating with me. I promise you won't regret it."},];
+  { title: 'Collaboration', detail: "Sure ! Let me give you the chance to unlock your full potential by collaborating with me. I promise you won't regret it." },
+];
 
 const PROJECTS = [
   {
-   name: 'Real Estate',
-   tag: 'desktop mode in progress',
-   blurb: 'Minimal and Clean',
-   href: 'https://realestatezexan.vercel.app/',
-   image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
- },
- {
-   name: 'Toasty',
-   tag: 'AI Cooking',
-   blurb: 'AI Powered Cooking App.',
-   href: 'https://toasty-zexan.vercel.app/',
-   image:
-   'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
+    name: 'Real Estate',
+    tag: 'desktop mode in progress',
+    blurb: 'Minimal and Clean',
+    href: 'https://realestatezexan.vercel.app/',
+    image:'https://images.pexels.com/photos/13772063/pexels-photo-13772063.jpeg?_gl=1*18uvzqs*_ga*MTA2NTI2Mjk4My4xNzc4Nzc4ODk0*_ga_8JE65Q40S6*czE3Nzg3Nzg4OTQkbzEkZzEkdDE3Nzg3NzkyMjEkajQ3JGwwJGgw',
+  },
+  {
+    name: 'Toasty',
+    tag: 'AI Cooking',
+    blurb: 'AI Powered Cooking App.',
+    href: 'https://toasty-zexan.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     name: 'Sneaky',
     tag: 'E-Commerce Website',
     blurb: 'Cool and Stylish',
     href: 'https://sneaky-zexan.vercel.app/',
-    image:
-      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8fDA%3D',
-    },
+    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXN8ZW58MHx8MHx8fDA%3D',
+  },
   {
-      name: 'Pixify AI',
-      tag: 'AI Image Editor',
-      blurb: 'Powered by ZEXAN',
-      href: 'https://pixify-zexan.vercel.app/',
-      image:
-      'https://plus.unsplash.com/premium_photo-1675876811959-ae0358cbf0e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8UHxlbnwwfHwwfHx8MA%3D%3D',
-    },
-    {
-      name: 'Watchout',
-      tag: 'Luxury Watch Landing Page',
-      blurb: 'Made by ZEXAN',
-      href: 'https://watchout-zexan.vercel.app/',
-      image:
-      'https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D',
-    },
-    {
-      name: 'Quantum Synthesis',
-      tag: 'High End Neon Landing Page',
-      blurb: 'Smooth and Fluid',
-      href: 'https://quantumsynthesis-zexan.vercel.app/',
-      image:
-      'https://plus.unsplash.com/premium_photo-1733342554594-102b8e2d0623?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHF1YW50dW0lMjBzeW50aGVzaXN8ZW58MHx8MHx8fDA%3D',
-    },
-    {
-      name: 'Motor Works',
-      tag: 'Dealership Landing Page',
-      blurb: 'Tuned by ZEXAN',
-      href: 'https://motorworks-zexan.vercel.app/',
-      image:
-      'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
-   },
-     {
-      name: 'BMW M4 Competition',
-      tag: 'Digital Showroom',
-      blurb: 'Tuned by ZEXAN MENCY',
-      href: 'https://bmw-zexan.vercel.app/',
-      image:
-      'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
-    },
+    name: 'Pixify AI',
+    tag: 'AI Image Editor',
+    blurb: 'Powered by ZEXAN',
+    href: 'https://pixify-zexan.vercel.app/',
+    image: 'https://plus.unsplash.com/premium_photo-1675876811959-ae0358cbf0e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8UHxlbnwwfHwwfHx8MA%3D%3D',
+  },
+  {
+    name: 'Watchout',
+    tag: 'Luxury Watch Landing Page',
+    blurb: 'Made by ZEXAN',
+    href: 'https://watchout-zexan.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0Y2h8ZW58MHx8MHx8fDA%3D',
+  },
+  {
+    name: 'Quantum Synthesis',
+    tag: 'High End Neon Landing Page',
+    blurb: 'Smooth and Fluid',
+    href: 'https://quantumsynthesis-zexan.vercel.app/',
+    image: 'https://plus.unsplash.com/premium_photo-1733342554594-102b8e2d0623?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHF1YW50dW0lMjBzeW50aGVzaXN8ZW58MHx8MHx8fDA%3D',
+  },
+  {
+    name: 'Motor Works',
+    tag: 'Dealership Landing Page',
+    blurb: 'Tuned by ZEXAN',
+    href: 'https://motorworks-zexan.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1652453456433-70255295395b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTh8fGNhciUyMGRlYWxlcnNoaXB8ZW58MHx8MHx8fDA%3D',
+  },
+  {
+    name: 'BMW M4 Competition',
+    tag: 'Digital Showroom',
+    blurb: 'Tuned by ZEXAN MENCY',
+    href: 'https://bmw-zexan.vercel.app/',
+    image: 'https://images.unsplash.com/photo-1744223736100-199d4c2e6fd0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxibXd8ZW58MHx8MHx8fDA%3D',
+  },
 ];
 
 const COLOR_GRADING = [
@@ -280,6 +274,11 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
     setShowAfter(forceShowAfter);
   }, [forceShowAfter]);
 
+  // Resolve correct path depending on local asset source
+  const imageSrc = showAfter 
+    ? `${process.env.PUBLIC_URL}/${item.after}` 
+    : `${process.env.PUBLIC_URL}/${item.before}`;
+
   return (
     <article 
       className={`grading-card glass-panel lift ${active ? 'lift--in' : ''}`} 
@@ -296,7 +295,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
         }}
       >
         <img 
-          src={showAfter ? item.after : item.before} 
+          src={imageSrc} 
           alt={item.title} 
           style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }}
         />
@@ -317,10 +316,7 @@ function ColorGradeCard({ item, index, active, forceShowAfter }) {
 }
 
 function GradingSection() {
-  // Hook 1: Triggers the video and title instantly as soon as the top of the section enters
   const [sectionRef, sectionActive] = useRepeatableIntersect(0.05, '0px 0px -4% 0px', true);
-  
-  // Hook 2: Triggers the image grid cleanly right as the cards crawl into perspective
   const [gridRef, gridActive] = useRepeatableIntersect(0.1, '0px 0px -1% 0px', true);
   
   const [globalShowAfter, setGlobalShowAfter] = useState(false);
@@ -328,7 +324,6 @@ function GradingSection() {
 
   return (
     <section id="grading" className="section" ref={sectionRef}>
-      {/* The Header & Video container now triggers much faster (0.05 threshold) */}
       <div className={`section-inner reveal ${sectionActive ? 'reveal--in' : ''}`}>
         <p className="eyebrow">here i&apos;ve showcased my side skill</p>
         <div className="flex items-center gap-3">
@@ -343,7 +338,6 @@ function GradingSection() {
         <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
         <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
-        {/* Separated Image Grid container managing its own isolated intersection point */}
         <div 
           ref={gridRef}
           className={`card-grid reveal ${gridActive ? 'reveal--in' : ''}`}
@@ -376,21 +370,17 @@ function AboutSection() {
     <section id="about" className="section section--footer" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">About</p>
-        {/* <h2 className="section-title">Zeeshan Kashif <span></span>🇵🇰</h2> */}
         <h2 className="section-title">
-  Zeeshan Kashif 
-  <span className="flag-container">
-    <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" 
-      alt="PK" 
-      className="name-flag"
-    />
-  </span>
-</h2>
+          Zeeshan Kashif 
+          <span className="flag-container">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" 
+              alt="PK" 
+              className="name-flag"
+            />
+          </span>
+        </h2>
         <p className="about-text">I love everything that goes FAST & BOOM</p>
-
-
-       
 
         <div className="about-actions">
           <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
@@ -442,13 +432,16 @@ function App() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
+    // --- CRITICAL BACKGROUND PRELOAD OPTIMIZATION ENGINE ---
     const timer = setTimeout(() => {
-      const imagesToPreload = [
-        ...COLOR_GRADING.map(item => item.after),
-        ...PROJECTS.map(p => p.image),
-      ];
+      // Correctly maps out full context URLs for both RAW and GRADED states inside /public folder
+      const gradedImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.after}`);
+      const rawImages = COLOR_GRADING.map(item => `${process.env.PUBLIC_URL}/${item.before}`);
+      const projectImages = PROJECTS.map(p => p.image);
+
+      const imagesToPreload = [...rawImages, ...gradedImages, ...projectImages];
       preloadImages(imagesToPreload);
-    }, 2000);
+    }, 2000); // 2-second buffer prevents preloading requests from stalling critical initial paint assets
 
     const handleBeforeInstall = (e) => {
       e.preventDefault();
@@ -546,8 +539,6 @@ function App() {
                 >
                   <div className="hero-avatar-frame">
                     
-                    {/* FIX: The clear base layer image is completely separated from the masking filters.
-                        This keeps your original portrait entirely visible and pristine at all times. */}
                     <div 
                       style={{ 
                         position: 'absolute', 
@@ -564,8 +555,6 @@ function App() {
                       />
                     </div>
 
-                    {/* FIX: The lens blur and dynamic radial masking calculations are isolated exclusively 
-                        to the top brand image layer overlay. */}
                     <div
                       style={{
                         position: 'absolute',
