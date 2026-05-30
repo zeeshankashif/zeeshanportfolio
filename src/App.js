@@ -277,8 +277,8 @@ function GradingSection() {
         </div>
         <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on &quot;GRADED MODE&quot;.</p>
-        <p className="section-notes">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
-        <p className="section-notes">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+        <p className="section-note">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
+        <p className="section-note">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
         <div 
           ref={gridRef}
@@ -344,6 +344,9 @@ function App() {
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Controls content block reveal only when image compilation is confirmed true
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
 
   const maskContainerRef = useRef(null);
   const [isHeroHovered, setIsHeroHovered] = useState(false);
@@ -373,18 +376,13 @@ function App() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // =========================================================================
-    // --- NEW PHASED LOADING ENGINE ---
-    // =========================================================================
     const publicPath = process.env.PUBLIC_URL || '';
 
-    // Phase 1: High-priority core assets for immediate viewport
     const coreHeroAssets = [
       `${publicPath}/zeezee.avif`,
       `${publicPath}/zexan.avif`
     ];
 
-    // Phase 2: Everything else combined (Projects + RAW + Graded)
     const phaseTwoAssets = [
       ...PROJECTS.map(p => p.image),
       ...COLOR_GRADING.flatMap(item => [
@@ -417,13 +415,10 @@ function App() {
       }
     };
 
-    // Execution Chain
     Promise.all(coreHeroAssets.map(url => preloadSingleImage(url)))
       .then(async () => {
-        // Run Phase 2 in parallel-friendly batches
         await executeQueueBatches(phaseTwoAssets, 6); 
       });
-    // =========================================================================
 
     const handleBeforeInstall = (e) => {
       e.preventDefault();
@@ -484,7 +479,7 @@ function App() {
         <LiquidBackdrop />
         <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} />
         <main style={{ width: '100%', position: 'relative', overflow: 'hidden' }}>
-          <div className={`app-entrance-wrapper ${heroActive ? 'entrance-ready' : 'entrance-loading'}`} style={{ width: '100%' }}>
+          <div className={`app-entrance-wrapper ${(heroActive && heroImageLoaded) ? 'entrance-ready' : 'entrance-loading'}`} style={{ width: '100%' }}>
             {installPrompt && (
               <div className="install-banner mobile-only-install">
                 <span>Install App for a better experience !</span>
@@ -496,11 +491,16 @@ function App() {
             )}
 
             <section id="home" className="hero" ref={heroRef}>
-              <div className={`hero-inner reveal ${heroActive ? 'reveal--in' : ''}`}>
+              <div className={`hero-inner reveal ${(heroActive && heroImageLoaded) ? 'reveal--in' : ''}`}>
                 <div ref={maskContainerRef} onMouseMove={handleHeroMouseMove} onMouseEnter={() => setIsHeroHovered(true)} onMouseLeave={() => setIsHeroHovered(false)} className="hero-visual" style={{ position: 'relative' }}>
                   <div className="hero-avatar-frame">
                     <div style={{ position: 'absolute', inset: 0, opacity: 1, zIndex: 1, transition: 'opacity 0.7s ease' }}>
-                      <img style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} src={`${process.env.PUBLIC_URL}/zeezee.avif`} alt="Zeeshan Kashif Genuine" />
+                      <img 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} 
+                        src={`${process.env.PUBLIC_URL}/zeezee.avif`} 
+                        alt="Zeeshan Kashif Genuine" 
+                        onLoad={() => setHeroImageLoaded(true)}
+                      />
                     </div>
                     <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none', maskImage: dreamyMask, WebkitMaskImage: dreamyMask, opacity: isHeroHovered ? 1 : 0, filter: isHeroHovered ? "blur(0px) contrast(100%)" : "blur(40px)", transition: 'opacity 0.7s ease, filter 0.7s cubic-bezier(0.16, 1, 0.3, 1)' }}>
                       <img style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }} src={`${process.env.PUBLIC_URL}/zexan.avif`} alt="ZEXAN Brand Reveal Overlay" />
