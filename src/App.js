@@ -92,7 +92,7 @@ function Navbar({ theme, onToggleTheme }) {
         </ul>
         <button
           type="button"
-          className="nav-theme-toggle pill pill--ghost"
+          className="nav-theme-toggle pill pill--ghosts"
           onClick={onToggleTheme}
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
         >

@@ -295,6 +295,22 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
     font-family: inherit;
   }
+[data-theme="light"] .pill--solid:hover{
+  background: #ff0033;
+}
+[data-theme="light"] .pill--solidd:hover{
+  background: #000000;
+}
+[data-theme="light"] .pill--ghost:hover{
+  background-color: #ff0033;
+  color: #ffffff;
+  border-color: #ffffff00;
+}
+[data-theme="dark"] .pill--ghost:hover{
+  background-color: #37ff14ea;
+  color: #ffffff;
+  border-color: #ffffff00;
+}
 
   .pill:focus-visible {
     outline: 2px solid rgba(24, 24, 24, 0.75);
@@ -308,7 +324,7 @@
   }
 
   .pill--solid:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
   }
  .pill--solidd {
@@ -325,14 +341,29 @@
 
   .pill--solidd:hover {
     transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
     cursor: default;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.333);     
   }
 
   .pill--ghost {
     background: transparent;
     color: var(--fg);
     border: 1px solid var(--line);
+  }
+   .pill--ghosts {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--line);
+  }
+    [data-theme="light"] .pill--ghosts:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color:#000000;
+  }
+      [data-theme="dark"] .pill--ghosts:hover {
+    background: #eeeeee;
+    color: #000000;
+    border-color:#000000;
   }
   [data-theme="dark"] .pill--ghostt {
     background: transparent;
@@ -929,7 +960,7 @@
     font-family: "Adobe Clean", Myriad Pro, Arial, sans-serif;
     font-weight: 700;
     font-size: 9px;
-    margin-left: -4px;
+    margin-left: 1px;
     line-height: 1;
     
     
