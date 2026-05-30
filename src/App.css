@@ -2121,7 +2121,7 @@ margin-left: -2px;
     color: #ffffff !important;
 }
 [data-theme='light'] .pill--ghost:hover {
-    background-color: #181818 !important;
+    background-color: transparent !important;
     color: #ffffff !important;
 }
 [data-theme='dark'] .pill--ghost:hover {
