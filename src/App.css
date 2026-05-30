@@ -334,6 +334,16 @@
     color: var(--fg);
     border: 1px solid var(--line);
   }
+  [data-theme="dark"] .pill--ghostt {
+    background: transparent;
+    color: #181818;
+    border: 1px solid var(--line);
+  }
+  [data-theme="light"] .pill--ghostt {
+    background: transparent;
+    color: #181818;
+    border: 1px solid var(--line);
+  }
 
   .pill--ghosts:hover {
     background-color: #000000;
@@ -1949,12 +1959,8 @@ html {
     width: 90%;
     max-width: 400px;
   }
-  
-  [data-theme="dark"] .mobile-only-install {
-  
-    color: #181818;
 
-  }
+
 
 
   .install-banner {
