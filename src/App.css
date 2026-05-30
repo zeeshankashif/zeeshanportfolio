@@ -1949,6 +1949,13 @@ html {
     width: 90%;
     max-width: 400px;
   }
+  
+  [data-theme="dark"] .mobile-only-install {
+  
+    color: #181818;
+
+  }
+
 
   .install-banner {
     font-size: 0.9rem;
