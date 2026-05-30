@@ -351,6 +351,14 @@
     color: rgb(213, 213, 213); 
   }
 
+[data-theme="light"]::selection {
+    background-color: #FF0033; /* Your High-Vibrancy Kinetic Red */
+    color: #ffffff;            /* Absolute Deep Black for maximum legibility */
+}
+[data-theme="dark"]::selection {
+    background-color: #37ff14ea; /* Your High-Vibrancy Kinetic Red */
+    color: #ffffff;            /* Absolute Deep Black for maximum legibility */
+}
 
   /* —— Hero —— */
 .hero {
@@ -666,14 +674,18 @@
     font-weight: 500;
   }
 
-  .work-card:hover {
+  [data-theme="light"] .work-card:hover {
+    border-color: #FF0033;
+    transform: translateY(-5px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer !important;
+}
+[data-theme="dark"] .work-card:hover {
     border-color: rgb(13, 255, 0);
     transform: translateY(-5px);
     transition: transform 0.2s ease, border-color 0.2s ease;
     cursor: pointer !important;
-
-  }
-
+}
 /* ============================================================
    PROJECTS SECTION — Grid, project blocks, scrim, body, CTA
    ============================================================ */
