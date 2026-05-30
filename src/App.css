@@ -2091,4 +2091,29 @@ html {
   object-fit: contain;
 margin-left: -2px;
 }
+
+[data-theme="light"] .pill--ghosts:active{
+  background-color: #181818 !important;
+  color: #ffffff !important;
+  transform: translateY(0px) scale(0.97);
+
+}
+[data-theme="light"] .pill--ghosts:hover{
+  background-color: transparent !important;
+  color: #181818 !important;
+      border: 1px solid var(--line);
+
+}
+[data-theme="dark"] .pill--ghosts:hover{
+  background-color: transparent !important;
+  color: #eeeeee !important;
+      border: 1px solid var(--line);
+}
+.pill--solid:active {
+    transform: translateY(0px) scale(0.97);
+}
+.pill--solid:hover {
+    background-color: #181818 !important;
+    color: #ffffff !important;
+}
 }
