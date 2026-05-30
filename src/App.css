@@ -348,39 +348,21 @@
   .pill--ghost {
     background: transparent;
     color: var(--fg);
-    border: 1px solid var(--line);
-  }
+    }
    .pill--ghosts {
     background: transparent;
     color: var(--fg);
     border: 1px solid var(--line);
   }
     [data-theme="light"] .pill--ghosts:hover {
-    background: #000000;
-    color: #ffffff;
-    border-color:#000000;
+   
+    transform: translateY(-1.5px);
   }
       [data-theme="dark"] .pill--ghosts:hover {
-    background: #eeeeee;
-    color: #000000;
-    border-color:#000000;
-  }
-  [data-theme="dark"] .pill--ghostt {
-    background: transparent;
-    color: #181818;
-    border: 1px solid var(--line);
-  }
-  [data-theme="light"] .pill--ghostt {
-    background: transparent;
-    color: #181818;
-    border: 1px solid var(--line);
+   
+     transform: translateY(-1.5px);
   }
 
-  .pill--ghosts:hover {
-    background-color: #000000;
-    /* border-color: rgba(102, 255, 0, 0.993); */
-    color: rgb(213, 213, 213); 
-  }
 
 [data-theme="light"]::selection {
     background-color: #FF0033; /* Your High-Vibrancy Kinetic Red */
