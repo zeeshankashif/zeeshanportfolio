@@ -2112,8 +2112,12 @@ margin-left: -2px;
 .pill--solid:active {
     transform: translateY(0px) scale(0.97);
 }
-.pill--solid:hover {
+[data-theme='light'] .pill--solid:hover {
     background-color: #181818 !important;
+    color: #ffffff !important;
+}
+[data-theme='dark'] .pill--solid:hover {
+    background-color: #37ff14ea !important;
     color: #ffffff !important;
 }
 }
