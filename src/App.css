@@ -2122,7 +2122,7 @@ margin-left: -2px;
 }
 [data-theme='light'] .pill--ghost:hover {
     background-color: transparent !important;
-    color: #ffffff !important;
+    color: #181818 !important;
 }
 [data-theme='dark'] .pill--ghost:hover {
     background-color: transparent!important;
