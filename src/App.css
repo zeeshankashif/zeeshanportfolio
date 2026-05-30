@@ -675,7 +675,7 @@
   }
 
   [data-theme="light"] .work-card:hover {
-    border-color: #FF0033;
+    border-color: #ff6c93;
     transform: translateY(-5px);
     transition: transform 0.2s ease, border-color 0.2s ease;
     cursor: pointer !important;
@@ -1033,9 +1033,8 @@
   align-items: center;
   margin-top: 8px;
 }
-
 .status-tag {
-  color: #4dff00dc; /* Neon Green */
+  color: #5bff15dc; /* Neon Green */
   font-weight: 999;
   text-transform: uppercase;
   font-size: 0.75rem;
