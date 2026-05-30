@@ -373,6 +373,7 @@
   [data-theme="light"] .pill--ghostt {
     background: transparent;
     color: #181818;
+    border: 1px solid var(--line);
   }
 
 [data-theme="light"]::selection {
