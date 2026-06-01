@@ -2113,21 +2113,19 @@ html {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    
+    background: #e2e2e2;
+    color: #2e2e2e;
     padding: 10px 16px;
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.267);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     z-index: 9999;
     width: 90%;
     max-width: 400px;
   }
-  [data-theme='dark'] .mobile-only-install {
-    
-    color: #181818;
-  }
-  [data-theme='light'] .mobile-only-install {
-    
-    color: #181818;
-  }
+
+
+
 
   .install-banner {
     font-size: 0.9rem;
