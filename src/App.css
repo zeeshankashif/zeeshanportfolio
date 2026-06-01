@@ -2358,26 +2358,63 @@ margin-left: -2px;
     font-size: 0.5rem;
   }
 }
-/* --- Mobile View Only (Screens smaller than 768px) --- */
 @media (max-width: 767px) {
-  /* Assumes your individual skill item container uses flexbox */
-  .bar-chart > div, 
-  .chart-item { 
+  /* Stack each skill item vertically with clean breathing room */
+  .bar-chart .bar-row {
     display: flex !important;
-    flex-direction: column !important; /* Forces elements to stack vertically like Photo 1 */
+    flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 0.6rem !important;
+    gap: 0.35rem !important;
+    width: 100% !important;
+  
   }
 
-  /* Ensures the bar container takes up the full width of the card on mobile */
-  .progress-bar-container,
-  .bar-chart div div {
-    width: 100% !important; 
+  /* Force title and level to stack cleanly on top of each other */
+  .bar-chart .bar-meta {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.15rem !important;
+    width: 100% !important;
   }
-  
-  /* Adds a slight top margin to the percentage text so it sits cleanly below the bar */
-  .chart-percentage {
-    margin-top: 0.2rem;
-    align-self: flex-start;
+
+  /* Make sure the main skill title stays prominent */
+  .bar-chart .bar-label {
+    font-size: 0.95rem !important;
+    font-weight: 999 !important;
+    margin: 0 !important;
+  }
+
+  /* Subtitle text ("Intermediate level", etc.) directly underneath */
+  .bar-chart .bar-years {
+    font-size: 0.8rem !important;
+    color: var(--muted) !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  /* Make the progress bar span the full available width */
+  .bar-chart .bar-track {
+    width: 100% !important;
+    height: 8px !important;
+    background: rgba(24, 24, 24, 0.06) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-pill) !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .bar-chart .bar-fill {
+    height: 100% !important;
+    border-radius: inherit !important;
+    background: linear-gradient(90deg, var(--bar-fill-a), var(--bar-fill-b)) !important;
+  }
+
+  /* Place the percentage cleanly underneath the progress bar */
+  .bar-chart .bar-value {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: var(--silver) !important;
+    margin-top: 0.1rem !important;
+    align-self: flex-start !important; /* Aligns left right under the bar start */
   }
 }
