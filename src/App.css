@@ -2062,6 +2062,10 @@ html {
     cursor: none;
      
   }
+    .motion-block {
+    cursor: none;
+     
+  }
 
   .grading-card:hover {
     transform: none;
@@ -2295,6 +2299,7 @@ margin-left: -2px;
 /* --- Mobile View Overrides (Screens smaller than 768px) --- */
 @media (max-width: 767px) {
   .project-grid {
+    cursor: none;
     margin-top: -10px;
     /* Retains 2 columns but applies the tighter mobile gap */
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2302,10 +2307,12 @@ margin-left: -2px;
   }
 
   .project-block {
+    cursor: none;
     min-height: 200px; /* Shorter mobile height to match your exact specifications */
   }
 
   .project-block__body {
+    
     min-height: 200px; /* Overrides the desktop 300px body layout */
     padding: 0.8rem 0.95rem; /* Reduces padding so text doesn't get squeezed */
   }
