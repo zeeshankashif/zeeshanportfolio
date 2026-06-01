@@ -778,7 +778,8 @@
     will-change: transform;
   }
   .project-block:nth-child(1) .project-block__media {
-    background-position: center 5%;
+    background-position: center 100%;
+    background-size: 100%;
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
   .project-block:nth-child(2) .project-block__media {
