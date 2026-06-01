@@ -2259,7 +2259,6 @@ margin-left: -2px;
 /* --- Mobile View Overrides (Screens smaller than 768px) --- */
 @media (max-width: 767px) {
   .motion-grid {
-    margin-top:-6px;
     /* Changes grid from 4 columns to 2 columns */
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem; /* Tighter gap to save screen space */
