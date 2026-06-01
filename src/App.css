@@ -2358,9 +2358,9 @@ margin-left: -2px;
   .project-block__cta {
     font-size: 0.5rem;
   }
-  .motion-block:nth-of-type(2) .motion-block__media {
-  background-size: 110%;
-}
+
+
+
 }
 @media (max-width: 767px) {
   /* Stack each skill item vertically with clean breathing room */
