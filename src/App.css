@@ -213,6 +213,15 @@
   align-items: center;
   gap: 12px; /* Adjusts the space between your name and the flag */
   }
+  .section-titles {
+    margin-top: -5vw;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    display: inline-flex;
+  align-items: center;
+  gap: 12px; /* Adjusts the space between your name and the flag */
+  }
 
   /* —— Sections —— */
   .section {
@@ -769,7 +778,7 @@
     will-change: transform;
   }
   .project-block:nth-child(1) .project-block__media {
-    background-position: center 50%;
+    background-position: center 5%;
     /* Adjust this percentage to frame the 'P' logo perfectly */
   }
   .project-block:nth-child(2) .project-block__media {
@@ -875,6 +884,129 @@
     transform: translateY(-2px);
     letter-spacing: 0.1em;
   }
+/* ============================================================
+   motion sites
+   ============================================================ */
+   /* —— MOTION grid and blocks —— */
+.motion-grid {
+  margin-top: -1rem;
+  display: grid;
+  /* Changed from repeat(2, ...) to repeat(4, ...) for a 4-column desktop layout */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  /* Ensures all grid tracks stretch to match the tallest item in the row */
+  align-items: stretch; 
+}
+
+.motion-block {
+  position: relative;
+  display: flex; /* Changed to flex to let the inner body fill the height completely */
+  flex-direction: column;
+  height: 100%; /* Forces the block to take up the full available height of the grid track */
+  min-height: 320px; /* Slightly adjusted min-height to give 4 narrower cards room to breathe vertically */
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.motion-block:focus-visible {
+  outline: 3px solid rgba(24, 24, 24, 0.85);
+  outline-offset: 3px;
+}
+
+.motion-block__media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 60%;
+  transform: scale(1);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  filter: brightness(2.2) contrast(1.01) saturate(0.8) ;  
+}
+
+
+
+.motion-block__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(24, 24, 24, 0.92) 0%, /* Darkened slightly at the base for higher-aura contrast text */
+    rgba(24, 24, 24, 0.45) 50%,
+    rgba(24, 24, 24, 0.15) 100%
+  );
+  transition: opacity 0.35s ease;
+}
+
+.motion-block__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1; /* Instructs the body container to expand dynamically to ensure equal heights */
+  padding: 1.5rem 1.25rem 1.35rem; /* Slightly pulled in side padding for narrow columns */
+}
+
+.motion-block__tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.65rem; /* Balanced for 4-in-a-row presentation */
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 0.5rem;
+}
+
+.motion-block__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem; /* Balanced sizing so long experiment names don't wrap clumsily */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.motion-block__text {
+  margin: 0 0 0.85rem;
+  font-size: 0.88rem; /* Cleaned up typography hierarchy for high density grids */
+  line-height: 1.5;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.motion-block__cta {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transform: translateY(0);
+  transition: transform 0.35s ease, letter-spacing 0.35s ease;
+}
+
+
+/* Hover effects */
+.motion-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(24, 24, 24, 0.18);
+}
+
+.motion-block:hover .motion-block__media {
+  transform: scale(1.07);
+}
+
+.motion-block:hover .motion-block__cta {
+  transform: translateY(-2px);
+  letter-spacing: 0.1em;
+}
+
 
 /* ============================================================
    COLOR GRADING SECTION — Video, notes, cards, overlay, buttons
@@ -907,11 +1039,10 @@
   }
 
   .section-note {
-    margin: 0 0 2rem;
-    max-width: 63rem;
+    max-width: 70rem;
     color: #878787;
-    font-size: 0.85rem;
-    line-height: 1.65;
+    font-size: 0.8rem;
+    line-height: 1.2;
     font-weight: 400;
   }
 
@@ -1348,15 +1479,7 @@
 /* ============================================================
    RESPONSIVE — BAR ROW / PROJECT GRID / SECTION LEAD (max-width: 720px)
    ============================================================ */
-  @media (max-width: 720px) {
-    .bar-row {
-      grid-template-columns: 1fr;
-    }
 
-    .bar-value {
-      justify-self: start;
-    }
-  }
 
   @media (max-width: 720px) {
     .project-grid {
@@ -2023,9 +2146,18 @@ html {
   }
 
   /* Project Grid Framing Adjustments */
-  .project-block:nth-child(4) .project-block__media {
-    background-position: 0% 90%; 
-    background-size: 115%; 
+    .project-block:nth-child(1) .project-block__media {
+    background-position: 70%; 
+    background-size: auto 100%; 
+  }
+    .project-block:nth-child(5) .project-block__media {
+    background-position: 30%; 
+    background-size: auto 100%;
+    background-size:  120%;
+  }
+    .project-block:nth-child(4) .project-block__media {
+    background-position: 40% 50%; 
+    background-size: 145%; 
   }
   .project-block:nth-child(6) .project-block__media {
     background-position: 55%; 
@@ -2036,7 +2168,7 @@ html {
     background-size: 100%; 
   }
   .project-block:nth-child(8) .project-block__media {
-    background-position: 43%; 
+    background-position: 30%; 
     filter: brightness(1.8) contrast(0.98); 
     background-size: auto 100%;
   }
@@ -2122,4 +2254,101 @@ margin-left: -2px;
     background-color: transparent!important;
     color: #ffffff !important;
 }
+
+}
+/* --- Mobile View Overrides (Screens smaller than 768px) --- */
+@media (max-width: 767px) {
+  .motion-grid {
+    /* Changes grid from 4 columns to 2 columns */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem; /* Tighter gap to save screen space */
+  }
+
+  .motion-block {
+    min-height: 200px; /* Slightly shorter so narrow cards don't look overly stretched */
+  }
+
+  .motion-block__body {
+    padding: 1rem 0.85rem; /* Reduces padding so text doesn't get squeezed */
+  }
+
+  .motion-block__tag {
+    font-size: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .motion-block__title {
+    font-size: 0.9rem; /* Prevents long titles from wrapping onto too many lines */
+    margin: 0 0 0.25rem;
+  }
+
+  .motion-block__text {
+    font-size: 0.5rem;
+    line-height: 1.4;
+    margin: 0 0 0.65rem;
+  }
+
+  .motion-block__cta {
+    font-size: 0.45rem;
+  }
+}
+/* --- Mobile View Overrides (Screens smaller than 768px) --- */
+@media (max-width: 767px) {
+  .project-grid {
+    /* Retains 2 columns but applies the tighter mobile gap */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem; 
+  }
+
+  .project-block {
+    min-height: 200px; /* Shorter mobile height to match your exact specifications */
+  }
+
+  .project-block__body {
+    min-height: 200px; /* Overrides the desktop 300px body layout */
+    padding: 0.8rem 0.95rem; /* Reduces padding so text doesn't get squeezed */
+  }
+
+  .project-block__tag {
+    font-size: 0.35rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-block__title {
+    font-size: 0.8rem; /* Prevents long titles from wrapping onto too many lines */
+    margin: 0 0 0.25rem;
+  }
+
+  .project-block__text {
+    font-size: 0.5rem;
+    line-height: 1.4;
+    margin: 0 0 0.65rem;
+  }
+
+  .project-block__cta {
+    font-size: 0.5rem;
+  }
+}
+/* --- Mobile View Only (Screens smaller than 768px) --- */
+@media (max-width: 767px) {
+  /* Assumes your individual skill item container uses flexbox */
+  .bar-chart > div, 
+  .chart-item { 
+    display: flex !important;
+    flex-direction: column !important; /* Forces elements to stack vertically like Photo 1 */
+    align-items: flex-start !important;
+    gap: 0.6rem !important;
+  }
+
+  /* Ensures the bar container takes up the full width of the card on mobile */
+  .progress-bar-container,
+  .bar-chart div div {
+    width: 100% !important; 
+  }
+  
+  /* Adds a slight top margin to the percentage text so it sits cleanly below the bar */
+  .chart-percentage {
+    margin-top: 0.2rem;
+    align-self: flex-start;
+  }
 }
