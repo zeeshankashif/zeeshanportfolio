@@ -305,13 +305,13 @@
     font-family: inherit;
   }
 [data-theme="light"] .pill--solid:hover{
-  background: #ff0033;
+  background: #00bcd4;
 }
 [data-theme="light"] .pill--solidd:hover{
   background: #000000;
 }
 [data-theme="light"] .pill--ghost:hover{
-  background-color: #ff0033;
+  background-color: #00bcd4;
   color: #ffffff;
   border-color: #ffffff00;
 }
@@ -386,7 +386,7 @@
   }
 
 [data-theme="light"]::selection {
-    background-color: #FF0033; /* Your High-Vibrancy Kinetic Red */
+    background-color: #00bcd4; /* Your High-Vibrancy Kinetic Red */
     color: #ffffff;            /* Absolute Deep Black for maximum legibility */
 }
 [data-theme="dark"]::selection {
@@ -709,7 +709,7 @@
   }
 
   [data-theme="light"] .work-card:hover {
-    border-color: #ff6c93;
+    border-color: #00bcd4;
     transform: translateY(-5px);
     transition: transform 0.2s ease, border-color 0.2s ease;
     cursor: pointer !important;
