@@ -368,7 +368,7 @@ function AboutSection() {
             />
           </span>
         </h2>
-        <p className="about-text">I love everything that goes FAST & BOOM</p>
+        <p className="about-text">I Love everything that goes FAST & BOOM</p>
         <p className="about-text">Email : zexan.one@gmail.com</p>
         <p className="about-text">Github/Vercel : @zeeshankashif</p>
 
@@ -377,8 +377,9 @@ function AboutSection() {
         <div className="about-actions">
           <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
+          <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a>
           <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-          <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
+        
         </div>
       </div>
       <footer className="site-footer">
@@ -562,9 +563,12 @@ function App() {
                   <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
                   <div className="hero-ctas">
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
-                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
-                    <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-                    <a className="pill pill--ghost" href="https://github.com/zeeshankashif" target="_blank" rel="noopener noreferrer">Github</a>
+                                        <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
+
+
+<a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
+<a className="pill pill--ghost" href="cv.avif"target="_blank" rel="noopener noreferrer">View CV</a>
+                 
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
