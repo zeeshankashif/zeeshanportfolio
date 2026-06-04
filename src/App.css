@@ -1166,7 +1166,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.646) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
- line-height: normal;
+  line-height: normal;
  /* Resets text spacing */
 }
 
@@ -1834,7 +1834,9 @@ html {
     max-width: 100% !important;
     min-height: 250px !important; /* Ensures the card has a physical footprint */
     display: block !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 11px !important;
+    margin-top: -5px !important;
+
     visibility: visible !important;
     opacity: 1 !important;
    
