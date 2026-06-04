@@ -133,9 +133,15 @@
   
   /* Optional: add a subtle bottom border to define the edge */
   border-bottom: 1px solid var(--card-border);
-  
+
+  }
+  [data-theme="light"] .nav {
+      box-shadow: #ffffff 0px -50px 40px;  
   }
   
+   [data-theme="dark"] .nav {
+      box-shadow: #000000 0px -50px 40px;  
+  }
 
   .nav-brand {
     
