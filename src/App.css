@@ -1015,7 +1015,7 @@
   /* Video */
   .video-element {
   display: block;        /* Forces the element to start on a new line and act as a block */
-  margin-left: 0;        /* Pulls it completely to the left boundary of its container */
+  margin-left: 0;        /* Pulls it completely to the left boundeary of its container */
   width: 15%;
   border-radius: 20px;
   box-shadow: #18181854 0px 0px 20px;
