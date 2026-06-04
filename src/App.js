@@ -369,6 +369,10 @@ function AboutSection() {
           </span>
         </h2>
         <p className="about-text">I love everything that goes FAST & BOOM</p>
+        <p className="about-text">Email : zexan.one@gmail.com</p>
+        <p className="about-text">Github/Vercel : @zeeshankashif</p>
+
+
 
         <div className="about-actions">
           <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
