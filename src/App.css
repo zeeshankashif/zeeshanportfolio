@@ -226,7 +226,7 @@
   /* —— Sections —— */
   .section {
     padding: 5rem clamp(1rem, 5vw, 3rem);
-    margin-top: -35px;
+    margin-top: -10px;
   }
 
   .section--tight {
@@ -1621,7 +1621,7 @@ html {
     padding: 3rem 1.25rem; /* Reduce large desktop padding */
   }
 .section--tight {
-    margin-top: -15vw;
+    margin-top: -10vw;
   }
   /* Ensure background streaks don't cause horizontal scroll */
   .liquid-streak {
@@ -2131,7 +2131,7 @@ html {
 
 
   .install-banner {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .banner-btns {
