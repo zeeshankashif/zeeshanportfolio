@@ -371,7 +371,7 @@ function AboutSection() {
         <p className="about-text">I love everything that goes FAST & BOOM</p>
 
         <div className="about-actions">
-          <a className="pill pill--solid" href="mailto:zeeshankashif.100m@gmail.com">Email Me</a>
+          <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
           <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
           <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
           <a className="pill pill--ghost" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>Back to top</a>
