@@ -1943,7 +1943,16 @@ html {
     border: 1px solid rgba(255, 255, 255, 0.15) !important; /* Your visible border */
     border-radius: 18px !important;               /* Matches your rounded corners */
     overflow: hidden;    
-    box-shadow: 0px -50px 70px rgb(0, 0, 0);                         /* Keeps content inside the roundness */
+    box-shadow: 0px -50px 70px rgb(0, 0, 0)   !important;                         /* Keeps content inside the roundness */
+  }
+   [data-theme="light"] .nav {
+    /* background: rgba(24, 24, 24, 0.867) !important; Dark tint inside the border */
+    backdrop-filter: blur(12px) !important;       /* The frosted glass look */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.123) !important; /* Your visible border */
+    border-radius: 18px !important;               /* Matches your rounded corners */
+    overflow: hidden;    
+    box-shadow: 0px -50px 70px rgba(255, 255, 255, 0.779)   !important;                         /* Keeps content inside the roundness */
   }
 }
 
@@ -1965,7 +1974,7 @@ html {
     border-radius: 15px !important;                 /* Rounded corners */
     padding: 0px 9px !important;                   /* Internal breathing room */
     overflow: hidden;
-     box-shadow: 0px -50px 70px rgb(146, 146, 146);   
+     box-shadow: 0px -50px 70px rgb(146, 146, 146)   !important; 
   }
   
   
