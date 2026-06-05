@@ -354,6 +354,11 @@ function GradingSection() {
 
 function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
+  
+  // Check if the user arrived via the Freelancer link
+  const isFreelancer = typeof window !== 'undefined' && 
+    new URLSearchParams(window.location.search).get('source') === 'freelancer';
+
   return (
     <section id="about" className="section section--footer" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
@@ -369,17 +374,36 @@ function AboutSection() {
           </span>
         </h2>
         <p className="about-text">I Love everything that goes FAST & BOOM</p>
-        <p className="about-text">Email : zexan.one@gmail.com</p>
-        <p className="about-text">Github/Vercel : @zeeshankashif</p>
-
-
+        
+        {/* Only show these details if the user is NOT from Freelancer */}
+        {!isFreelancer && (
+          <>
+            <p className="about-text">Email : zexan.one@gmail.com</p>
+            <p className="about-text">Github/Vercel : @zeeshankashif</p>
+          </>
+        )}
 
         <div className="about-actions">
-          <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
-          <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
+          {isFreelancer ? (
+            // Freelancer-safe layout: Links directly to your platform profile
+            <a 
+              className="pill pill--solid" 
+              href="YOUR_FREELANCER_PROFILE_URL_HERE" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Hire Me
+            </a>
+          ) : (
+            // Standard layout for general visitors
+            <>
+              <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
+              <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
+            </>
+          )}
+          
           <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a>
           <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-        
         </div>
       </div>
       <footer className="site-footer">
@@ -389,7 +413,6 @@ function AboutSection() {
     </section>
   );
 }
-
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
