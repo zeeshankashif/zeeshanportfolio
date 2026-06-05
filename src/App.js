@@ -385,15 +385,23 @@ function AboutSection() {
 
         <div className="about-actions">
           {isFreelancer ? (
-            // Freelancer-safe layout: Links directly to your platform profile
-            <a 
-              className="pill pill--solid" 
-              href="YOUR_FREELANCER_PROFILE_URL_HERE" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              Hire Me
-            </a>
+            // Freelancer-safe layout: Directs to your platform profile with the Experience button next to it
+            <>
+              <a 
+                className="pill pill--solid" 
+                href="https://www.freelancer.pk/u/zeeshankashiff" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Hire Me
+              </a>
+              <a 
+                className="pill pill--solid" 
+                href="#experience"
+              >
+                Experience
+              </a>
+            </>
           ) : (
             // Standard layout for general visitors
             <>
@@ -412,7 +420,7 @@ function AboutSection() {
       </footer>
     </section>
   );
-}
+} 
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
