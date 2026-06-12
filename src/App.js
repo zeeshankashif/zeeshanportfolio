@@ -367,7 +367,7 @@ function AboutSection() {
           Zeeshan Kashif 
           <span className="flag-container">
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" 
+              src="flag.avif" 
               alt="PK" 
               className="name-flag"
             />
