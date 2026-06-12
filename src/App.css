@@ -271,15 +271,15 @@
   }
 
 
-/* Light Theme: Subtle Grey */
+
 [data-theme="light"] .section-divider {
   background-color: #616161; 
 }
 
-/* Dark Theme: Your Neon Green */
+
 [data-theme="dark"] .section-divider {
-  background-color: #37ff14c6; /* Replace with your specific neon hex if different */
-  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3); /* Optional: Very slight glow for dark mode */
+  background-color: #37ff14c6; 
+
 }
 
 /* These stay OUTSIDE the media query — apply to all screen sizes */
@@ -1197,14 +1197,20 @@
   align-items: center;
   margin-top: 8px;
 }
-.status-tag {
+[data-theme='dark'] .status-tag {
   color: #5bff15dc; /* Neon Green */
   font-weight: 999;
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 1px;
 }
-
+[data-theme='light'] .status-tag {
+  color: #00e1ff; /* blue */
+  font-weight: 999;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
 .button-container {
   position: absolute;
   bottom: 12px;
