@@ -437,11 +437,19 @@ function App() {
 
   const scrollToId = (id) => {
     if (id === 'home' || id === 'top') {
-      if (lenis) lenis.scrollTo(0, { duration: 1.2 });
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } else {
       const element = document.getElementById(id);
-      if (element && lenis) {
-        lenis.scrollTo(element, { duration: 1.2, offset: 0 });
+      if (element) {
+        if (lenis) {
+          lenis.scrollTo(element, { duration: 1.2, offset: 0 });
+        } else {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -557,8 +565,8 @@ function App() {
   };
 
   return (
-    /* 3. Wrapped configuration using modern ReactLenis setup with syncTouch */
-    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, syncTouch: true }}>
+    /* 3. Added a clean fallback conditional inside the options prop to completely strip custom tracking on mobile devices */
+    <ReactLenis root options={isMobile ? { disabled: true } : { lerp: 0.08, duration: 1.2 }}>
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
         <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} scrollToId={scrollToId} />
