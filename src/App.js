@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 import { useMotionValue, useSpring } from 'framer-motion';
+// 1. Importing components directly from the unified lenis/react package
+import { ReactLenis, useLenis } from 'lenis/react'; 
 
 const NAV = [
   { id: 'home', label: 'Home' },
@@ -60,17 +62,6 @@ const COLOR_GRADING = [
   { id: 12, title: 'Home', before: 'hom.avif', after: 'homs.avif' },
 ];
 
-function scrollToId(id) {
-  if (id === 'home' || id === 'top') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-}
-
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
@@ -81,7 +72,7 @@ function LiquidBackdrop() {
   );
 }
 
-function Navbar({ theme, onToggleTheme }) {
+function Navbar({ theme, onToggleTheme, scrollToId }) {
   return (
     <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
@@ -352,10 +343,9 @@ function GradingSection() {
   );
 }
 
-function AboutSection() {
+function AboutSection({ scrollToId }) {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
   
-  // Check if the user arrived via the Freelancer link
   const isFreelancer = typeof window !== 'undefined' && 
     new URLSearchParams(window.location.search).get('source') === 'freelancer';
 
@@ -375,7 +365,6 @@ function AboutSection() {
         </h2>
         <p className="about-text">I Love everything that goes FAST & BOOM</p>
         
-        {/* Only show these details if the user is NOT from Freelancer */}
         {!isFreelancer && (
           <>
             <p className="about-text">Email : zexan.one@gmail.com</p>
@@ -385,7 +374,6 @@ function AboutSection() {
 
         <div className="about-actions">
           {isFreelancer ? (
-            // Freelancer-safe layout: Directs to your platform profile with the Experience button next to it
             <>
               <a 
                 className="pill pill--solid" 
@@ -398,12 +386,12 @@ function AboutSection() {
               <a 
                 className="pill pill--solid" 
                 href="#experience"
+                onClick={(e) => { e.preventDefault(); scrollToId('experience'); }}
               >
                 Experience
               </a>
             </>
           ) : (
-            // Standard layout for general visitors
             <>
               <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
               <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
@@ -421,6 +409,7 @@ function AboutSection() {
     </section>
   );
 } 
+
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
@@ -442,6 +431,20 @@ function App() {
   const smoothSize = useSpring(maskSizeValue, { damping: 40, stiffness: 120 });
 
   const [dreamyMask, setDreamyMask] = useState("");
+
+  // 2. Fetch the Lenis Instance to drive smooth anchor link actions
+  const lenis = useLenis();
+
+  const scrollToId = (id) => {
+    if (id === 'home' || id === 'top') {
+      if (lenis) lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      const element = document.getElementById(id);
+      if (element && lenis) {
+        lenis.scrollTo(element, { duration: 1.2, offset: 0 });
+      }
+    }
+  };
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -554,10 +557,11 @@ function App() {
   };
 
   return (
-    <>
+    /* 3. Wrapped configuration using modern ReactLenis setup with syncTouch */
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, syncTouch: true }}>
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
-        <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} />
+        <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} scrollToId={scrollToId} />
         <main style={{ width: '100%', position: 'relative', overflow: 'hidden' }}>
           <div className={`app-entrance-wrapper ${(heroActive && heroImageLoaded) ? 'entrance-ready' : 'entrance-loading'}`} style={{ width: '100%' }}>
             {installPrompt && (
@@ -594,12 +598,11 @@ function App() {
                   <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
                   <div className="hero-ctas">
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
-                                        <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
 
-
-<a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
-<a className="pill pill--ghost" href="cv.avif"target="_blank" rel="noopener noreferrer">View CV</a>
-                 
+                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
+                    <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+                   
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
@@ -612,11 +615,11 @@ function App() {
             <MotionSection />
             <GradingSection />
             <div className="section-divider" aria-hidden="true" />
-            <AboutSection />
+            <AboutSection scrollToId={scrollToId} />
           </div>
         </main>
       </div>
-    </>
+    </ReactLenis>
   );
 }
 
