@@ -437,19 +437,11 @@ function App() {
 
   const scrollToId = (id) => {
     if (id === 'home' || id === 'top') {
-      if (lenis) {
-        lenis.scrollTo(0, { duration: 1.2 });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      if (lenis) lenis.scrollTo(0, { duration: 1.2 });
     } else {
       const element = document.getElementById(id);
-      if (element) {
-        if (lenis) {
-          lenis.scrollTo(element, { duration: 1.2, offset: 0 });
-        } else {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+      if (element && lenis) {
+        lenis.scrollTo(element, { duration: 1.2, offset: 0 });
       }
     }
   };
@@ -524,6 +516,17 @@ function App() {
     };
   }, []);
 
+  // ── seq-settled: fires after the last hero pill's animation finishes ──
+  // Last pill: delay 0.75s + duration 0.9s = 1.65s. We add a small buffer.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.hero-ctas .pill').forEach((el) => {
+        el.classList.add('seq-settled');
+      });
+    }, 1700);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     maskSizeValue.set(isHeroHovered ? 260 : 0);
   }, [isHeroHovered, maskSizeValue]);
@@ -565,8 +568,8 @@ function App() {
   };
 
   return (
-    /* 3. Added a clean fallback conditional inside the options prop to completely strip custom tracking on mobile devices */
-    <ReactLenis root options={isMobile ? { disabled: true } : { lerp: 0.08, duration: 1.2 }}>
+    /* 3. Wrapped configuration using modern ReactLenis setup with syncTouch */
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, syncTouch: true }}>
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
         <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} scrollToId={scrollToId} />

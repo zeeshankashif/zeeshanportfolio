@@ -75,6 +75,81 @@
     opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Hero Text Animation - Staggered entrance with 0.2s delay */
+@keyframes heroTextFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+  }
+}
+
+.hero-copy {
+  animation: heroTextFadeInUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+/* Hero Button Animation - Sequential staggered entrance with smooth easing */
+@keyframes heroButtonSlideUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-ctas .pill {
+  animation: heroButtonSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.hero-ctas .pill:nth-child(1) {
+  animation-delay: 0.35s;
+}
+
+.hero-ctas .pill:nth-child(2) {
+  animation-delay: 0.45s;
+}
+
+.hero-ctas .pill:nth-child(3) {
+  animation-delay: 0.55s;
+}
+
+.hero-ctas .pill:nth-child(4) {
+  animation-delay: 0.65s;
+}
+
+.hero-ctas .pill:nth-child(5) {
+  animation-delay: 0.75s;
+}
+
+/* ── seq-settled: strip the frozen animation fill so hover transforms work ── */
+.hero-ctas .pill.seq-settled {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease !important;
+}
+
+.hero-ctas .pill.seq-settled:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22) !important;
+}
+
+.hero-ctas .pill--solid.seq-settled:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24) !important;
+}
+
   /* —— Glass panels —— */
   .glass-panel {
     background: var(--card);
@@ -342,6 +417,12 @@
     transform: translateY(-2px);
     box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
   }
+
+  /* Hero section solid pill hover - enhanced translate with color change */
+  .hero-ctas .pill--solid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24);
+  }
  .pill--solidd {
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
@@ -420,6 +501,13 @@
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(2rem, 6vw, 4rem);
     align-items: center;
+  }
+  
+  /* Ensure hero-inner doesn't apply reveal animation class to its children in hero section */
+  .hero .hero-inner.reveal {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: none;
   }
   
   .hero-visual {
@@ -2275,10 +2363,12 @@ margin-left: -2px;
 [data-theme='light'] .pill--solid:hover {
     background-color: #181818 !important;
     color: #ffffff !important;
+    transform: translateY(-2px) !important;
 }
 [data-theme='dark'] .pill--solid:hover {
     background-color: #37ff14ea !important;
     color: #ffffff !important;
+    transform: translateY(-2px) !important;
 }
 [data-theme='light'] .pill--ghost:hover {
     background-color: transparent !important;
@@ -2464,4 +2554,16 @@ margin-left: -2px;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
+}
+
+/* ============================================================
+   HERO PILL HOVER — Final override so seq-settled wins on desktop
+   ============================================================ */
+.hero-ctas .pill--solid.seq-settled:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24) !important;
+}
+
+.hero-ctas .pill--ghost.seq-settled:hover {
+  transform: translateY(-2px) !important;
 }
