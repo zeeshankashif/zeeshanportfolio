@@ -409,12 +409,13 @@ function AboutSection({ scrollToId }) {
     </section>
   );
 } 
+// ... (all your existing imports and constant arrays remain exactly the same)
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // Already present in your code
   const [heroImageLoaded, setHeroImageLoaded] = useState(false);
 
   const maskContainerRef = useRef(null);
@@ -432,16 +433,15 @@ function App() {
 
   const [dreamyMask, setDreamyMask] = useState("");
 
-  // 2. Fetch the Lenis Instance to drive smooth anchor link actions
   const lenis = useLenis();
 
   const scrollToId = (id) => {
     if (id === 'home' || id === 'top') {
-      if (lenis) lenis.scrollTo(0, { duration: 1.2 });
+      if (lenis) lenis.scrollTo(0, { duration: isMobile ? 0 : 1.2 });
     } else {
       const element = document.getElementById(id);
       if (element && lenis) {
-        lenis.scrollTo(element, { duration: 1.2, offset: 0 });
+        lenis.scrollTo(element, { duration: isMobile ? 0 : 1.2, offset: 0 });
       }
     }
   };
@@ -516,8 +516,6 @@ function App() {
     };
   }, []);
 
-  // ── seq-settled: fires after the last hero pill's animation finishes ──
-  // Last pill: delay 0.75s + duration 0.9s = 1.65s. We add a small buffer.
   useEffect(() => {
     const timer = setTimeout(() => {
       document.querySelectorAll('.hero-ctas .pill').forEach((el) => {
@@ -568,8 +566,15 @@ function App() {
   };
 
   return (
-    /* 3. Wrapped configuration using modern ReactLenis setup with syncTouch */
-    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, syncTouch: true }}>
+    /* Updated dynamically to strip away duration, lerp, and touch tracking on mobile */
+    <ReactLenis 
+      root 
+      options={
+        isMobile 
+          ? { duration: 0, syncTouch: false } 
+          : { lerp: 0.08, duration: 1.2, syncTouch: true }
+      }
+    >
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
         <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} scrollToId={scrollToId} />
