@@ -334,7 +334,7 @@ function GradingSection() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'left', marginTop: '20px' , marginBottom: '-50px'}}>
-          <button className="pill pill--solid" onClick={toggleAll}>
+          <button className="pill pill--solido" onClick={toggleAll}>
             {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
           </button>
         </div>
@@ -384,7 +384,7 @@ function AboutSection({ scrollToId }) {
                 Hire Me
               </a>
               <a 
-                className="pill pill--solid" 
+                className="pill pill--solido" 
                 href="#experience"
                 onClick={(e) => { e.preventDefault(); scrollToId('experience'); }}
               >
@@ -393,13 +393,13 @@ function AboutSection({ scrollToId }) {
             </>
           ) : (
             <>
-              <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
-              <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
+              <a className="pill pill--solido" href="mailto:zexan.one@gmail.com">Email Me</a>
+              <a className="pill pill--solido" href="https://github.com/zeeshankashif">Github</a>
             </>
           )}
           
-          <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a>
-          <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+          <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghosto">LinkedIn</a>
+          <a className="pill pill--ghosto" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
         </div>
       </div>
       <footer className="site-footer">
@@ -408,14 +408,13 @@ function AboutSection({ scrollToId }) {
       </footer>
     </section>
   );
-} 
-// ... (all your existing imports and constant arrays remain exactly the same)
+}
 
 function App() {
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
-  const [isMobile, setIsMobile] = useState(false); // Already present in your code
+  const [isMobile, setIsMobile] = useState(false);
   const [heroImageLoaded, setHeroImageLoaded] = useState(false);
 
   const maskContainerRef = useRef(null);
@@ -435,52 +434,40 @@ function App() {
 
   const lenis = useLenis();
 
-  // Fluid easing curves with smooth start & stop
-const ease = {
-  // Ease-out cubic — smooth acceleration, slow deceleration
-  easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
+  const ease = {
+    easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
+    inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+    inOutCubic: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+    inOutExpo: (t) => t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
+    outExpo: (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
+    inOutQuart: (t) => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2,
+  };
 
-  // Smooth sine ease-in-out — gentle acceleration and deceleration
-  inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+  const scrollToId = (id) => {
+    if (!lenis) return;
 
-  // Smooth cubic ease-in-out — natural deceleration, no snap
-  inOutCubic: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
-
-  // Expo ease-in-out — smooth powerful acceleration and deceleration
-  inOutExpo: (t) => t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
-
-  // Expo ease-out — fast start, long silky tail (best for nav jumps)
-  outExpo: (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
-
-  // Smooth quartic ease-in-out — heavier, more cinematic (best for home scroll)
-  inOutQuart: (t) => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2,
-};
-
-const scrollToId = (id) => {
-  if (!lenis) return;
-
- if (id === 'home' || id === 'top') {
-    lenis.scrollTo(0, {
-      duration: 1.2,           // Runs on both mobile and desktop
-      easing: ease.inOutCubic,
-    });
-  } else {
-    const element = document.getElementById(id);
-    if (element) {
-      lenis.scrollTo(element, {
-        duration: 1.2,           // Runs on both mobile and desktop
-        offset: 0,
+    if (id === 'home' || id === 'top') {
+      lenis.scrollTo(0, {
+        duration: 1.2,
         easing: ease.inOutCubic,
       });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        lenis.scrollTo(element, {
+          duration: 1.2,
+          offset: 0,
+          easing: ease.inOutCubic,
+        });
+      }
     }
-  }
-};
+  };
 
-useEffect(() => {
-  if ('scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
 
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -596,13 +583,20 @@ useEffect(() => {
   };
 
   return (
-    /* Updated dynamically to enable smooth quartic scrolling on mobile and desktop */
     <ReactLenis 
       root 
       options={
         isMobile 
-          ? { lerp: 0.16, duration: 1.2, syncTouch: true } 
-          : { lerp: 0.16, duration: 1.6, syncTouch: true }
+          ? { 
+              syncTouch: false,   // Restores silky smooth native touch physics
+              smoothTouch: false, // Disables JS-rendered lag on drag
+              autoPrevent: false
+            } 
+          : { 
+              lerp: 0.14,         // Gorgeous custom easing on desktop wheels
+              duration: 1.5, 
+              syncTouch: false 
+            }
       }
     >
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
@@ -643,12 +637,12 @@ useEffect(() => {
                   <h1 className="hero-title">Zeeshan Kashif</h1>
                   <p className="hero-sub">&quot; I DEVELOPE TO DOMINATE &quot; </p>
                   <div className="hero-ctas">
-                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
-                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
+                    <button type="button" className="pill pill--solido" onClick={() => scrollToId('experience')}>Experience</button>
+                    <button type="button" className="pill pill--solido" onClick={() => scrollToId('projects')}>Projects</button>
 
-                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
-                    <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-                   
+                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghosto">LinkedIn</a> 
+                    <a className="pill pill--ghosto" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+                    
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>

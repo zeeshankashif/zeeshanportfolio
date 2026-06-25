@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">);
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">);
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @font-face{
   font-family: 'Vampire Wars';
@@ -141,6 +141,7 @@
   transform: none !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease !important;
 }
+
 
 .hero-ctas .pill.seq-settled:hover {
   transform: translateY(-2px) !important;
@@ -388,18 +389,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
     font-family: inherit;
   }
-[data-theme="light"] .pill--solid:hover{
+[data-theme="light"] .pill--solido:hover{
   background: #00bcd4;
 }
 [data-theme="light"] .pill--solidd:hover{
   background: #000000;
 }
-[data-theme="light"] .pill--ghost:hover{
+[data-theme="light"] .pill--ghosto:hover{
   background-color: #00bcd4;
   color: #ffffff;
   border-color: #ffffff00;
 }
-[data-theme="dark"] .pill--ghost:hover{
+[data-theme="dark"] .pill--ghosto:hover{
   background-color: #37ff14ea;
   color: #ffffff;
   border-color: #ffffff00;
@@ -415,12 +416,20 @@
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
   }
+   .pill--solido {
+    background: var(--btn-solid-bg);
+    color: var(--btn-solid-fg);
+    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
+  }
 
   .pill--solid:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
   }
-
+ .pill--solido:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
+  }
   /* Hero section solid pill hover - enhanced translate with color change */
   .hero-ctas .pill--solid:hover {
     transform: translateY(-2px);
@@ -446,6 +455,11 @@
   }
 
   .pill--ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--line);
+  }
+   .pill--ghosto {
     background: transparent;
     color: var(--fg);
     border: 1px solid var(--line);
@@ -2192,7 +2206,7 @@ html {
   }
   .hero-sub {
     margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
-    max-width: 17rem;
+    text-align: center;  
     /* ... other styles ... */
 }
 .hero-sub {
@@ -2203,7 +2217,6 @@ html {
     color: #303030;
     font-size: 0.88rem;
     line-height: 1.65;
-    max-width: 17rem;
     font-weight: 600;
 }
 .hero-sub:hover{
@@ -2222,12 +2235,12 @@ html {
     cursor: none;
   }
 
-  .pill--solid:active {
+  .pill--solido:active {
     transform: translateY(0px) scale(0.98);
     transition: transform 0.1s ease;
   }
 
-  .pill--ghost:active {
+  .pill--ghosto:active {
     transform: translateY(0px) scale(0.96);
     transition: transform 0.1s ease;
   }
@@ -2413,7 +2426,7 @@ margin-left: -2px;
   color: #eeeeee !important;
       border: 1px solid var(--line);
 }
-.pill--solid:active {
+.pill--solido:active {
     transform: translateY(0px) scale(0.97);
 }
 [data-theme='light'] .pill--solid:hover {
@@ -2609,6 +2622,9 @@ margin-left: -2px;
     color: #383838 !important;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
+  }
+  [data-theme="dark"] .bar-value{
+    color: #f1f1f1 !important;
   }
 }
 
