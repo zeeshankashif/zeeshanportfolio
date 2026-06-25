@@ -703,6 +703,7 @@
     box-shadow: none;
     transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  
 
   .bar-fill--grow {
     width: var(--target, 0%);
@@ -711,7 +712,7 @@
   .bar-value {
     font-weight: 800;
     font-size: 0.85rem;
-    color: var(--silver);
+    color: #383838;
     text-align: right;
   }
 
@@ -2552,7 +2553,7 @@ margin-left: -2px;
   .bar-chart .bar-value {
     font-size: 0.8rem !important;
     font-weight: 700 !important;
-    color: var(--silver) !important;
+    color: #383838 !important;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
