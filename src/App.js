@@ -435,22 +435,52 @@ function App() {
 
   const lenis = useLenis();
 
-  const scrollToId = (id) => {
-    if (id === 'home' || id === 'top') {
-      if (lenis) lenis.scrollTo(0, { duration: isMobile ? 0 : 1.2 });
-    } else {
-      const element = document.getElementById(id);
-      if (element && lenis) {
-        lenis.scrollTo(element, { duration: isMobile ? 0 : 1.2, offset: 0 });
-      }
-    }
-  };
+  // Fluid easing curves with smooth start & stop
+const ease = {
+  // Ease-out cubic — smooth acceleration, slow deceleration
+  easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
 
-  useEffect(() => {
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+  // Smooth sine ease-in-out — gentle acceleration and deceleration
+  inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
+
+  // Smooth cubic ease-in-out — natural deceleration, no snap
+  inOutCubic: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+
+  // Expo ease-in-out — smooth powerful acceleration and deceleration
+  inOutExpo: (t) => t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
+
+  // Expo ease-out — fast start, long silky tail (best for nav jumps)
+  outExpo: (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
+
+  // Smooth quartic ease-in-out — heavier, more cinematic (best for home scroll)
+  inOutQuart: (t) => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2,
+};
+
+const scrollToId = (id) => {
+  if (!lenis) return;
+
+ if (id === 'home' || id === 'top') {
+    lenis.scrollTo(0, {
+      duration: 1.2,           // Runs on both mobile and desktop
+      easing: ease.inOutCubic,
+    });
+  } else {
+    const element = document.getElementById(id);
+    if (element) {
+      lenis.scrollTo(element, {
+        duration: 1.2,           // Runs on both mobile and desktop
+        offset: 0,
+        easing: ease.inOutCubic,
+      });
     }
-    window.scrollTo(0, 0);
+  }
+};
+
+useEffect(() => {
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
 
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -566,13 +596,13 @@ function App() {
   };
 
   return (
-    /* Updated dynamically to strip away duration, lerp, and touch tracking on mobile */
+    /* Updated dynamically to enable smooth quartic scrolling on mobile and desktop */
     <ReactLenis 
       root 
       options={
         isMobile 
-          ? { duration: 0, syncTouch: false } 
-          : { lerp: 0.08, duration: 1.2, syncTouch: true }
+          ? { lerp: 0.16, duration: 1.2, syncTouch: true } 
+          : { lerp: 0.16, duration: 1.6, syncTouch: true }
       }
     >
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
