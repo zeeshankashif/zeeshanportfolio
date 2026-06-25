@@ -641,7 +641,7 @@ useEffect(() => {
                 <div className="hero-copy">
                   <p className="eyebrow hero-eyebrow">Portfolio</p>
                   <h1 className="hero-title">Zeeshan Kashif</h1>
-                  <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
+                  <p className="hero-sub">&quot; I DEVELOPE TO DOMINATE &quot; </p>
                   <div className="hero-ctas">
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>

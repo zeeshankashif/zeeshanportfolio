@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">);
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">);
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @font-face{
   font-family: 'Vampire Wars';
@@ -623,19 +625,35 @@
   .hero-title {
     margin: 0 0 1rem;
     font-size: clamp(2.5rem, 7vw, 4rem);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.04em;
     line-height: 1.05;
+   
   }
 
-  .hero-sub {
-    margin: 0 0 2rem;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.65;
-    max-width: 28rem;
-    font-weight: 600;
-  }
+ .hero-sub {
+  margin: 0 0 2rem;
+  color: #303030;
+  font-size: 1rem;
+  font-family: 'michroma' , sans-serif;
+  line-height: 1.65;
+  max-width: 23rem;
+  letter-spacing: 0.02em;
+  font-weight: 100;
+  
+  /* Smooth timing setup */
+  transition: letter-spacing 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 0.5s ease, 
+              filter 0.5s ease;
+  will-change: letter-spacing, filter;
+}
+
+.hero-sub:hover {
+  color: #00bcd4; /* Shifts from muted to crisp white */
+  letter-spacing: 0.04em;    /* Elegantly breathes outward */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15)); /* Soft, premium glow */
+  cursor: default; 
+}
 
   .hero-ctas {
     display: flex;
@@ -2153,7 +2171,7 @@ html {
   }
   .hero-sub {
     margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
-    max-width: 28rem;
+    max-width: 17rem;
     /* ... other styles ... */
 }
 .hero-sub {
@@ -2161,11 +2179,14 @@ html {
     margin: 0 auto 2rem; /* Centers the block itself */
     text-align: center;  /* Centers the text lines */
     
-    color: var(--muted);
+    color: #303030;
     font-size: 0.88rem;
     line-height: 1.65;
-    max-width: 28rem;
+    max-width: 17rem;
     font-weight: 600;
+}
+.hero-sub:hover{
+  cursor: none !important;
 }
 
   .button-before {
