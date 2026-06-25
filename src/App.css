@@ -2447,6 +2447,30 @@ margin-left: -2px;
     background-color: transparent!important;
     color: #ffffff !important;
 }
+
+
+
+
+[data-theme='light'] .pill--solido:hover {
+    background-color: #181818 !important;
+    color: #ffffff !important;
+   
+}
+[data-theme='dark'] .pill--solido:hover {
+    background-color: #37ff14ea !important;
+    color: #ffffff !important;
+}
+[data-theme='light'] .pill--ghosto:hover {
+    background-color: transparent !important;
+    color: #181818 !important;
+}
+[data-theme='dark'] .pill--ghosto:hover {
+    background-color: transparent!important;
+    color: #ffffff !important;
+}
+
+
+
 .about-text {
     max-width: 40rem;
     color: var(--muted);
@@ -2626,6 +2650,8 @@ margin-left: -2px;
   [data-theme="dark"] .bar-value{
     color: #f1f1f1 !important;
   }
+
+ 
 }
 
 /* ============================================================
