@@ -739,6 +739,17 @@
   .mini-stat--in {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+    transition: 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+    border-color 0.5s ease, 
+    color 0.5s ease, 
+    background-color 0.5s ease;
+  }
+   .mini-stat--in:hover {
+   border-color: #00bcd4;
+  color: #00bcd4;
+  background: rgba(0, 225, 255, 0.05);
+  
   }
 
   .mini-stat__num {
