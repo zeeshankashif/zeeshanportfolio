@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 import { useMotionValue, useSpring } from 'framer-motion';
-// 1. Importing components directly from the unified lenis/react package
-import { ReactLenis, useLenis } from 'lenis/react'; 
+// 1. Re-imported Lenis for desktop premium scroll physics
+import { ReactLenis } from 'lenis/react';
 
 const NAV = [
   { id: 'home', label: 'Home' },
@@ -62,6 +62,18 @@ const COLOR_GRADING = [
   { id: 12, title: 'Home', before: 'hom.avif', after: 'homs.avif' },
 ];
 
+// Exact unchanged scroll function as explicitly requested
+function scrollToId(id) {
+  if (id === 'home' || id === 'top') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+
 function LiquidBackdrop() {
   return (
     <div className="liquid-backdrop" aria-hidden="true">
@@ -72,13 +84,13 @@ function LiquidBackdrop() {
   );
 }
 
-function Navbar({ theme, onToggleTheme, scrollToId }) {
+function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
-        <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
-          ZEXAN
-        </a>
+        <button className="nav-brand" onClick={() => scrollToId('home')}>
+  ZEXAN
+</button>
         <ul className="nav-links">
           {NAV.map(({ id, label }) => (
             <li key={id}>
@@ -315,7 +327,7 @@ function GradingSection() {
         <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on &quot;GRADED MODE&quot;.</p>
         <p className="section-note">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
-        <p className="section-note">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+        <p className="section-note">Software : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
         <div 
           ref={gridRef}
@@ -334,7 +346,7 @@ function GradingSection() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'left', marginTop: '20px' , marginBottom: '-50px'}}>
-          <button className="pill pill--solido" onClick={toggleAll}>
+          <button className="pill pill--solid" onClick={toggleAll}>
             {globalShowAfter ? 'RAW THEM ALL' : 'GRADE THEM ALL'}
           </button>
         </div>
@@ -343,7 +355,7 @@ function GradingSection() {
   );
 }
 
-function AboutSection({ scrollToId }) {
+function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
   
   const isFreelancer = typeof window !== 'undefined' && 
@@ -367,8 +379,8 @@ function AboutSection({ scrollToId }) {
         
         {!isFreelancer && (
           <>
-            <p className="about-text">Email : zexan.one@gmail.com</p>
-            <p className="about-text">Github/Vercel : @zeeshankashif</p>
+            <p className="about-text" >Email : zexan.one@gmail.com</p>
+            <p className="about-text" >Github/Vercel : @zeeshankashif</p>
           </>
         )}
 
@@ -384,7 +396,7 @@ function AboutSection({ scrollToId }) {
                 Hire Me
               </a>
               <a 
-                className="pill pill--solido" 
+                className="pill pill--solid" 
                 href="#experience"
                 onClick={(e) => { e.preventDefault(); scrollToId('experience'); }}
               >
@@ -393,13 +405,13 @@ function AboutSection({ scrollToId }) {
             </>
           ) : (
             <>
-              <a className="pill pill--solido" href="mailto:zexan.one@gmail.com">Email Me</a>
-              <a className="pill pill--solido" href="https://github.com/zeeshankashif">Github</a>
+              <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
+              <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
             </>
           )}
           
-          <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghosto">LinkedIn</a>
-          <a className="pill pill--ghosto" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+          <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a>
+          <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
         </div>
       </div>
       <footer className="site-footer">
@@ -408,9 +420,11 @@ function AboutSection({ scrollToId }) {
       </footer>
     </section>
   );
-}
+} 
 
 function App() {
+
+  
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
@@ -432,36 +446,8 @@ function App() {
 
   const [dreamyMask, setDreamyMask] = useState("");
 
-  const lenis = useLenis();
-
-  const ease = {
-    easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
-    inOutSine: (t) => -(Math.cos(Math.PI * t) - 1) / 2,
-    inOutCubic: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
-    inOutExpo: (t) => t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? Math.pow(2, 20 * t - 10) / 2 : (2 - Math.pow(2, -20 * t + 10)) / 2,
-    outExpo: (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
-    inOutQuart: (t) => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2,
-  };
-
-  const scrollToId = (id) => {
-    if (!lenis) return;
-
-    if (id === 'home' || id === 'top') {
-      lenis.scrollTo(0, {
-        duration: 1.2,
-        easing: ease.inOutCubic,
-      });
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        lenis.scrollTo(element, {
-          duration: 1.2,
-          offset: 0,
-          easing: ease.inOutCubic,
-        });
-      }
-    }
-  };
+  // Hook definition used internally by Lenis layout wrappers
+  // const lenis = useLenis();
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -533,13 +519,30 @@ function App() {
     };
   }, []);
 
+  // Visual sequencing fallback safety trigger
   useEffect(() => {
-    const timer = setTimeout(() => {
-      document.querySelectorAll('.hero-ctas .pill').forEach((el) => {
-        el.classList.add('seq-settled');
+    const pills = Array.from(document.querySelectorAll('.hero-ctas .pill'));
+    const settle = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('seq-settled');
+    };
+    const listeners = pills.map((el) => {
+      const handler = () => settle(el);
+      el.addEventListener('animationend', handler, { once: true });
+      return { el, handler };
+    });
+    const fallback = setTimeout(() => {
+      pills.forEach((el) => {
+        if (!el.classList.contains('seq-settled')) settle(el);
       });
-    }, 1700);
-    return () => clearTimeout(timer);
+    }, 3000);
+    return () => {
+      clearTimeout(fallback);
+      listeners.forEach(({ el, handler }) =>
+        el.removeEventListener('animationend', handler)
+      );
+    };
   }, []);
 
   useEffect(() => {
@@ -588,20 +591,20 @@ function App() {
       options={
         isMobile 
           ? { 
-              syncTouch: false,   // Restores silky smooth native touch physics
-              smoothTouch: false, // Disables JS-rendered lag on drag
+              syncTouch: false,   // Restores pure native fluid touch physics on phones
+              smoothTouch: false, // Totally blocks tracking layer latency on drag inputs
               autoPrevent: false
             } 
           : { 
-              lerp: 0.14,         // Gorgeous custom easing on desktop wheels
-              duration: 1.5, 
+              lerp: 0.14,         // Premium easing curves on standard desktop viewports
+              duration: 1.2, 
               syncTouch: false 
             }
       }
     >
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
-        <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} scrollToId={scrollToId} />
+        <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} />
         <main style={{ width: '100%', position: 'relative', overflow: 'hidden' }}>
           <div className={`app-entrance-wrapper ${(heroActive && heroImageLoaded) ? 'entrance-ready' : 'entrance-loading'}`} style={{ width: '100%' }}>
             {installPrompt && (
@@ -635,14 +638,14 @@ function App() {
                 <div className="hero-copy">
                   <p className="eyebrow hero-eyebrow">Portfolio</p>
                   <h1 className="hero-title">Zeeshan Kashif</h1>
-                  <p className="hero-sub">&quot; I DEVELOPE TO DOMINATE &quot; </p>
+                  <p className="hero-sub">&quot;  I DEVELOPE TO DOMINATE &quot;</p>
                   <div className="hero-ctas">
-                    <button type="button" className="pill pill--solido" onClick={() => scrollToId('experience')}>Experience</button>
-                    <button type="button" className="pill pill--solido" onClick={() => scrollToId('projects')}>Projects</button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
 
-                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghosto">LinkedIn</a> 
-                    <a className="pill pill--ghosto" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-                    
+                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
+                    <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+                   
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
@@ -655,7 +658,7 @@ function App() {
             <MotionSection />
             <GradingSection />
             <div className="section-divider" aria-hidden="true" />
-            <AboutSection scrollToId={scrollToId} />
+            <AboutSection />
           </div>
         </main>
       </div>

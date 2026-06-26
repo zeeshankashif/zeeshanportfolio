@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @font-face{
@@ -8,7 +8,7 @@
   :root {
     /* --bg: #f6f7f8; */
     --bg: #f0f0f0;
-    --fg: #202020;
+    --fg: #181818;
     --muted: #5f6670;
     --silver: #8a7a7a;
     --surface-rgb: 246, 247, 248;
@@ -55,6 +55,9 @@
     padding-top: var(--nav-height) !important;
   }
 
+
+  
+
 /* Stable Entrance Animations */
 .app-entrance-wrapper {
   will-change: transform, filter, opacity;
@@ -77,84 +80,7 @@
     opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hero Text Animation - Staggered entrance with 0.2s delay */
-@keyframes heroTextFadeInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    filter: blur(0px);
-  }
-}
-
-.hero-copy {
-  animation: heroTextFadeInUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
-}
-
-/* Hero Button Animation - Sequential staggered entrance with smooth easing */
-@keyframes heroButtonSlideUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.hero-ctas .pill {
-  animation: heroButtonSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  opacity: 0;
-}
-
-.hero-ctas .pill:nth-child(1) {
-  animation-delay: 0.35s;
-}
-
-.hero-ctas .pill:nth-child(2) {
-  animation-delay: 0.45s;
-}
-
-.hero-ctas .pill:nth-child(3) {
-  animation-delay: 0.55s;
-}
-
-.hero-ctas .pill:nth-child(4) {
-  animation-delay: 0.65s;
-}
-
-.hero-ctas .pill:nth-child(5) {
-  animation-delay: 0.75s;
-}
-
-/* ── seq-settled: strip the frozen animation fill so hover transforms work ── */
-.hero-ctas .pill.seq-settled {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease !important;
-}
-
-
-.hero-ctas .pill.seq-settled:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 18px 36px rgba(24, 24, 24, 0.22) !important;
-}
-
-.hero-ctas .pill--solid.seq-settled:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24) !important;
-}
-
-
-  /* —— Glass panels —— */
+  /* —— Glass panel —— */
   .glass-panel {
     background: var(--card);
     border: 1.5px solid var(--card-border);
@@ -221,10 +147,15 @@
    [data-theme="dark"] .nav {
       box-shadow: #000000 0px -50px 40px;  
   }
+button.nav-brand {
+  background: none;
+  cursor: pointer;
 
+}
   .nav-brand {
     
     font-family: "Vampire Wars" , sans-serif;
+    font-weight: 100;
     color: var(--fg);
     text-decoration: none;
     font-size: 1rem;
@@ -389,18 +320,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
     font-family: inherit;
   }
-[data-theme="light"] .pill--solido:hover{
+[data-theme="light"] .pill--solid:hover{
   background: #00bcd4;
 }
 [data-theme="light"] .pill--solidd:hover{
   background: #000000;
 }
-[data-theme="light"] .pill--ghosto:hover{
+[data-theme="light"] .pill--ghost:hover{
   background-color: #00bcd4;
   color: #ffffff;
   border-color: #ffffff00;
 }
-[data-theme="dark"] .pill--ghosto:hover{
+[data-theme="dark"] .pill--ghost:hover{
   background-color: #37ff14ea;
   color: #ffffff;
   border-color: #ffffff00;
@@ -416,30 +347,16 @@
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
   }
-   .pill--solido {
-    background: var(--btn-solid-bg);
-    color: var(--btn-solid-fg);
-    box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-  }
 
   .pill--solid:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
   }
- .pill--solido:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(24, 24, 24, 0.22);
-  }
-  /* Hero section solid pill hover - enhanced translate with color change */
-  .hero-ctas .pill--solid:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24);
-  }
  .pill--solidd {
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-    padding: 15px 46.5px;
+    padding: 15px 39.7px;
     max-width: fit-content;
   }
 [data-theme="dark"] .pill--solidd {
@@ -450,8 +367,7 @@
   .pill--solidd:hover {
     transform: translateY(-2px);
     cursor: default;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.333);   
-  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.333);     
   }
 
   .pill--ghost {
@@ -459,10 +375,9 @@
     color: var(--fg);
     border: 1px solid var(--line);
   }
-   .pill--ghosto {
-    background: transparent;
-    color: var(--fg);
-    border: 1px solid var(--line);
+  .pill--ghost:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.158);
   }
    .pill--ghosts {
     background: transparent;
@@ -519,13 +434,6 @@
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(2rem, 6vw, 4rem);
     align-items: center;
-  }
-  
-  /* Ensure hero-inner doesn't apply reveal animation class to its children in hero section */
-  .hero .hero-inner.reveal {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    transition: none;
   }
   
   .hero-visual {
@@ -638,23 +546,14 @@
 
   .hero-title {
     margin: 0 0 1rem;
-    max-width: auto;
     font-size: clamp(2.5rem, 7vw, 4rem);
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: -0.04em;
     line-height: 1.05;
-    color: #202020;
-   
-}
-.hero-title:hover{
-  cursor:default;
-}
-  
-  [data-theme='dark'] .hero-title {
-    color: #f1f1f1;
   }
+  
 
- .hero-sub {
+.hero-sub {
   margin: 0 0 2rem;
   color: #303030;
   font-size: 1rem;
@@ -666,8 +565,8 @@
   
   /* Smooth timing setup */
   transition: letter-spacing 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              color 0.5s ease, 
-              filter 0.5s ease;
+              color 0.4s ease, 
+              filter 0.4s ease;
   will-change: letter-spacing, filter;
 }
 [data-theme="dark"] .hero-sub {
@@ -750,22 +649,15 @@
     box-shadow: none;
     transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  
 
   .bar-fill--grow {
     width: var(--target, 0%);
   }
 
-  .bar-value {
+   .bar-value {
     font-weight: 800;
     font-size: 0.85rem;
     color: #383838;
-    text-align: right;
-  }
-  [data-theme="dark"] .bar-value {
-    font-weight: 800;
-    font-size: 0.85rem;
-    color: #f1f1f1;
     text-align: right;
   }
 
@@ -789,7 +681,7 @@
     transition-delay: var(--d, 0ms);
   }
 
-  .mini-stat--in {
+   .mini-stat--in {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     transition: 
@@ -816,6 +708,7 @@
     font-weight: 800;
     color: var(--fg);
   }
+
 
   .mini-stat__cap {
     font-size: 0.8rem;
@@ -891,6 +784,7 @@
    ============================================================ */
   /* —— Project link blocks (image + overlay) —— */
   .section-leadd {
+      
       align-items: center;
       text-align: center;
     margin: 0 0 2rem;
@@ -1192,6 +1086,7 @@
 
   .section-lead {
     margin: 0 0 2rem;
+
     max-width: 40rem;
     /* color: var(--fg); */
     color: #181818;
@@ -1209,8 +1104,10 @@
   .section-note {
     max-width: 90rem;
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.2;
+    font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
 
   }
 
@@ -1222,6 +1119,8 @@
     align-items: center;
     gap: 8px; 
     font-weight: 500;
+        font-family: 'Quicksand', sans-serif;
+
     /* Spaces the text and the logo nicely bheuiofgio */
   
   }
@@ -1234,6 +1133,8 @@
     line-height: 1.65;
     font-weight: 400;
     margin-top: -30px;
+        font-family: 'Quicksand', sans-serif;
+
   }
 
   .lr-logo {
@@ -1422,8 +1323,9 @@
     color: var(--muted);
     font-size: 0.9rem;
     line-height: 0.25;
-    /* font-weight: 700; */
+    /* font-weight: 100; */
     margin: 5px 0 1.75rem;
+   
   }
 
   .about-actions {
@@ -1436,7 +1338,8 @@
     font-family: 'Vampire Wars', sans-serif;
     /* Optional: adjustments if the custom font renders too small/large */
     font-size: 0.9rem; 
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
+    font-weight: 100;
     margin-left: 2px;
 }
 
@@ -1668,6 +1571,7 @@
 
   @media (max-width: 720px) {
     .section-lead {
+
     margin: 20px 0 2rem;
     max-width: 40rem;
     /* color: var(--fg); */
@@ -1820,6 +1724,9 @@ html {
 
   .nav-brand {
     font-size: 0.75rem !important;
+        font-weight: 100 !important;
+        ;
+
   }
 
   .nav-links a {
@@ -1945,6 +1852,8 @@ html {
     font-size: 1rem !important;
     padding: 6px 12px !important;
     width: auto !important;
+        font-weight: 100;
+
   }
 
   /* 4. Lock Dark Mode to the top right & shrink it */
@@ -2211,7 +2120,7 @@ html {
   }
   .hero-sub {
     margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
-    text-align: center;  
+    max-width: auto;
     /* ... other styles ... */
 }
 .hero-sub {
@@ -2222,10 +2131,8 @@ html {
     color: #303030;
     font-size: 0.88rem;
     line-height: 1.65;
-    font-weight: 600;
-}
-.hero-sub:hover{
-  cursor: none !important;
+    max-width: 28rem;
+    font-weight: 100;
 }
 
   .button-before {
@@ -2240,12 +2147,12 @@ html {
     cursor: none;
   }
 
-  .pill--solido:active {
+  .pill--solid:active {
     transform: translateY(0px) scale(0.98);
     transition: transform 0.1s ease;
   }
 
-  .pill--ghosto:active {
+  .pill--ghost:active {
     transform: translateY(0px) scale(0.96);
     transition: transform 0.1s ease;
   }
@@ -2282,6 +2189,11 @@ html {
     transform: translateY(0px) scale(0.97);
     transition: transform 0.1s ease;
   }
+  button.nav-brand {
+  background: none;
+  cursor: none;
+  
+}
   
 }
 
@@ -2431,18 +2343,16 @@ margin-left: -2px;
   color: #eeeeee !important;
       border: 1px solid var(--line);
 }
-.pill--solido:active {
+.pill--solid:active {
     transform: translateY(0px) scale(0.97);
 }
 [data-theme='light'] .pill--solid:hover {
     background-color: #181818 !important;
     color: #ffffff !important;
-    transform: translateY(-2px) !important;
 }
 [data-theme='dark'] .pill--solid:hover {
     background-color: #37ff14ea !important;
     color: #ffffff !important;
-    transform: translateY(-2px) !important;
 }
 [data-theme='light'] .pill--ghost:hover {
     background-color: transparent !important;
@@ -2452,30 +2362,6 @@ margin-left: -2px;
     background-color: transparent!important;
     color: #ffffff !important;
 }
-
-
-
-
-[data-theme='light'] .pill--solido:hover {
-    background-color: #181818 !important;
-    color: #ffffff !important;
-   
-}
-[data-theme='dark'] .pill--solido:hover {
-    background-color: #37ff14ea !important;
-    color: #ffffff !important;
-}
-[data-theme='light'] .pill--ghosto:hover {
-    background-color: transparent !important;
-    color: #181818 !important;
-}
-[data-theme='dark'] .pill--ghosto:hover {
-    background-color: transparent!important;
-    color: #ffffff !important;
-}
-
-
-
 .about-text {
     max-width: 40rem;
     color: var(--muted);
@@ -2488,8 +2374,9 @@ margin-left: -2px;
 .section-note {
     max-width: 90rem;
     color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.2;
+    font-size: 0.85rem;
+    line-height: 1.1;
+    font-family: 'Quicksand', sans-serif;
   }
 }
 /* --- Mobile View Overrides (Screens smaller than 768px) --- */
@@ -2652,21 +2539,5 @@ margin-left: -2px;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
-  [data-theme="dark"] .bar-value{
-    color: #f1f1f1 !important;
-  }
-
- 
-}
-
-/* ============================================================
-   HERO PILL HOVER — Final override so seq-settled wins on desktop
-   ============================================================ */
-.hero-ctas .pill--solid.seq-settled:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 18px 36px rgba(24, 24, 24, 0.24) !important;
-}
-
-.hero-ctas .pill--ghost.seq-settled:hover {
-  transform: translateY(-2px) !important;
+  
 }
