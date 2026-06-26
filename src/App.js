@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 import { useMotionValue, useSpring } from 'framer-motion';
+// 1. Re-imported Lenis for desktop premium scroll physics
+import { ReactLenis, useLenis } from 'lenis/react'; 
 
 const NAV = [
   { id: 'home', label: 'Home' },
@@ -60,6 +62,7 @@ const COLOR_GRADING = [
   { id: 12, title: 'Home', before: 'hom.avif', after: 'homs.avif' },
 ];
 
+// Exact unchanged scroll function as explicitly requested
 function scrollToId(id) {
   if (id === 'home' || id === 'top') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -324,7 +327,7 @@ function GradingSection() {
         <p className="section-lead">Tap or click on the photos to toggle between RAW and GRADED shots independently.</p>
         <p className="section-note">Note : The Color-Graded previews may take a moment to load on &quot;GRADED MODE&quot;.</p>
         <p className="section-note">Tip : View in Dark Mode for a better comparison of the Graded Images.</p>
-        <p className="section-note">Software Used : Adobe Lightroom <span className="lr-logo">Lr</span></p>
+        <p className="section-note">Software : Adobe Lightroom <span className="lr-logo">Lr</span></p>
 
         <div 
           ref={gridRef}
@@ -355,7 +358,6 @@ function GradingSection() {
 function AboutSection() {
   const [ref, active] = useRepeatableIntersect(0.2, '0px 0px -8% 0px', true);
   
-  // Check if the user arrived via the Freelancer link
   const isFreelancer = typeof window !== 'undefined' && 
     new URLSearchParams(window.location.search).get('source') === 'freelancer';
 
@@ -375,17 +377,15 @@ function AboutSection() {
         </h2>
         <p className="about-text">I Love everything that goes FAST & BOOM</p>
         
-        {/* Only show these details if the user is NOT from Freelancer */}
         {!isFreelancer && (
           <>
-            <p className="about-text">Email : zexan.one@gmail.com</p>
-            <p className="about-text">Github/Vercel : @zeeshankashif</p>
+            <p className="about-text" >Email : zexan.one@gmail.com</p>
+            <p className="about-text" >Github/Vercel : @zeeshankashif</p>
           </>
         )}
 
         <div className="about-actions">
           {isFreelancer ? (
-            // Freelancer-safe layout: Directs to your platform profile with the Experience button next to it
             <>
               <a 
                 className="pill pill--solid" 
@@ -398,12 +398,12 @@ function AboutSection() {
               <a 
                 className="pill pill--solid" 
                 href="#experience"
+                onClick={(e) => { e.preventDefault(); scrollToId('experience'); }}
               >
                 Experience
               </a>
             </>
           ) : (
-            // Standard layout for general visitors
             <>
               <a className="pill pill--solid" href="mailto:zexan.one@gmail.com">Email Me</a>
               <a className="pill pill--solid" href="https://github.com/zeeshankashif">Github</a>
@@ -421,7 +421,10 @@ function AboutSection() {
     </section>
   );
 } 
+
 function App() {
+
+  
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
@@ -442,6 +445,9 @@ function App() {
   const smoothSize = useSpring(maskSizeValue, { damping: 40, stiffness: 120 });
 
   const [dreamyMask, setDreamyMask] = useState("");
+
+  // Hook definition used internally by Lenis layout wrappers
+  const lenis = useLenis();
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -513,6 +519,32 @@ function App() {
     };
   }, []);
 
+  // Visual sequencing fallback safety trigger
+  useEffect(() => {
+    const pills = Array.from(document.querySelectorAll('.hero-ctas .pill'));
+    const settle = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('seq-settled');
+    };
+    const listeners = pills.map((el) => {
+      const handler = () => settle(el);
+      el.addEventListener('animationend', handler, { once: true });
+      return { el, handler };
+    });
+    const fallback = setTimeout(() => {
+      pills.forEach((el) => {
+        if (!el.classList.contains('seq-settled')) settle(el);
+      });
+    }, 3000);
+    return () => {
+      clearTimeout(fallback);
+      listeners.forEach(({ el, handler }) =>
+        el.removeEventListener('animationend', handler)
+      );
+    };
+  }, []);
+
   useEffect(() => {
     maskSizeValue.set(isHeroHovered ? 260 : 0);
   }, [isHeroHovered, maskSizeValue]);
@@ -554,7 +586,22 @@ function App() {
   };
 
   return (
-    <>
+    <ReactLenis 
+      root 
+      options={
+        isMobile 
+          ? { 
+              syncTouch: false,   // Restores pure native fluid touch physics on phones
+              smoothTouch: false, // Totally blocks tracking layer latency on drag inputs
+              autoPrevent: false
+            } 
+          : { 
+              lerp: 0.25,         // Premium easing curves on standard desktop viewports
+              duration: 1.2, 
+              syncTouch: false 
+            }
+      }
+    >
       <div className="page" data-theme={theme} style={{ overflowX: 'hidden', width: '100%' }}>
         <LiquidBackdrop />
         <Navbar theme={theme} onToggleTheme={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))} />
@@ -591,15 +638,14 @@ function App() {
                 <div className="hero-copy">
                   <p className="eyebrow hero-eyebrow">Portfolio</p>
                   <h1 className="hero-title">Zeeshan Kashif</h1>
-                  <p className="hero-sub">&quot;THE&quot; Web Developer you were looking for ...</p>
+                  <p className="hero-sub">&quot;  I DEVELOPE TO DOMINATE &quot;</p>
                   <div className="hero-ctas">
                     <button type="button" className="pill pill--solid" onClick={() => scrollToId('experience')}>Experience</button>
-                                        <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
+                    <button type="button" className="pill pill--solid" onClick={() => scrollToId('projects')}>Projects</button>
 
-
-<a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
-<a className="pill pill--ghost" href="cv.avif"target="_blank" rel="noopener noreferrer">View CV</a>
-                 
+                    <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
+                    <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
+                   
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
@@ -616,7 +662,7 @@ function App() {
           </div>
         </main>
       </div>
-    </>
+    </ReactLenis>
   );
 }
 

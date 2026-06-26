@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @font-face{
   font-family: 'Vampire Wars';
@@ -52,6 +54,9 @@
     overflow-x: hidden;
     padding-top: var(--nav-height) !important;
   }
+
+
+  
 
 /* Stable Entrance Animations */
 .app-entrance-wrapper {
@@ -146,6 +151,7 @@
   .nav-brand {
     
     font-family: "Vampire Wars" , sans-serif;
+    font-weight: 100;
     color: var(--fg);
     text-decoration: none;
     font-size: 1rem;
@@ -365,6 +371,10 @@
     color: var(--fg);
     border: 1px solid var(--line);
   }
+  .pill--ghost:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.158);
+  }
    .pill--ghosts {
     background: transparent;
     color: var(--fg);
@@ -537,15 +547,37 @@
     letter-spacing: -0.04em;
     line-height: 1.05;
   }
+  
 
-  .hero-sub {
-    margin: 0 0 2rem;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.65;
-    max-width: 28rem;
-    font-weight: 600;
-  }
+.hero-sub {
+  margin: 0 0 2rem;
+  color: #303030;
+  font-size: 1rem;
+  font-family: 'michroma' , sans-serif;
+  line-height: 1.65;
+  max-width: 23rem;
+  letter-spacing: 0.02em;
+  font-weight: 100;
+  
+  /* Smooth timing setup */
+  transition: letter-spacing 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 0.4s ease, 
+              filter 0.4s ease;
+  will-change: letter-spacing, filter;
+}
+[data-theme="dark"] .hero-sub {
+  color:#f9f9f9;
+}
+
+.hero-sub:hover {
+  color: #00bcd4; /* Shifts from muted to crisp white */
+  letter-spacing: 0.04em;    /* Elegantly breathes outward */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15)); /* Soft, premium glow */
+  cursor: default; 
+}
+[data-theme="dark"] .hero-sub:hover {
+  color: #37ff14; 
+}
 
   .hero-ctas {
     display: flex;
@@ -618,10 +650,10 @@
     width: var(--target, 0%);
   }
 
-  .bar-value {
+   .bar-value {
     font-weight: 800;
     font-size: 0.85rem;
-    color: var(--silver);
+    color: #383838;
     text-align: right;
   }
 
@@ -645,17 +677,34 @@
     transition-delay: var(--d, 0ms);
   }
 
-  .mini-stat--in {
+   .mini-stat--in {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+    transition: 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+    border-color 0.5s ease, 
+    color 0.5s ease, 
+    background-color 0.5s ease;
   }
-
+   .mini-stat--in:hover {
+   border-color: #00bcd4;
+  color: #00bcd4;
+  background: rgba(0, 225, 255, 0.05);
+  
+  }
+ [data-theme="dark"] .mini-stat--in:hover {
+   border-color: #37ff14;
+  color: #37ff14;
+  background: rgba(55, 255, 20, 0.027);
+  
+  }
   .mini-stat__num {
     display: block;
     font-size: 1.75rem;
     font-weight: 800;
     color: var(--fg);
   }
+
 
   .mini-stat__cap {
     font-size: 0.8rem;
@@ -731,6 +780,7 @@
    ============================================================ */
   /* —— Project link blocks (image + overlay) —— */
   .section-leadd {
+      
       align-items: center;
       text-align: center;
     margin: 0 0 2rem;
@@ -1032,6 +1082,7 @@
 
   .section-lead {
     margin: 0 0 2rem;
+
     max-width: 40rem;
     /* color: var(--fg); */
     color: #181818;
@@ -1049,8 +1100,10 @@
   .section-note {
     max-width: 90rem;
     color: var(--muted);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.2;
+    font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
 
   }
 
@@ -1062,6 +1115,8 @@
     align-items: center;
     gap: 8px; 
     font-weight: 500;
+        font-family: 'Quicksand', sans-serif;
+
     /* Spaces the text and the logo nicely bheuiofgio */
   
   }
@@ -1074,6 +1129,8 @@
     line-height: 1.65;
     font-weight: 400;
     margin-top: -30px;
+        font-family: 'Quicksand', sans-serif;
+
   }
 
   .lr-logo {
@@ -1262,8 +1319,9 @@
     color: var(--muted);
     font-size: 0.9rem;
     line-height: 0.25;
-    /* font-weight: 700; */
+    /* font-weight: 100; */
     margin: 5px 0 1.75rem;
+   
   }
 
   .about-actions {
@@ -1276,7 +1334,8 @@
     font-family: 'Vampire Wars', sans-serif;
     /* Optional: adjustments if the custom font renders too small/large */
     font-size: 0.9rem; 
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
+    font-weight: 100;
     margin-left: 2px;
 }
 
@@ -1508,6 +1567,7 @@
 
   @media (max-width: 720px) {
     .section-lead {
+
     margin: 20px 0 2rem;
     max-width: 40rem;
     /* color: var(--fg); */
@@ -1660,6 +1720,9 @@ html {
 
   .nav-brand {
     font-size: 0.75rem !important;
+        font-weight: 100 !important;
+        ;
+
   }
 
   .nav-links a {
@@ -1785,6 +1848,8 @@ html {
     font-size: 1rem !important;
     padding: 6px 12px !important;
     width: auto !important;
+        font-weight: 100;
+
   }
 
   /* 4. Lock Dark Mode to the top right & shrink it */
@@ -2051,7 +2116,7 @@ html {
   }
   .hero-sub {
     margin: 0 auto 2rem; /* Top: 0, Left/Right: auto, Bottom: 2rem */
-    max-width: 28rem;
+    max-width: auto;
     /* ... other styles ... */
 }
 .hero-sub {
@@ -2059,11 +2124,11 @@ html {
     margin: 0 auto 2rem; /* Centers the block itself */
     text-align: center;  /* Centers the text lines */
     
-    color: var(--muted);
+    color: #303030;
     font-size: 0.88rem;
     line-height: 1.65;
     max-width: 28rem;
-    font-weight: 600;
+    font-weight: 100;
 }
 
   .button-before {
@@ -2300,8 +2365,9 @@ margin-left: -2px;
 .section-note {
     max-width: 90rem;
     color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.2;
+    font-size: 0.85rem;
+    line-height: 1.1;
+    font-family: 'Quicksand', sans-serif;
   }
 }
 /* --- Mobile View Overrides (Screens smaller than 768px) --- */
@@ -2460,8 +2526,9 @@ margin-left: -2px;
   .bar-chart .bar-value {
     font-size: 0.8rem !important;
     font-weight: 700 !important;
-    color: var(--silver) !important;
+    color: #383838 !important;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
+  
 }
