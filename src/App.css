@@ -147,7 +147,11 @@
    [data-theme="dark"] .nav {
       box-shadow: #000000 0px -50px 40px;  
   }
+button.nav-brand {
+  background: none;
+  cursor: pointer;
 
+}
   .nav-brand {
     
     font-family: "Vampire Wars" , sans-serif;
@@ -2185,6 +2189,11 @@ html {
     transform: translateY(0px) scale(0.97);
     transition: transform 0.1s ease;
   }
+  button.nav-brand {
+  background: none;
+  cursor: none;
+  
+}
   
 }
 
