@@ -447,7 +447,7 @@ function App() {
   const [dreamyMask, setDreamyMask] = useState("");
 
   // Hook definition used internally by Lenis layout wrappers
-  const lenis = useLenis();
+  // const lenis = useLenis();
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
