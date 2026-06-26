@@ -80,7 +80,7 @@
     opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-  /* —— Glass panels —— */
+  /* —— Glass panel —— */
   .glass-panel {
     background: var(--card);
     border: 1.5px solid var(--card-border);
