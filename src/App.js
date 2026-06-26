@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { useRepeatableIntersect } from './hooks/useRepeatableIntersect';
 import { useMotionValue, useSpring } from 'framer-motion';
-// 1. Re-imported Lenis for desktop premium scroll physics
 import { ReactLenis, useLenis } from 'lenis/react'; 
 
 const NAV = [
@@ -62,7 +61,6 @@ const COLOR_GRADING = [
   { id: 12, title: 'Home', before: 'hom.avif', after: 'homs.avif' },
 ];
 
-// Exact unchanged scroll function as explicitly requested
 function scrollToId(id) {
   if (id === 'home' || id === 'top') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -88,7 +86,7 @@ function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="nav-shell">
       <nav className="nav glass-panel" aria-label="Primary">
-        <a className="nav-brand" href="#home" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
+        <a className="nav-brand" href="#" onClick={(e) => { e.preventDefault(); scrollToId('home'); }}>
           ZEXAN
         </a>
         <ul className="nav-links">
@@ -102,7 +100,7 @@ function Navbar({ theme, onToggleTheme }) {
         </ul>
         <button
           type="button"
-          className="nav-theme-toggle pill pill--ghosts"
+          className="nav-theme-toggle pill pill--ghost"
           onClick={onToggleTheme}
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
         >
@@ -423,8 +421,6 @@ function AboutSection() {
 } 
 
 function App() {
-
-  
   const [theme, setTheme] = useState('light');
   const [heroRef, heroActive] = useRepeatableIntersect(0.08, '0px', true);
   const [installPrompt, setInstallPrompt] = useState(null);
@@ -445,9 +441,6 @@ function App() {
   const smoothSize = useSpring(maskSizeValue, { damping: 40, stiffness: 120 });
 
   const [dreamyMask, setDreamyMask] = useState("");
-
-  // Hook definition used internally by Lenis layout wrappers
-  // const lenis = useLenis();
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -519,7 +512,6 @@ function App() {
     };
   }, []);
 
-  // Visual sequencing fallback safety trigger
   useEffect(() => {
     const pills = Array.from(document.querySelectorAll('.hero-ctas .pill'));
     const settle = (el) => {
@@ -591,12 +583,12 @@ function App() {
       options={
         isMobile 
           ? { 
-              syncTouch: false,   // Restores pure native fluid touch physics on phones
-              smoothTouch: false, // Totally blocks tracking layer latency on drag inputs
+              syncTouch: false,   
+              smoothTouch: false, 
               autoPrevent: false
             } 
           : { 
-              lerp: 0.25,         // Premium easing curves on standard desktop viewports
+              lerp: 0.25,         
               duration: 1.2, 
               syncTouch: false 
             }
@@ -611,7 +603,7 @@ function App() {
               <div className="install-banner mobile-only-install">
                 <span>Install App for a better experience !</span>
                 <div className="banner-btns">
-                  <button onClick={handleInstallClick} className="pill pill--ghostt">Install</button>
+                  <button onClick={handleInstallClick} className="pill pill--ghost">Install</button>
                   <button onClick={() => setInstallPrompt(null)} className="close-btn">✕</button>
                 </div>
               </div>
@@ -645,7 +637,7 @@ function App() {
 
                     <a href="https://www.linkedin.com/in/zeeshankashif-linked-in" target="_blank" rel="noopener noreferrer" className="pill pill--ghost">LinkedIn</a> 
                     <a className="pill pill--ghost" href="cv.avif" target="_blank" rel="noopener noreferrer">View CV</a>
-                   
+                    
                     {!isMobile && (<p className="pill pill--solidd">HOVER ON THE PHOTO TO ILLUMINATE MY DREAM !</p>)}
                   </div>
                 </div>
