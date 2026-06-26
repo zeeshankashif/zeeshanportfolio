@@ -519,32 +519,6 @@ function App() {
     };
   }, []);
 
-  // Visual sequencing fallback safety trigger
-  useEffect(() => {
-    const pills = Array.from(document.querySelectorAll('.hero-ctas .pill'));
-    const settle = (el) => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      el.classList.add('seq-settled');
-    };
-    const listeners = pills.map((el) => {
-      const handler = () => settle(el);
-      el.addEventListener('animationend', handler, { once: true });
-      return { el, handler };
-    });
-    const fallback = setTimeout(() => {
-      pills.forEach((el) => {
-        if (!el.classList.contains('seq-settled')) settle(el);
-      });
-    }, 3000);
-    return () => {
-      clearTimeout(fallback);
-      listeners.forEach(({ el, handler }) =>
-        el.removeEventListener('animationend', handler)
-      );
-    };
-  }, []);
-
   useEffect(() => {
     maskSizeValue.set(isHeroHovered ? 260 : 0);
   }, [isHeroHovered, maskSizeValue]);
