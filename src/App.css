@@ -2519,6 +2519,19 @@ margin-left: -2px;
     font-weight: 999 !important;
     margin: 0 !important;
   }
+  [data-theme="dark"] .bar-label {
+    font-size: 0.95rem !important;
+    font-weight: 999 !important;
+    margin: 0 !important;
+    color:#f1f1f1;
+  }
+   [data-theme="light"] .bar-label {
+    font-size: 0.95rem !important;
+    font-weight: 999 !important;
+    margin: 0 !important;
+    color:#181818;
+  }
+
 
   /* Subtitle text ("Intermediate level", etc.) directly underneath */
   .bar-chart .bar-years {
@@ -2545,10 +2558,17 @@ margin-left: -2px;
   }
 
   /* Place the percentage cleanly underneath the progress bar */
-  .bar-chart .bar-value {
+  .bar-chart {
     font-size: 0.8rem !important;
     font-weight: 700 !important;
     color: #383838 !important;
+    margin-top: 0.1rem !important;
+    align-self: flex-start !important; /* Aligns left right under the bar start */
+  }
+  [data-theme="dark"] .bar-value {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: #f1f1f1 !important;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
