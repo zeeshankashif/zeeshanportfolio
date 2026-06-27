@@ -2533,6 +2533,29 @@ margin-left: -2px;
   }
 
 
+    .site-footer {
+
+    max-width: 100%;
+    margin: 4rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: #303030;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+[data-theme='dark'] .site-footer {
+
+    max-width: 100%;
+    margin: 4rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+
+
   /* Subtitle text ("Intermediate level", etc.) directly underneath */
   .bar-chart .bar-years {
     font-size: 0.8rem !important;
