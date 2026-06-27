@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @font-face{
   font-family: 'Vampire Wars';
@@ -8,7 +8,7 @@
   :root {
     /* --bg: #f6f7f8; */
     --bg: #f0f0f0;
-    --fg: #181818;
+    --fg: #191919;
     --muted: #5f6670;
     --silver: #8a7a7a;
     --surface-rgb: 246, 247, 248;
@@ -30,7 +30,7 @@
 
   .page[data-theme='dark'] {
     --bg: #0a0a0a;
-    --fg: #ffffff;
+    --fg: #f1f1f1;
     --muted: #a6adb8;
     --silver: #d1d5db;
     --surface-rgb: 0, 0, 0;
@@ -360,7 +360,7 @@ button.nav-brand {
     max-width: fit-content;
   }
 [data-theme="dark"] .pill--solidd {
-  background-color: #ffffff;
+  background-color: #f1f1f1;
   color: #181818;
 }
 
@@ -660,7 +660,9 @@ button.nav-brand {
     color: #383838;
     text-align: right;
   }
-
+[data-theme="dark"] .bar-value {
+    color: #f1f1f1;
+  }
   .mini-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1086,7 +1088,6 @@ button.nav-brand {
 
   .section-lead {
     margin: 0 0 2rem;
-
     max-width: 40rem;
     /* color: var(--fg); */
     color: #181818;
@@ -1102,6 +1103,7 @@ button.nav-brand {
   }
 
   .section-note {
+
     max-width: 90rem;
     color: var(--muted);
     font-size: 0.85rem;
@@ -1344,13 +1346,24 @@ button.nav-brand {
 }
 
   .site-footer {
+
     max-width: 100%;
     margin: 4rem auto 0;
     padding-top: 1.5rem;
     border-top: 1px solid var(--line);
-    color: var(--muted);
+    color: #404040;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
+  }
+[data-theme='dark'] .site-footer {
+
+    max-width: 100%;
+    margin: 4rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
   }
 
 
