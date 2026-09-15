@@ -1705,7 +1705,7 @@ html {
     font-size: 2.5rem; /* Prevents text from being too massive */
   }
 
-  .section-title {
+  .section-title , .section-titlez , .section-titles {
     font-size: 2rem;
   }
 
