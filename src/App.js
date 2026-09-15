@@ -228,7 +228,7 @@ function MotionSection() {
   return (
     <section id="motion" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
-        <h2 className="section-titles">Motion Animated Webites</h2>
+        <h2 className="section-titles">ANIMATED SITES</h2>
         <div className="motion-grid">
           {MOTION.map((p, i) => (
             <a
@@ -406,7 +406,7 @@ function AboutSection() {
     <section id="about" className="section section--footer" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
         <p className="eyebrow">About</p>
-        <h2 className="section-title">
+        <h2 className="section-titlez">
           Zeeshan Kashif 
           <span className="flag-container">
             <img 
@@ -671,6 +671,7 @@ function App() {
             <WorkSection />
             <ProjectsSection />
             <MotionSection />
+            
             <MAKSection />
             <GradingSection />
             <div className="section-divider" aria-hidden="true" />
