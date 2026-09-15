@@ -15,7 +15,7 @@ const NAV = [
 ];
 
 const EXPERIENCE = [
-  { label: 'Web Development ( newbie )', value: 20, years: '3+ months' },
+  { label: 'Web Development ( newbie )', value: 20, years: '7+ months' },
   { label: 'WordPress', value: 82, years: 'Intermediate level' },
   { label: 'AI Integration', value: 85, years: 'Advanced level' },
   { label: 'UI/UX Design', value: 80, years: 'Intermediate level' },
@@ -31,10 +31,8 @@ const WORK_ITEMS = [
 
 const PROJECTS = [
   { name: 'Real Estate', tag: 'Modern', blurb: 'Minimal and Clean', href: 'https://realestatezexan.vercel.app/', image:'real.avif', },
-  { name: 'Toasty', tag: 'AI Cooking', blurb: 'AI Powered Cooking App.', href: 'https://toasty-zexan.vercel.app/', image: 'toasty.avif', },
+  { name: 'Toasty', tag: 'Cooking Site', blurb: 'AI Powered Cooking App.', href: 'https://toasty-zexan.vercel.app/', image: 'toasty.avif', },
   { name: 'Sneaky', tag: 'E-Commerce Website', blurb: 'Cool and Stylish', href: 'https://sneaky-zexan.vercel.app/', image: 'sneaky.avif', },
-  { name: 'Pixify AI', tag: 'AI Image Editor', blurb: 'Powered by ZEXAN', href: 'https://pixify-zexan.vercel.app/', image: 'pixify.avif', },
-  { name: 'Watchout', tag: 'Luxury Watch', blurb: 'Made by ZEXAN', href: 'https://watchout-zexan.vercel.app/', image: 'watch.avif', },
   { name: 'Quantum Synthesis', tag: 'High End Neon', blurb: 'Smooth and Fluid', href: 'https://quantumsynthesis-zexan.vercel.app/', image: 'quantum.avif', },
   { name: 'Motor Works', tag: 'Dealership', blurb: 'Tuned by ZEXAN', href: 'https://motorworks-zexan.vercel.app/', image: 'mw.avif', },
   { name: 'BMW M4', tag: 'Digital Showroom', blurb: 'Tuned by ZEXAN MENCY', href: 'https://bmw-zexan.vercel.app/', image: 'bmw.avif', },
@@ -45,6 +43,11 @@ const MOTION = [
   { name: 'MODEL X5', tag: '', blurb: '3D HARDWARE BLUEPRINT', href: 'https://modelx5-zexan.vercel.app/', image: 'model.avif', backgroundPosition: 'center 100%'},
   { name: 'LIQUID INK', tag: '', blurb: '3D INK TRANSITION', href: 'https://liquidink-zexan.vercel.app/', image: 'image.avif', backgroundPosition: 'center 0%'},
   { name: 'GLASS FRACTURE', tag: '', blurb: '3D SHATTER', href: 'https://glassfracture-zexan.vercel.app/', image: '112.avif', backgroundPosition: 'center 14%' },
+];
+const MAK = [
+  { name: 'ORIGINAL SITE', tag:'', blurb: 'MAK DEVELOPERS.NET', href: 'https://makdevelopers.net/', image:'mako.avif', backgroundPosition: 'center',backgroundSize: '150%',backgroundRepeat: 'no-repeat' },
+  { name: 'REDESIGNED SITE', tag:'', blurb: 'BY ZEXAN', href: 'https://mak-zexan.vercel.app/', image:'makr.avif', backgroundPosition: 'center',backgroundSize: '150%',backgroundRepeat: 'no-repeat' },
+
 ];
 
 const COLOR_GRADING = [
@@ -140,11 +143,11 @@ function ExperienceSection() {
           </div>
           <div className="mini-stats" aria-label="Highlights">
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '0ms' }}>
-              <span className="mini-stat__num">3+ months</span>
+              <span className="mini-stat__num">7+ months</span>
               <span className="mini-stat__cap">of being a Developer</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '80ms' }}>
-              <span className="mini-stat__num">20+ years</span>
+              <span className="mini-stat__num">21+ years</span>
               <span className="mini-stat__cap">of Age</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '160ms' }}>
@@ -250,6 +253,44 @@ function MotionSection() {
                 <h3 className="motion-block__title">{p.name}</h3>
                 <p className="motion-block__text">{p.blurb}</p>
                 <span className="motion-block__cta">View 3D Motion Site →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+function MAKSection() {
+  const [ref, active] = useRepeatableIntersect(0.12, '0px 0px -4% 0px', true);
+  return (
+    <section id="mak" className="section" ref={ref}>
+      <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
+        <h2 className="section-titles">Website Redesign</h2>
+        <div className="mak-grid">
+          {MAK.map((p, i) => (
+            <a
+              key={p.name}
+              className={`motion-block lift ${active ? 'lift--in' : ''}`}
+              style={{ '--i': `${i * 90}ms` }}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div
+                className="motion-block__media"
+                style={{ 
+                  backgroundImage: `url(${p.image})`,
+                  backgroundPosition: p.backgroundPosition || 'center'
+                }}
+                aria-hidden="true"
+              />
+              <div className="motion-block__scrim" aria-hidden="true" />
+              <div className="motion-block__body">
+                {p.tag && <span className="motion-block__tag">{p.tag}</span>}
+                <h3 className="motion-block__title">{p.name}</h3>
+                <p className="motion-block__text">{p.blurb}</p>
+                <span className="motion-block__cta">View Website →</span>
               </div>
             </a>
           ))}
@@ -630,6 +671,7 @@ function App() {
             <WorkSection />
             <ProjectsSection />
             <MotionSection />
+            <MAKSection />
             <GradingSection />
             <div className="section-divider" aria-hidden="true" />
             <AboutSection />

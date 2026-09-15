@@ -851,25 +851,17 @@ button.nav-brand {
     background-position: center 60%;
     background-size: 90%; 
   }
-  /* Adjust this percentage to fame the 'P' logo perfectly */
-  .project-block:nth-child(4) .project-block__media {
-    background-position: center 40%; 
-    background-size: 90%; /* Adjust this percentage to frame the 'P' logo perfectly */
-  }
-  .project-block:nth-child(5) .project-block__media {
-    background-position: center 47%; 
-    background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
-  }
-   .project-block:nth-child(6) .project-block__media {
+  
+   .project-block:nth-child(4) .project-block__media {
     background-position: center 16%; 
     background-size: 110%;
     filter: brightness(1.3) contrast(1.2); /* Adjust this percentage to frame the 'P' logo perfectly */
   }
-   .project-block:nth-child(7) .project-block__media {
+   .project-block:nth-child(5) .project-block__media {
     background-position: center 16%; 
     background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
   }
- .project-block:nth-child(8) .project-block__media {
+ .project-block:nth-child(6) .project-block__media {
     background-position: center 16%;
       filter: brightness(1.7) contrast(0.98) saturate(1); 
     background-size: 100%; /* Adjust this percentage to frame the 'P' logo perfectly */
@@ -959,6 +951,15 @@ button.nav-brand {
   gap: 0.7rem;
   /* Ensures all grid tracks stretch to match the tallest item in the row */
   align-items: stretch; 
+}
+
+/* —— MAK grid: same card styling, but a fixed 50/50 split —— */
+.mak-grid {
+  margin-top: -1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  align-items: stretch;
 }
 
 .motion-block {
@@ -1068,6 +1069,11 @@ button.nav-brand {
 .motion-block:hover .motion-block__cta {
   transform: translateY(-2px);
   letter-spacing: 0.1em;
+}
+
+/* —— MAK section: no color filter on the card images —— */
+.mak-grid .motion-block__media {
+  filter: brightness(1.1) contrast(1.1) saturate(1.3) !important;  ;
 }
 
 
@@ -2164,7 +2170,6 @@ html {
     transform: translateY(0px) scale(0.98);
     transition: transform 0.1s ease;
   }
-
   .pill--ghost:active {
     transform: translateY(0px) scale(0.96);
     transition: transform 0.1s ease;
@@ -2266,33 +2271,6 @@ html {
     color: inherit;
   }
 
-  /* Project Grid Framing Adjustments */
-    .project-block:nth-child(1) .project-block__media {
-    background-position: 70%; 
-    background-size: auto 100%; 
-  }
-    .project-block:nth-child(5) .project-block__media {
-    background-position: 30%; 
-    background-size: auto 100%;
-    background-size:  120%;
-  }
-    .project-block:nth-child(4) .project-block__media {
-    background-position: 40% 50%; 
-    background-size: 145%; 
-  }
-  .project-block:nth-child(6) .project-block__media {
-    background-position: 55%; 
-    background-size: auto 100%; 
-  }
-  .project-block:nth-child(7) .project-block__media {
-    background-position: center 15%; 
-    background-size: 100%; 
-  }
-  .project-block:nth-child(8) .project-block__media {
-    background-position: 30%; 
-    filter: brightness(1.8) contrast(0.98); 
-    background-size: auto 100%;
-  }
   .work-card:hover {
     border-color: rgb(13, 255, 0);
     transform: translateY(-5px);
@@ -2398,6 +2376,13 @@ margin-left: -2px;
     /* Changes grid from 4 columns to 2 columns */
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem; /* Tighter gap to save screen space */
+  }
+  .mak-grid {
+    cursor: none;
+    margin-top: -10px;
+    /* Force 1 card per row in mobile view */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.9rem; 
   }
 
   .motion-block {
@@ -2595,5 +2580,50 @@ margin-left: -2px;
     margin-top: 0.1rem !important;
     align-self: flex-start !important; /* Aligns left right under the bar start */
   }
-  
+
+
+
+
+  /* ============================================================
+   FINAL MOBILE PROJECT IMAGE POSITION
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  .project-block:nth-child(1) .project-block__media {
+    background-size: 100% !important;
+    background-position: 20% 90% !important;
+  }
+
+  .project-block:nth-child(2) .project-block__media {
+    background-size: 100% !important;
+    background-position: 40% 78% !important;
+  }
+
+  .project-block:nth-child(3) .project-block__media {
+    background-size: 90% !important;
+    background-position: 50% 60% !important;
+  }
+
+  .project-block:nth-child(4) .project-block__media {
+    background-size: 90% !important;
+    background-position: 80% 40% !important;
+        filter: brightness(1.3) contrast(1.2); /* Adjust this percentage to frame the 'P' logo perfectly */
+
+  }
+
+  .project-block:nth-child(5) .project-block__media {
+    background-size: 100% !important;
+    background-position: 40% 16% !important;
+  }
+
+  .project-block:nth-child(6) .project-block__media {
+    background-size: 100% !important;
+      filter: brightness(1.7) contrast(0.98) saturate(1); 
+   
+    background-position: 30% 50% !important;
+  }
+
+}
+ 
 }
