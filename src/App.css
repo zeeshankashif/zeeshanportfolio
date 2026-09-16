@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Hegarty&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Goldman:wght@400;700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Linefont:wght@4..1000&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tirra:wght@400;500;600;700;800;900&display=swap" rel="stylesheet");
 @font-face{
   font-family: 'Vampire Wars';
   src: url('./assets/fonts/Vampire\ Wars.ttf') format('truetype');
@@ -220,12 +220,24 @@ button.nav-brand {
     color: rgb(129, 129, 129);
   }
 
+  .eyebrows {
+    margin: 0 0 0.75rem;
+    margin-bottom: 25px;
+    margin-left: 1px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgb(129, 129, 129);
+  }
+  
+
   .section-title {
     text-transform: uppercase;
     margin: 0 0 1rem;
     font-size: 2.3rem;
     font-weight: 900;
-    letter-spacing: -0.03em;
+    /* letter-spacing: -0.03em; */
     display: inline-flex;
   align-items: center;
   gap: 12px; /* Adjusts the space between your name and the flag */

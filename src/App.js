@@ -228,6 +228,8 @@ function MotionSection() {
   return (
     <section id="motion" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
+                <p className="eyebrows">SCROLL TRIGGER</p>
+
         <h2 className="section-titles">ANIMATED SITES</h2>
         <div className="motion-grid">
           {MOTION.map((p, i) => (
@@ -266,6 +268,8 @@ function MAKSection() {
   return (
     <section id="mak" className="section" ref={ref}>
       <div className={`section-inner reveal ${active ? 'reveal--in' : ''}`}>
+                <p className="eyebrows">BEFORE VS AFTER</p>
+
         <h2 className="section-titles">Website Redesign</h2>
         <div className="mak-grid">
           {MAK.map((p, i) => (
