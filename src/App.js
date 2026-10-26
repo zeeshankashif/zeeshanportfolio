@@ -15,10 +15,10 @@ const NAV = [
 ];
 
 const EXPERIENCE = [
-  { label: 'Web Development ( newbie )', value: 20, years: '7+ months' },
-  { label: 'WordPress', value: 82, years: 'Intermediate level' },
-  { label: 'AI Integration', value: 85, years: 'Advanced level' },
-  { label: 'UI/UX Design', value: 80, years: 'Intermediate level' },
+  { label: 'Web Development ( newbie )', value: 35, years: '8+ months' },
+  { label: 'WordPress', value: 80, years: 'Intermediate level' },
+  { label: 'AI Utilization', value: 85, years: 'Advanced level' },
+  { label: 'UI/UX Design', value: 82, years: 'Intermediate level' },
   { label: 'Github & Vercel', value: 85, years: 'Advanced level' },
   { label: 'Adobe Lightroom', value: 90, years: 'Expert level' },
 ];
@@ -143,7 +143,7 @@ function ExperienceSection() {
           </div>
           <div className="mini-stats" aria-label="Highlights">
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '0ms' }}>
-              <span className="mini-stat__num">7+ months</span>
+              <span className="mini-stat__num">8+ months</span>
               <span className="mini-stat__cap">of being a Developer</span>
             </div>
             <div className={`mini-stat ${active ? 'mini-stat--in' : ''}`} style={{ '--d': '80ms' }}>
