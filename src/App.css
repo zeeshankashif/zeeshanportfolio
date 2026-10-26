@@ -232,31 +232,33 @@ button.nav-brand {
   }
   .section-title {
     text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.3px;
+        font-weight: 800;
+
     margin: 0 0 1rem;
     font-size: 2.3rem;
-    font-weight: 900;
     /* letter-spacing: -0.03em; */
     display: inline-flex;
   align-items: center;
   gap: 12px; /* Adjusts the space between your name and the flag */
   }
    .section-titlez {
-    
+        font-weight: 900;
     margin: 0 0 1rem;
+    letter-spacing: -0.4px;
     font-size: 2.3rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
     display: inline-flex;
   align-items: center;
   gap: 12px; /* Adjusts the space between your name and the flag */
   }
   .section-titles {
         text-transform: uppercase;
-
+  font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.3px;
+        font-weight: 800;
     margin-top: -5vw;
     font-size: 2.3rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
     display: inline-flex;
   align-items: center;
   gap: 12px; /* Adjusts the space between your name and the flag */
@@ -369,6 +371,7 @@ button.nav-brand {
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
+    
   }
 
   .pill--solid:hover {
@@ -379,7 +382,10 @@ button.nav-brand {
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
-    padding: 15px 46.4px;
+    padding: 15px 33px;
+    font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.3px;
+        font-weight: 800;
     max-width: fit-content;
   }
 [data-theme="dark"] .pill--solidd {
@@ -648,6 +654,7 @@ button.nav-brand {
   .bar-label {
     font-weight: 800;
     font-size: 0.95rem;
+    
   }
 
   .bar-years {
