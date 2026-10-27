@@ -368,6 +368,7 @@ button.nav-brand {
   }
 
   .pill--solid {
+
     background: var(--btn-solid-bg);
     color: var(--btn-solid-fg);
     box-shadow: 0 10px 24px rgba(24, 24, 24, 0.18);
@@ -1723,7 +1724,7 @@ html {
   }
 
   .section-title , .section-titlez , .section-titles {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   /* Improve Navigation for Touch */
@@ -2440,12 +2441,12 @@ margin-left: -2px;
   }
 
   .motion-block__title {
-    font-size: 0.9rem; /* Prevents long titles from wrapping onto too many lines */
+    font-size: 1.2rem; /* Prevents long titles from wrapping onto too many lines */
     margin: 0 0 0.25rem;
   }
 
   .motion-block__text {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     line-height: 1;
     margin: 0 0 0.65rem;
   }
@@ -2505,9 +2506,10 @@ margin-left: -2px;
     font-size: 1.4rem; /* Prevents long titles from wrapping onto too many lines */
     margin: 0 0 0.25rem;
   }
+  
 
   .project-block__text {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     line-height: 1;
     margin: 0 0 0.65rem;
   }
