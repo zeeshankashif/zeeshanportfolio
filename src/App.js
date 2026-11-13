@@ -39,8 +39,8 @@ const PROJECTS = [
 ];
 
 const MOTION = [
-  { name: 'SERIES 01', tag:'', blurb: '3D MOTION SCROLLING', href: 'https://series01-zexan.vercel.app/', image:'011.avif', backgroundPosition: 'center',backgroundSize: '150%',backgroundRepeat: 'no-repeat' },
-  { name: 'MODEL X5', tag: '', blurb: '3D HARDWARE BLUEPRINT', href: 'https://modelx5-zexan.vercel.app/', image: 'model.avif', backgroundPosition: 'center 100%'},
+  { name: 'BLOOM', tag:'', blurb: 'MOTION BALL', href: 'https://bloom-zexan.vercel.app/', image:'011.avif', backgroundPosition: 'center',backgroundSize: '150%',backgroundRepeat: 'no-repeat' },
+  { name: 'KATANA', tag: '', blurb: 'SWORD IN MOTION', href: 'https://katana-zexan.vercel.app/', image: 'model.avif', backgroundPosition: 'center 100%'},
   { name: 'LIQUID INK', tag: '', blurb: '3D INK TRANSITION', href: 'https://liquidink-zexan.vercel.app/', image: 'image.avif', backgroundPosition: 'center 0%'},
   { name: 'GLASS BOOM', tag: '', blurb: '3D SHATTER', href: 'https://glassfracture-zexan.vercel.app/', image: '112.avif', backgroundPosition: 'center 14%' },
 ];

@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" );
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Hegarty&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Goldman:wght@400;700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Linefont:wght@4..1000&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tirra:wght@400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Hegarty&family=Bebas+Neue&family=Cinzel:wght@400..900&family=Goldman:wght@400;700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Linefont:wght@4..1000&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,60<PASSWORD>;1,8<PASSWORD>;1,9<PASSWORD>&family=Quicksand:wght@3<PASSWORD>;1,5<PASSWORD>;1,6<PASSWORD>;1,7<PASSWORD>;1,8<PASSWORD>;1,9<PASSWORD>&family=Raleway:ital,wght@<PASSWORD>;1,<PASSWORD>&family=Roboto:ital,wght@<PASSWORD>;1,<PASSWORD>&family=Tirra:wght@4<PASSWORD>;5<PASSWORD>;6<PASSWORD>;7<PASSWORD>;8<PASSWORD>;9<PASSWORD>&display=swap");
 @font-face{
   font-family: 'Vampire Wars';
   src: url('./assets/fonts/Vampire\ Wars.ttf') format('truetype');
@@ -187,6 +189,7 @@ button.nav-brand {
 
   .nav-links a:hover {
     color: var(--fg);
+    
   }
 
   .nav-links a:focus-visible {
@@ -1033,10 +1036,42 @@ button.nav-brand {
   transform: scale(1);
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
-  filter: brightness(2.2) contrast(1.01) saturate(0.8) ;  
+  /* filter: brightness(2.2) contrast(1.01) saturate(0.8) ;   */
 }
 
+  .motion-block:nth-child(1) .motion-block__media {
+    background-position: 100%;
+    background-size: 110%;
+      /* filter: brightness(2.2) contrast(1.01) saturate(0.8) ;   */
 
+
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+  
+  .motion-block:nth-child(2) .motion-block__media {
+    background-position:  90%;
+    background-size: auto 100%;
+      filter: brightness(1.9) contrast(1.1) saturate(0.9) ;  
+
+
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+  
+  .motion-block:nth-child(3) .motion-block__media {
+    background-position: 100%;
+    background-size: 115%;
+      filter: brightness(2.1) contrast(1.01) saturate(0.8) ;  
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
+  
+  .motion-block:nth-child(4) .motion-block__media {
+    background-position: 100%;
+    background-size: 100%;
+      filter: brightness(2) contrast(1.01) saturate(0.9) ;  
+
+
+    /* Adjust this percentage to frame the 'P' logo perfectly */
+  }
 
 .motion-block__scrim {
   position: absolute;
