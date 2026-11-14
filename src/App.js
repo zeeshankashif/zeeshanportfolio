@@ -285,7 +285,9 @@ function MAKSection() {
                 className="motion-block__media"
                 style={{ 
                   backgroundImage: `url(${p.image})`,
-                  backgroundPosition: p.backgroundPosition || 'center'
+                  backgroundPosition: p.backgroundPosition || 'center',
+                  backgroundSize: p.backgroundSize || 'cover',
+                  backgroundRepeat: p.backgroundRepeat || 'no-repeat'
                 }}
                 aria-hidden="true"
               />
